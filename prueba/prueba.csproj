@@ -54,6 +54,7 @@
       <DependentUpon>Ahorro.cs</DependentUpon>
     </Compile>
     <Compile Include="ConexionYMetodos.cs" />
+    <Compile Include="Datos\Conexion.cs" />
     <Compile Include="Distribucion.cs">
       <SubType>Form</SubType>
     </Compile>
