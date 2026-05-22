@@ -98,6 +98,16 @@
     <Compile Include="Reporte.Designer.cs">
       <DependentUpon>Reporte.cs</DependentUpon>
     </Compile>
+    <Compile Include="SafeWealthFinanceDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SafeWealthFinanceDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SafeWealthFinanceDBDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SafeWealthFinanceDBDataSet1.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Ahorro.resx">
       <DependentUpon>Ahorro.cs</DependentUpon>
     </EmbeddedResource>
@@ -140,6 +150,28 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SafeWealthFinanceDBDataSet.xsc">
+      <DependentUpon>SafeWealthFinanceDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SafeWealthFinanceDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SafeWealthFinanceDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SafeWealthFinanceDBDataSet.xss">
+      <DependentUpon>SafeWealthFinanceDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SafeWealthFinanceDBDataSet1.xsc">
+      <DependentUpon>SafeWealthFinanceDBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SafeWealthFinanceDBDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SafeWealthFinanceDBDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SafeWealthFinanceDBDataSet1.xss">
+      <DependentUpon>SafeWealthFinanceDBDataSet1.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
