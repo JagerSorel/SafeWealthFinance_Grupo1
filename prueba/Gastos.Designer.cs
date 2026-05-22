@@ -170,7 +170,6 @@
             // 
             // gbMod
             // 
-            this.gbMod.Controls.Add(this.comboBox3);
             this.gbMod.Controls.Add(this.gbFiltrar);
             this.gbMod.Controls.Add(this.btnEliminar);
             this.gbMod.Controls.Add(this.lblId);
@@ -195,13 +194,14 @@
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(151, 21);
+            this.comboBox3.Location = new System.Drawing.Point(328, 19);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(330, 21);
+            this.comboBox3.Size = new System.Drawing.Size(270, 21);
             this.comboBox3.TabIndex = 25;
             // 
             // gbFiltrar
             // 
+            this.gbFiltrar.Controls.Add(this.comboBox3);
             this.gbFiltrar.Controls.Add(this.lblDato);
             this.gbFiltrar.Controls.Add(this.lblCategorias);
             this.gbFiltrar.Controls.Add(this.checkedListBox1);

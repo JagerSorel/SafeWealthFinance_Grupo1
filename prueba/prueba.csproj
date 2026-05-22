@@ -60,11 +60,17 @@
     <Compile Include="Distribucion.Designer.cs">
       <DependentUpon>Distribucion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Expediente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Expediente.Designer.cs">
+      <DependentUpon>Expediente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inicio.Designer.cs">
+      <DependentUpon>Inicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Gastos.cs">
       <SubType>Form</SubType>
@@ -98,8 +104,11 @@
     <EmbeddedResource Include="Distribucion.resx">
       <DependentUpon>Distribucion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Expediente.resx">
+      <DependentUpon>Expediente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inicio.resx">
+      <DependentUpon>Inicio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gastos.resx">
       <DependentUpon>Gastos.cs</DependentUpon>
