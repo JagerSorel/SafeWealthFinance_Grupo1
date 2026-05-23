@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -38,7 +39,7 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Expediente));
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvExpediente = new System.Windows.Forms.DataGridView();
             this.chaIngresos = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chaGastos = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chaGanancias = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -47,20 +48,46 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.lblTextFecha = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.safeWealthFinanceDBDataSet = new prueba.SafeWealthFinanceDBDataSet();
+            this.safeWealthFinanceDBDataSet1 = new prueba.SafeWealthFinanceDBDataSet1();
+            this.expedienteSemestralBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.expedienteSemestralTableAdapter = new prueba.SafeWealthFinanceDBDataSetTableAdapters.ExpedienteSemestralTableAdapter();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ingresosDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gastosDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gananciasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblFecha = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvExpediente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chaIngresos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chaGastos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chaGanancias)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.safeWealthFinanceDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.safeWealthFinanceDBDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.expedienteSemestralBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvExpediente
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(52, 121);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(912, 199);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvExpediente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvExpediente.AutoGenerateColumns = false;
+            this.dgvExpediente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvExpediente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvExpediente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.mesDataGridViewTextBoxColumn,
+            this.ingresosDataGridViewTextBoxColumn,
+            this.gastosDataGridViewTextBoxColumn,
+            this.gananciasDataGridViewTextBoxColumn});
+            this.dgvExpediente.DataSource = this.expedienteSemestralBindingSource;
+            this.dgvExpediente.Location = new System.Drawing.Point(52, 138);
+            this.dgvExpediente.Name = "dgvExpediente";
+            this.dgvExpediente.Size = new System.Drawing.Size(912, 182);
+            this.dgvExpediente.TabIndex = 0;
+            this.dgvExpediente.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // chaIngresos
             // 
@@ -155,28 +182,99 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(429, 29);
+            this.label4.Location = new System.Drawing.Point(429, 24);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(159, 22);
             this.label4.TabIndex = 8;
             this.label4.Text = "Control de Gastos";
             // 
-            // label5
+            // lblTextFecha
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(334, 70);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(361, 21);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Expresado en dólares estadounidenses ($USD)";
+            this.lblTextFecha.AutoSize = true;
+            this.lblTextFecha.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTextFecha.Location = new System.Drawing.Point(291, 64);
+            this.lblTextFecha.Name = "lblTextFecha";
+            this.lblTextFecha.Size = new System.Drawing.Size(282, 21);
+            this.lblTextFecha.TabIndex = 9;
+            this.lblTextFecha.Text = "Semestre correspondiente a la fecha:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(334, 97);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(361, 21);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Expresado en dólares estadounidenses ($USD)";
+            // 
+            // safeWealthFinanceDBDataSet
+            // 
+            this.safeWealthFinanceDBDataSet.DataSetName = "SafeWealthFinanceDBDataSet";
+            this.safeWealthFinanceDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // safeWealthFinanceDBDataSet1
+            // 
+            this.safeWealthFinanceDBDataSet1.DataSetName = "SafeWealthFinanceDBDataSet1";
+            this.safeWealthFinanceDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // expedienteSemestralBindingSource
+            // 
+            this.expedienteSemestralBindingSource.DataMember = "ExpedienteSemestral";
+            this.expedienteSemestralBindingSource.DataSource = this.safeWealthFinanceDBDataSet;
+            // 
+            // expedienteSemestralTableAdapter
+            // 
+            this.expedienteSemestralTableAdapter.ClearBeforeFill = true;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // mesDataGridViewTextBoxColumn
+            // 
+            this.mesDataGridViewTextBoxColumn.DataPropertyName = "Mes";
+            this.mesDataGridViewTextBoxColumn.HeaderText = "Mes";
+            this.mesDataGridViewTextBoxColumn.Name = "mesDataGridViewTextBoxColumn";
+            // 
+            // ingresosDataGridViewTextBoxColumn
+            // 
+            this.ingresosDataGridViewTextBoxColumn.DataPropertyName = "Ingresos";
+            this.ingresosDataGridViewTextBoxColumn.HeaderText = "Ingresos";
+            this.ingresosDataGridViewTextBoxColumn.Name = "ingresosDataGridViewTextBoxColumn";
+            // 
+            // gastosDataGridViewTextBoxColumn
+            // 
+            this.gastosDataGridViewTextBoxColumn.DataPropertyName = "Gastos";
+            this.gastosDataGridViewTextBoxColumn.HeaderText = "Gastos";
+            this.gastosDataGridViewTextBoxColumn.Name = "gastosDataGridViewTextBoxColumn";
+            // 
+            // gananciasDataGridViewTextBoxColumn
+            // 
+            this.gananciasDataGridViewTextBoxColumn.DataPropertyName = "Ganancias";
+            this.gananciasDataGridViewTextBoxColumn.HeaderText = "Ganancias";
+            this.gananciasDataGridViewTextBoxColumn.Name = "gananciasDataGridViewTextBoxColumn";
+            // 
+            // lblFecha
+            // 
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFecha.Location = new System.Drawing.Point(573, 64);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(0, 21);
+            this.lblFecha.TabIndex = 11;
             // 
             // Expediente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblFecha);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblTextFecha);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -185,14 +283,18 @@
             this.Controls.Add(this.chaGanancias);
             this.Controls.Add(this.chaGastos);
             this.Controls.Add(this.chaIngresos);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvExpediente);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Expediente";
             this.Text = "Expediente";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.Expediente_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvExpediente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chaIngresos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chaGastos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chaGanancias)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.safeWealthFinanceDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.safeWealthFinanceDBDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.expedienteSemestralBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -200,7 +302,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvExpediente;
         private System.Windows.Forms.DataVisualization.Charting.Chart chaIngresos;
         private System.Windows.Forms.DataVisualization.Charting.Chart chaGastos;
         private System.Windows.Forms.DataVisualization.Charting.Chart chaGanancias;
@@ -209,6 +311,17 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblTextFecha;
+        private System.Windows.Forms.Label label6;
+        private SafeWealthFinanceDBDataSet safeWealthFinanceDBDataSet;
+        private SafeWealthFinanceDBDataSet1 safeWealthFinanceDBDataSet1;
+        private System.Windows.Forms.BindingSource expedienteSemestralBindingSource;
+        private SafeWealthFinanceDBDataSetTableAdapters.ExpedienteSemestralTableAdapter expedienteSemestralTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ingresosDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gastosDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gananciasDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label lblFecha;
     }
 }
