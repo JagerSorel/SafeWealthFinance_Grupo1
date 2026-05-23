@@ -142,7 +142,7 @@
             this.gbCrearCuenta.Controls.Add(this.lblContraC);
             this.gbCrearCuenta.Controls.Add(this.lblUsuarioC);
             this.gbCrearCuenta.Controls.Add(this.btnCrearC);
-            this.gbCrearCuenta.Location = new System.Drawing.Point(32, 168);
+            this.gbCrearCuenta.Location = new System.Drawing.Point(32, 164);
             this.gbCrearCuenta.Name = "gbCrearCuenta";
             this.gbCrearCuenta.Size = new System.Drawing.Size(369, 196);
             this.gbCrearCuenta.TabIndex = 2;

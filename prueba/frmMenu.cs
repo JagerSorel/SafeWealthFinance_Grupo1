@@ -12,11 +12,15 @@ namespace prueba
 {
     public partial class frmMenu : Form
     {
+        public string usuario;
         public frmMenu()
         {
             InitializeComponent();
         }
 
+<<<<<<< HEAD:prueba/Menu.cs
+        private void frmMenu_Load(object sender, EventArgs e)
+=======
         private void expedienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Expediente ex = new Expediente();
@@ -28,6 +32,7 @@ namespace prueba
         }
 
         private void timerClass_Tick(object sender, EventArgs e)
+>>>>>>> 70c9ced56b1982c2e435d86a2d281ef38c844877:prueba/frmMenu.cs
         {
 
         }

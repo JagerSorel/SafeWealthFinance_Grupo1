@@ -115,7 +115,7 @@ namespace prueba
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            cym.EliminarDatos("DELETE FROM Ingresos WHERE IdIngreso = @IdIngreso AND IdUsuario = @IdUsuario",
+            cym.BorrarDatos("DELETE FROM Ingresos WHERE IdIngreso = @IdIngreso AND IdUsuario = @IdUsuario",
                 new SqlParameter[]
                 {
                     new SqlParameter("@IdIngreso", comboBox1.SelectedValue),
