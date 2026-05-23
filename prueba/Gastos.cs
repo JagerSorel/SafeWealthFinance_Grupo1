@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace prueba
 {
-    public partial class Gastos : Form
+    public partial class frmGastos : Form
     {
-        public Gastos()
+        public frmGastos()
         {
             InitializeComponent();
         }

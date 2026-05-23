@@ -18,9 +18,9 @@ namespace prueba
             InitializeComponent();
         }
 
-<<<<<<< HEAD:prueba/Menu.cs
-        private void frmMenu_Load(object sender, EventArgs e)
-=======
+        private void frmMenu_Load(object sender, EventArgs e) { 
+            lblBienvenida.Text = "Bienvenid@, " + usuario;
+        }
         private void expedienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Expediente ex = new Expediente();
@@ -32,9 +32,56 @@ namespace prueba
         }
 
         private void timerClass_Tick(object sender, EventArgs e)
->>>>>>> 70c9ced56b1982c2e435d86a2d281ef38c844877:prueba/frmMenu.cs
         {
 
+        }
+
+        private void ahorroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAhorro frmAhorro = new frmAhorro();
+            frmAhorro.Show();
+            this.Hide();
+        }
+
+        private void ingresosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmIngresos frmIngresos = new frmIngresos();
+            frmIngresos.Show();
+            this.Hide();
+        }
+
+        private void distribuicionDeIngresosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDistribucion frmDistribucion = new frmDistribucion();
+            frmDistribucion.Show();
+            this.Hide();
+        }
+
+        private void gastosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGastos frmGastos = new frmGastos();
+            frmGastos.Show();
+            this.Hide();
+        }
+
+        private void presupuestoMensualToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void reporteFinancieroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reporte reporte = new Reporte();
+            reporte.Show();
+            this.Hide();
+        }
+
+        private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmInicio frmInicio = new frmInicio();
+            frmInicio.Show();
+            this.Hide();
+            frmInicio.IdUsuario = 0;
         }
     }
 }

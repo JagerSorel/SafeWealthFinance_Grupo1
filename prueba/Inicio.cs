@@ -40,7 +40,6 @@ namespace prueba
 
         }
 
-<<<<<<< HEAD
         private void btnIniciarSecsion_Click(object sender, EventArgs e)
         {
             SqlCommand cmd = new SqlCommand(
@@ -75,22 +74,10 @@ namespace prueba
                     new SqlParameter("@contrasena", txtContraC.Text),
                     new SqlParameter("@Email", txtEmail.Text)
                 });
-             MessageBox.Show("Cuenta creada exitosamente\nInicie sesión");
-                gbIniciarSesion.Show();
-                gbCrearCuenta.Hide();
-=======
-        private void btnCrearC_Click(object sender, EventArgs e)
-        {
-            gbCrearCuenta.Show();
-            gbIniciarSesion.Hide();
+            MessageBox.Show("Cuenta creada exitosamente\nInicie sesión");
+            gbIniciarSesion.Show();
+            gbCrearCuenta.Hide(); 
         }
 
-        private void btnIniciarSecsion_Click(object sender, EventArgs e)
-        {
-            frmMenu swm = new frmMenu();
-            swm.Show();
-            this.Hide();
->>>>>>> 70c9ced56b1982c2e435d86a2d281ef38c844877
-        }
     }
 }

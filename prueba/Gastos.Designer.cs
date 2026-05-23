@@ -1,6 +1,6 @@
 ﻿namespace prueba
 {
-    partial class Gastos
+    partial class frmGastos
     {
         /// <summary>
         /// Required designer variable.
@@ -40,8 +40,8 @@
             this.lblMes = new System.Windows.Forms.Label();
             this.gbAgregar = new System.Windows.Forms.GroupBox();
             this.gbMod = new System.Windows.Forms.GroupBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.gbFiltrar = new System.Windows.Forms.GroupBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.lblDato = new System.Windows.Forms.Label();
             this.lblCategorias = new System.Windows.Forms.Label();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
@@ -191,14 +191,6 @@
             this.gbMod.Text = "Modificar o eliminar registro";
             this.gbMod.Visible = false;
             // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(328, 19);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(270, 21);
-            this.comboBox3.TabIndex = 25;
-            // 
             // gbFiltrar
             // 
             this.gbFiltrar.Controls.Add(this.comboBox3);
@@ -212,6 +204,14 @@
             this.gbFiltrar.TabStop = false;
             this.gbFiltrar.Text = "Filtrar datos";
             this.gbFiltrar.Visible = false;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(328, 19);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(270, 21);
+            this.comboBox3.TabIndex = 25;
             // 
             // lblDato
             // 
@@ -430,7 +430,7 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // Gastos
+            // frmGastos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -442,7 +442,7 @@
             this.Controls.Add(this.dgGastos);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Gastos";
+            this.Name = "frmGastos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gastos";
             ((System.ComponentModel.ISupportInitialize)(this.dgGastos)).EndInit();
