@@ -112,5 +112,15 @@ namespace prueba
                     new SqlParameter("@IdUsuario", frmInicio.IdUsuario)
                 });
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            cym.EliminarDatos("DELETE FROM Ingresos WHERE IdIngreso = @IdIngreso AND IdUsuario = @IdUsuario",
+                new SqlParameter[]
+                {
+                    new SqlParameter("@IdIngreso", comboBox1.SelectedValue),
+                    new SqlParameter("@IdUsuario", frmInicio.IdUsuario)
+                });
+        }
     }
 }

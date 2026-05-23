@@ -38,11 +38,6 @@
             this.gbAgregar = new System.Windows.Forms.GroupBox();
             this.btnLimpiar1 = new System.Windows.Forms.Button();
             this.lblFecha = new System.Windows.Forms.Label();
-            this.lblMonto = new System.Windows.Forms.Label();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.txtMonto = new System.Windows.Forms.TextBox();
-            this.txtNom = new System.Windows.Forms.TextBox();
-            this.lblNom = new System.Windows.Forms.Label();
             this.gbMod = new System.Windows.Forms.GroupBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -55,6 +50,11 @@
             this.lblNomM = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.lblId = new System.Windows.Forms.Label();
+            this.lblMonto = new System.Windows.Forms.Label();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.txtMonto = new System.Windows.Forms.TextBox();
+            this.txtNom = new System.Windows.Forms.TextBox();
+            this.lblNom = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.lblMes = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIngresos)).BeginInit();
@@ -160,48 +160,6 @@
             this.lblFecha.TabIndex = 9;
             this.lblFecha.Text = "Fecha";
             // 
-            // lblMonto
-            // 
-            this.lblMonto.AutoSize = true;
-            this.lblMonto.Location = new System.Drawing.Point(24, 81);
-            this.lblMonto.Name = "lblMonto";
-            this.lblMonto.Size = new System.Drawing.Size(37, 13);
-            this.lblMonto.TabIndex = 8;
-            this.lblMonto.Text = "Monto";
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.Location = new System.Drawing.Point(506, 96);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 7;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // txtMonto
-            // 
-            this.txtMonto.Location = new System.Drawing.Point(156, 74);
-            this.txtMonto.Name = "txtMonto";
-            this.txtMonto.Size = new System.Drawing.Size(300, 20);
-            this.txtMonto.TabIndex = 6;
-            // 
-            // txtNom
-            // 
-            this.txtNom.Location = new System.Drawing.Point(156, 33);
-            this.txtNom.Name = "txtNom";
-            this.txtNom.Size = new System.Drawing.Size(300, 20);
-            this.txtNom.TabIndex = 5;
-            // 
-            // lblNom
-            // 
-            this.lblNom.AutoSize = true;
-            this.lblNom.Location = new System.Drawing.Point(24, 40);
-            this.lblNom.Name = "lblNom";
-            this.lblNom.Size = new System.Drawing.Size(98, 13);
-            this.lblNom.TabIndex = 4;
-            this.lblNom.Text = "Nombre del ingreso";
-            // 
             // gbMod
             // 
             this.gbMod.Controls.Add(this.btnLimpiar);
@@ -241,6 +199,7 @@
             this.btnEliminar.TabIndex = 9;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnModificar
             // 
@@ -318,6 +277,48 @@
             this.lblId.Size = new System.Drawing.Size(16, 13);
             this.lblId.TabIndex = 0;
             this.lblId.Text = "Id";
+            // 
+            // lblMonto
+            // 
+            this.lblMonto.AutoSize = true;
+            this.lblMonto.Location = new System.Drawing.Point(24, 81);
+            this.lblMonto.Name = "lblMonto";
+            this.lblMonto.Size = new System.Drawing.Size(37, 13);
+            this.lblMonto.TabIndex = 8;
+            this.lblMonto.Text = "Monto";
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Location = new System.Drawing.Point(506, 96);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.TabIndex = 7;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // txtMonto
+            // 
+            this.txtMonto.Location = new System.Drawing.Point(156, 74);
+            this.txtMonto.Name = "txtMonto";
+            this.txtMonto.Size = new System.Drawing.Size(300, 20);
+            this.txtMonto.TabIndex = 6;
+            // 
+            // txtNom
+            // 
+            this.txtNom.Location = new System.Drawing.Point(156, 33);
+            this.txtNom.Name = "txtNom";
+            this.txtNom.Size = new System.Drawing.Size(300, 20);
+            this.txtNom.TabIndex = 5;
+            // 
+            // lblNom
+            // 
+            this.lblNom.AutoSize = true;
+            this.lblNom.Location = new System.Drawing.Point(24, 40);
+            this.lblNom.Name = "lblNom";
+            this.lblNom.Size = new System.Drawing.Size(98, 13);
+            this.lblNom.TabIndex = 4;
+            this.lblNom.Text = "Nombre del ingreso";
             // 
             // dateTimePicker2
             // 
