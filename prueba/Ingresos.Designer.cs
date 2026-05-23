@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvIngresos = new System.Windows.Forms.DataGridView();
             this.lblIngresos = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.agregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -36,6 +36,7 @@
             this.volverAlMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.gbAgregar = new System.Windows.Forms.GroupBox();
+            this.btnLimpiar1 = new System.Windows.Forms.Button();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblMonto = new System.Windows.Forms.Label();
             this.btnAgregar = new System.Windows.Forms.Button();
@@ -43,33 +44,32 @@
             this.txtNom = new System.Windows.Forms.TextBox();
             this.lblNom = new System.Windows.Forms.Label();
             this.gbMod = new System.Windows.Forms.GroupBox();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.lblFechaM = new System.Windows.Forms.Label();
             this.lblMontoM = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.txtMontoM = new System.Windows.Forms.TextBox();
+            this.txtNomM = new System.Windows.Forms.TextBox();
             this.lblNomM = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.lblId = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.txtNomM = new System.Windows.Forms.TextBox();
-            this.btnLimpiar = new System.Windows.Forms.Button();
-            this.btnLimpiar1 = new System.Windows.Forms.Button();
             this.lblMes = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIngresos)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.gbAgregar.SuspendLayout();
             this.gbMod.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvIngresos
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 60);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(604, 179);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvIngresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvIngresos.Location = new System.Drawing.Point(12, 60);
+            this.dgvIngresos.Name = "dgvIngresos";
+            this.dgvIngresos.Size = new System.Drawing.Size(604, 179);
+            this.dgvIngresos.TabIndex = 0;
             // 
             // lblIngresos
             // 
@@ -98,18 +98,21 @@
             this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
             this.agregarToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.agregarToolStripMenuItem.Text = "Agregar";
+            this.agregarToolStripMenuItem.Click += new System.EventHandler(this.agregarToolStripMenuItem_Click);
             // 
             // modificarToolStripMenuItem
             // 
             this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
             this.modificarToolStripMenuItem.Size = new System.Drawing.Size(126, 20);
             this.modificarToolStripMenuItem.Text = "Modificar o eliminar";
+            this.modificarToolStripMenuItem.Click += new System.EventHandler(this.modificarToolStripMenuItem_Click);
             // 
             // volverAlMenuToolStripMenuItem
             // 
             this.volverAlMenuToolStripMenuItem.Name = "volverAlMenuToolStripMenuItem";
             this.volverAlMenuToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
             this.volverAlMenuToolStripMenuItem.Text = "Volver al menu";
+            this.volverAlMenuToolStripMenuItem.Click += new System.EventHandler(this.volverAlMenuToolStripMenuItem_Click);
             // 
             // dtpFecha
             // 
@@ -118,12 +121,13 @@
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(300, 20);
             this.dtpFecha.TabIndex = 3;
-            this.dtpFecha.Value = new System.DateTime(2026, 5, 19, 19, 36, 9, 0);
+            this.dtpFecha.Value = new System.DateTime(2026, 5, 22, 0, 0, 0, 0);
             // 
             // gbAgregar
             // 
             this.gbAgregar.Controls.Add(this.btnLimpiar1);
             this.gbAgregar.Controls.Add(this.lblFecha);
+            this.gbAgregar.Controls.Add(this.gbMod);
             this.gbAgregar.Controls.Add(this.lblMonto);
             this.gbAgregar.Controls.Add(this.btnAgregar);
             this.gbAgregar.Controls.Add(this.txtMonto);
@@ -136,6 +140,16 @@
             this.gbAgregar.TabIndex = 4;
             this.gbAgregar.TabStop = false;
             this.gbAgregar.Text = "Agregar ingresos";
+            // 
+            // btnLimpiar1
+            // 
+            this.btnLimpiar1.Location = new System.Drawing.Point(506, 60);
+            this.btnLimpiar1.Name = "btnLimpiar1";
+            this.btnLimpiar1.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiar1.TabIndex = 11;
+            this.btnLimpiar1.Text = "Limpiar";
+            this.btnLimpiar1.UseVisualStyleBackColor = true;
+            this.btnLimpiar1.Click += new System.EventHandler(this.btnLimpiar1_Click);
             // 
             // lblFecha
             // 
@@ -163,6 +177,7 @@
             this.btnAgregar.TabIndex = 7;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // txtMonto
             // 
@@ -200,13 +215,23 @@
             this.gbMod.Controls.Add(this.lblNomM);
             this.gbMod.Controls.Add(this.comboBox1);
             this.gbMod.Controls.Add(this.lblId);
-            this.gbMod.Location = new System.Drawing.Point(12, 254);
+            this.gbMod.Location = new System.Drawing.Point(0, 0);
             this.gbMod.Name = "gbMod";
             this.gbMod.Size = new System.Drawing.Size(604, 160);
             this.gbMod.TabIndex = 10;
             this.gbMod.TabStop = false;
             this.gbMod.Text = "Modificar o eliminar registro";
             this.gbMod.Visible = false;
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Location = new System.Drawing.Point(506, 38);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiar.TabIndex = 10;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnEliminar
             // 
@@ -225,6 +250,7 @@
             this.btnModificar.TabIndex = 8;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // lblFechaM
             // 
@@ -251,6 +277,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(300, 20);
             this.dateTimePicker1.TabIndex = 5;
+            this.dateTimePicker1.Value = new System.DateTime(2026, 5, 22, 14, 33, 28, 0);
             // 
             // txtMontoM
             // 
@@ -258,6 +285,13 @@
             this.txtMontoM.Name = "txtMontoM";
             this.txtMontoM.Size = new System.Drawing.Size(300, 20);
             this.txtMontoM.TabIndex = 4;
+            // 
+            // txtNomM
+            // 
+            this.txtNomM.Location = new System.Drawing.Point(156, 61);
+            this.txtNomM.Name = "txtNomM";
+            this.txtNomM.Size = new System.Drawing.Size(300, 20);
+            this.txtNomM.TabIndex = 3;
             // 
             // lblNomM
             // 
@@ -291,33 +325,11 @@
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker2.Location = new System.Drawing.Point(522, 35);
             this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.ShowUpDown = true;
             this.dateTimePicker2.Size = new System.Drawing.Size(94, 20);
             this.dateTimePicker2.TabIndex = 11;
-            // 
-            // txtNomM
-            // 
-            this.txtNomM.Location = new System.Drawing.Point(156, 61);
-            this.txtNomM.Name = "txtNomM";
-            this.txtNomM.Size = new System.Drawing.Size(300, 20);
-            this.txtNomM.TabIndex = 3;
-            // 
-            // btnLimpiar
-            // 
-            this.btnLimpiar.Location = new System.Drawing.Point(506, 38);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpiar.TabIndex = 10;
-            this.btnLimpiar.Text = "Limpiar";
-            this.btnLimpiar.UseVisualStyleBackColor = true;
-            // 
-            // btnLimpiar1
-            // 
-            this.btnLimpiar1.Location = new System.Drawing.Point(506, 60);
-            this.btnLimpiar1.Name = "btnLimpiar1";
-            this.btnLimpiar1.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpiar1.TabIndex = 11;
-            this.btnLimpiar1.Text = "Limpiar";
-            this.btnLimpiar1.UseVisualStyleBackColor = true;
+            this.dateTimePicker2.Value = new System.DateTime(2026, 5, 22, 14, 34, 5, 0);
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // lblMes
             // 
@@ -335,16 +347,16 @@
             this.ClientSize = new System.Drawing.Size(628, 426);
             this.Controls.Add(this.lblMes);
             this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.gbMod);
             this.Controls.Add(this.gbAgregar);
             this.Controls.Add(this.lblIngresos);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvIngresos);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmIngresos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ingresos";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.frmIngresos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIngresos)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.gbAgregar.ResumeLayout(false);
@@ -358,7 +370,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvIngresos;
         private System.Windows.Forms.Label lblIngresos;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem agregarToolStripMenuItem;
