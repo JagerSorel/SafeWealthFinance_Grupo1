@@ -9,7 +9,7 @@ namespace prueba.Datos
 {
     internal class Conexion
     {
-        SqlConnection cn = new SqlConnection("Data Source=PC-ELite;Initial Catalog=DBSistema;Integrated Security=True;Encrypt=False");
+        SqlConnection cn = new SqlConnection("Data Source=PC-ELite;Initial Catalog=SafeWealthFinanceDB;Integrated Security=True;Encrypt=False");
         public SqlConnection AbrirConexion()
         {
             if (cn.State == System.Data.ConnectionState.Closed)

@@ -28,25 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.ahorroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ingresosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.distribuicionDeIngresosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.expedienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gastosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.presupuestoMensualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ahorroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteFinancieroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.distribuicionDeIngresosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timerClass = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ahorroToolStripMenuItem,
             this.ingresosToolStripMenuItem,
+            this.distribuicionDeIngresosToolStripMenuItem,
+            this.expedienteToolStripMenuItem,
             this.gastosToolStripMenuItem,
             this.presupuestoMensualToolStripMenuItem,
-            this.distribuicionDeIngresosToolStripMenuItem,
-            this.ahorroToolStripMenuItem,
             this.reporteFinancieroToolStripMenuItem,
             this.cerrarSesiónToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -55,11 +59,30 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // ahorroToolStripMenuItem
+            // 
+            this.ahorroToolStripMenuItem.Name = "ahorroToolStripMenuItem";
+            this.ahorroToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.ahorroToolStripMenuItem.Text = "Ahorro";
+            // 
             // ingresosToolStripMenuItem
             // 
             this.ingresosToolStripMenuItem.Name = "ingresosToolStripMenuItem";
             this.ingresosToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.ingresosToolStripMenuItem.Text = "Ingresos";
+            // 
+            // distribuicionDeIngresosToolStripMenuItem
+            // 
+            this.distribuicionDeIngresosToolStripMenuItem.Name = "distribuicionDeIngresosToolStripMenuItem";
+            this.distribuicionDeIngresosToolStripMenuItem.Size = new System.Drawing.Size(149, 20);
+            this.distribuicionDeIngresosToolStripMenuItem.Text = "Distribuicion de ingresos";
+            // 
+            // expedienteToolStripMenuItem
+            // 
+            this.expedienteToolStripMenuItem.Name = "expedienteToolStripMenuItem";
+            this.expedienteToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.expedienteToolStripMenuItem.Text = "Expediente";
+            this.expedienteToolStripMenuItem.Click += new System.EventHandler(this.expedienteToolStripMenuItem_Click);
             // 
             // gastosToolStripMenuItem
             // 
@@ -73,12 +96,6 @@
             this.presupuestoMensualToolStripMenuItem.Size = new System.Drawing.Size(132, 20);
             this.presupuestoMensualToolStripMenuItem.Text = "Presupuesto mensual";
             // 
-            // ahorroToolStripMenuItem
-            // 
-            this.ahorroToolStripMenuItem.Name = "ahorroToolStripMenuItem";
-            this.ahorroToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.ahorroToolStripMenuItem.Text = "Ahorro";
-            // 
             // reporteFinancieroToolStripMenuItem
             // 
             this.reporteFinancieroToolStripMenuItem.Name = "reporteFinancieroToolStripMenuItem";
@@ -91,11 +108,10 @@
             this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.cerrarSesiónToolStripMenuItem.Text = "Cerrar sesión";
             // 
-            // distribuicionDeIngresosToolStripMenuItem
+            // timerClass
             // 
-            this.distribuicionDeIngresosToolStripMenuItem.Name = "distribuicionDeIngresosToolStripMenuItem";
-            this.distribuicionDeIngresosToolStripMenuItem.Size = new System.Drawing.Size(149, 20);
-            this.distribuicionDeIngresosToolStripMenuItem.Text = "Distribuicion de ingresos";
+            this.timerClass.Interval = 300;
+            this.timerClass.Tick += new System.EventHandler(this.timerClass_Tick);
             // 
             // frmMenu
             // 
@@ -124,5 +140,7 @@
         private System.Windows.Forms.ToolStripMenuItem reporteFinancieroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesiónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem distribuicionDeIngresosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem expedienteToolStripMenuItem;
+        private System.Windows.Forms.Timer timerClass;
     }
 }

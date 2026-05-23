@@ -33,5 +33,18 @@ namespace prueba
         {
 
         }
+
+        private void btnCrearC_Click(object sender, EventArgs e)
+        {
+            gbCrearCuenta.Show();
+            gbIniciarSesion.Hide();
+        }
+
+        private void btnIniciarSecsion_Click(object sender, EventArgs e)
+        {
+            frmMenu swm = new frmMenu();
+            swm.Show();
+            this.Hide();
+        }
     }
 }

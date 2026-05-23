@@ -1,7 +1,9 @@
-﻿using System;
+﻿using prueba.Datos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -25,10 +27,40 @@ namespace prueba
         }
         public void OrgDatosTabla()
         {
-            double []ingresos = { 46.45, 41.33, 12.32, 48.6, 43.32, 61.37 };
-            double []gastos = { 0, 0, 0, 0, 0, 0 };
+            double[] ingresos = { 46.45, 41.33, 12.32, 48.6, 43.32, 61.37 };
+            double[] gastos = { 45.46, 31.43, 21.23, 46.8, 24.33, 36.71 };
+            //YA FUNCIONARÁ COMO DEBE, PROXIMAMENTE
+            //OPCION 1
+            /*
+            Conexion conexion = new Conexion();
+            SqlCommand cmd = new SqlCommand(
+             "SELECT * FROM Usuario WHERE Usuario=@user AND Clave=@pass",
+             conexion.AbrirConexion());
+            */
+            //OPCION 2
+            /*
+             * using (SqlConnection connection = new SqlConnection("your_connection_string"))
+                {
+                    string query = "SELECT Name, Age FROM Users WHERE IsActive = 1";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                // Access columns by index or name
+                                string name = reader["Name"].ToString();
+                                int age = reader.GetInt32(reader.GetOrdinal("Age"));
+                
+                                // Store in variables or objects
+                                Console.WriteLine($"Name: {name}, Age: {age}");
+                            }
+                        }
+                    }
+                }
+             */
             DataTable dt = new DataTable();
-            dt.Columns.Add("Ganancias/Pérdidas");
             for (int i = 0; i <= ingresos.Length; i++)
             {
                 dt.Rows.Add("Enero", Convert.ToString(ingresos[i]), Convert.ToString(gastos[i]), Convert.ToString(ingresos[i] - gastos[i]));
@@ -36,7 +68,7 @@ namespace prueba
         }
         private void GrafGastos()
         {
-            double[] gastos = { 0, 0, 0, 0, 0, 0 };
+            double[] gastos = { 45.46, 31.43, 21.23, 46.8, 24.33, 36.71 };
             var series = new Series("Gastos");
             series.ChartType = SeriesChartType.Line;
             series.Points.DataBindXY(new[] { 1, 2, 3, 4, 5, 6 }, new[] { gastos[0], gastos[1], gastos[2], gastos[3], gastos[4], gastos[5] });
@@ -54,7 +86,7 @@ namespace prueba
         private void GrafIngresos()
         {
             double[] ingresos = { 46.45, 41.33, 12.32, 48.6, 43.32, 61.37 };
-            double[] gastos = { 0, 0, 0, 0, 0, 0 };
+            double[] gastos = { 45.46, 31.43, 21.23, 46.8, 24.33, 36.71 };
             var series = new Series("Ingresos");
             series.ChartType = SeriesChartType.Line;
             series.Points.DataBindXY(new[] { 1, 2, 3, 4, 5, 6 }, new[] { (ingresos[0] - gastos[0]), (ingresos[1] - gastos[1]), (ingresos[2] - gastos[2]), (ingresos[3] - gastos[3]), (ingresos[4] - gastos[4]), (ingresos[5] - gastos[5]) });

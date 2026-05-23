@@ -94,6 +94,7 @@
             this.btnIniciarSecsion.TabIndex = 4;
             this.btnIniciarSecsion.Text = "Iniciar sesión";
             this.btnIniciarSecsion.UseVisualStyleBackColor = true;
+            this.btnIniciarSecsion.Click += new System.EventHandler(this.btnIniciarSecsion_Click);
             // 
             // txtContra
             // 
@@ -231,6 +232,7 @@
             this.btnCrearC.TabIndex = 0;
             this.btnCrearC.Text = "Crear cuenta";
             this.btnCrearC.UseVisualStyleBackColor = true;
+            this.btnCrearC.Click += new System.EventHandler(this.btnCrearC_Click);
             // 
             // frmInicio
             // 
@@ -266,7 +268,6 @@
         private System.Windows.Forms.Label lblContraC;
         private System.Windows.Forms.Label lblUsuarioC;
         private System.Windows.Forms.Button btnCrearC;
-        private System.Windows.Forms.Button btnCrearCuenta;
         private System.Windows.Forms.Button btnRegresar;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtNombre;
@@ -274,6 +275,7 @@
         private System.Windows.Forms.TextBox txtUsuarioC;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.Button btnCrearCuenta;
     }
 }
 

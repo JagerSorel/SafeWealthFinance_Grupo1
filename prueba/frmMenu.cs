@@ -16,5 +16,20 @@ namespace prueba
         {
             InitializeComponent();
         }
+
+        private void expedienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Expediente ex = new Expediente();
+            ex.Show();
+            this.Hide();
+            if (ex != null) {
+                this.Show();
+            }
+        }
+
+        private void timerClass_Tick(object sender, EventArgs e)
+        {
+
+        }
     }
 }
