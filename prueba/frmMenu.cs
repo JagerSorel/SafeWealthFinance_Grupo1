@@ -18,22 +18,26 @@ namespace prueba
             InitializeComponent();
         }
 
-        private void frmMenu_Load(object sender, EventArgs e) { 
+        private void frmMenu_Load(object sender, EventArgs e)
+        { 
             lblBienvenida.Text = "Bienvenid@, " + usuario;
+            lblHoy.Text = Convert.ToString(DateTime.Today);
         }
         private void expedienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Expediente ex = new Expediente();
             ex.Show();
             this.Hide();
-            if (ex != null) {
-                this.Show();
-            }
         }
-
+        //la idea del timer es que compruebe de fondo si se cerró el form para volver al menú principal
         private void timerClass_Tick(object sender, EventArgs e)
         {
-
+            if (Expediente.ActiveForm == null || frmAhorro.ActiveForm == null || frmIngresos.ActiveForm == null ||
+                frmDistribucion.ActiveForm == null || frmGastos.ActiveForm == null || Reporte.ActiveForm == null)
+                //Falta añadir presupuesto mensual cuando esté listo
+            {
+                this.Show();
+            }
         }
 
         private void ahorroToolStripMenuItem_Click(object sender, EventArgs e)
@@ -80,7 +84,7 @@ namespace prueba
         {
             frmInicio frmInicio = new frmInicio();
             frmInicio.Show();
-            this.Hide();
+            this.Close();
             frmInicio.IdUsuario = 0;
         }
     }

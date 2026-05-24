@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInicio));
             this.gbIniciarSesion = new System.Windows.Forms.GroupBox();
             this.btnCrearCuenta = new System.Windows.Forms.Button();
             this.btnIniciarSecsion = new System.Windows.Forms.Button();
@@ -47,19 +47,12 @@
             this.lblContraC = new System.Windows.Forms.Label();
             this.lblUsuarioC = new System.Windows.Forms.Label();
             this.btnCrearC = new System.Windows.Forms.Button();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.gbIniciarSesion.SuspendLayout();
             this.gbCrearCuenta.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Monotype Corsiva", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(127, 69);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(186, 28);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "SafeWealth Finance";
             // 
             // gbIniciarSesion
             // 
@@ -69,7 +62,7 @@
             this.gbIniciarSesion.Controls.Add(this.txtUsuario);
             this.gbIniciarSesion.Controls.Add(this.lblContra);
             this.gbIniciarSesion.Controls.Add(this.lblUsuario);
-            this.gbIniciarSesion.Location = new System.Drawing.Point(32, 188);
+            this.gbIniciarSesion.Location = new System.Drawing.Point(31, 226);
             this.gbIniciarSesion.Name = "gbIniciarSesion";
             this.gbIniciarSesion.Size = new System.Drawing.Size(369, 140);
             this.gbIniciarSesion.TabIndex = 1;
@@ -88,12 +81,13 @@
             // 
             // btnIniciarSecsion
             // 
+            this.btnIniciarSecsion.BackColor = System.Drawing.Color.LightSkyBlue;
             this.btnIniciarSecsion.Location = new System.Drawing.Point(242, 101);
             this.btnIniciarSecsion.Name = "btnIniciarSecsion";
             this.btnIniciarSecsion.Size = new System.Drawing.Size(101, 23);
             this.btnIniciarSecsion.TabIndex = 4;
             this.btnIniciarSecsion.Text = "Iniciar sesión";
-            this.btnIniciarSecsion.UseVisualStyleBackColor = true;
+            this.btnIniciarSecsion.UseVisualStyleBackColor = false;
             this.btnIniciarSecsion.Click += new System.EventHandler(this.btnIniciarSecsion_Click);
             // 
             // txtContra
@@ -142,7 +136,7 @@
             this.gbCrearCuenta.Controls.Add(this.lblContraC);
             this.gbCrearCuenta.Controls.Add(this.lblUsuarioC);
             this.gbCrearCuenta.Controls.Add(this.btnCrearC);
-            this.gbCrearCuenta.Location = new System.Drawing.Point(32, 164);
+            this.gbCrearCuenta.Location = new System.Drawing.Point(31, 202);
             this.gbCrearCuenta.Name = "gbCrearCuenta";
             this.gbCrearCuenta.Size = new System.Drawing.Size(369, 196);
             this.gbCrearCuenta.TabIndex = 2;
@@ -226,22 +220,50 @@
             // 
             // btnCrearC
             // 
+            this.btnCrearC.BackColor = System.Drawing.Color.PaleGreen;
             this.btnCrearC.Location = new System.Drawing.Point(242, 156);
             this.btnCrearC.Name = "btnCrearC";
             this.btnCrearC.Size = new System.Drawing.Size(101, 23);
             this.btnCrearC.TabIndex = 0;
             this.btnCrearC.Text = "Crear cuenta";
-            this.btnCrearC.UseVisualStyleBackColor = true;
+            this.btnCrearC.UseVisualStyleBackColor = false;
             this.btnCrearC.Click += new System.EventHandler(this.btnCrearC_Click);
+            // 
+            // pbLogo
+            // 
+            this.pbLogo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbLogo.BackgroundImage")));
+            this.pbLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbLogo.Location = new System.Drawing.Point(138, 27);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(155, 155);
+            this.pbLogo.TabIndex = 3;
+            this.pbLogo.TabStop = false;
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.BackColor = System.Drawing.Color.Bisque;
+            this.btnSalir.Location = new System.Drawing.Point(180, 406);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 23);
+            this.btnSalir.TabIndex = 4;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // frmInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(429, 400);
+            this.ClientSize = new System.Drawing.Size(429, 441);
+            this.ControlBox = false;
+            this.Controls.Add(this.btnSalir);
+            this.Controls.Add(this.pbLogo);
             this.Controls.Add(this.gbCrearCuenta);
             this.Controls.Add(this.gbIniciarSesion);
-            this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmInicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SafeWealth Finance";
@@ -250,14 +272,12 @@
             this.gbIniciarSesion.PerformLayout();
             this.gbCrearCuenta.ResumeLayout(false);
             this.gbCrearCuenta.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox gbIniciarSesion;
         private System.Windows.Forms.Label lblContra;
         private System.Windows.Forms.Label lblUsuario;
@@ -276,6 +296,8 @@
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Button btnCrearCuenta;
+        private System.Windows.Forms.PictureBox pbLogo;
+        private System.Windows.Forms.Button btnSalir;
     }
 }
 

@@ -1,5 +1,4 @@
-﻿using prueba.Datos;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,21 +17,26 @@ namespace prueba
         public Expediente()
         {
             InitializeComponent();
-            lblFecha.Text = Convert.ToString(DateTime.Now);
+            lblFecha.Text = Convert.ToString(DateTime.Today);
             OrgDatosTabla();
             GrafGastos();
             GrafGanancias();
             GrafIngresos();
 
         }
+        private void Expediente_Load(object sender, EventArgs e)
+        {
+            // TODO: esta línea de código carga datos en la tabla 'safeWealthFinanceDBDataSet.ExpedienteSemestral' Puede moverla o quitarla según sea necesario.
+            this.expedienteSemestralTableAdapter.Fill(this.safeWealthFinanceDBDataSet.ExpedienteSemestral);
+
+        }
         public void OrgDatosTabla()
         {
-            double[] ingresos = { 46.45, 41.33, 12.32, 48.6, 43.32, 61.37 };
-            double[] gastos = { 45.46, 31.43, 21.23, 46.8, 24.33, 36.71 };
+
             //YA FUNCIONARÁ COMO DEBE, PROXIMAMENTE
             //OPCION 1
             /*
-            Conexion conexion = new Conexion();
+            ConexionYMetodos cym = new Conexion();
             SqlCommand cmd = new SqlCommand(
              "SELECT * FROM Usuario WHERE Usuario=@user AND Clave=@pass",
              conexion.AbrirConexion());
@@ -60,6 +64,10 @@ namespace prueba
                     }
                 }
              */
+            //Estos son los resultados que deberían ser obtenidos tras agrupar gastos por mes
+            double[] ingresos = { 46.45, 41.33, 12.32, 48.6, 43.32, 61.37 };
+            double[] gastos = { 45.46, 31.43, 21.23, 46.8, 24.33, 36.71 };
+            
             DataTable dt = new DataTable();
             for (int i = 0; i <= ingresos.Length; i++)
             {
@@ -68,10 +76,23 @@ namespace prueba
         }
         private void GrafGastos()
         {
+            /*
+             // Source - https://stackoverflow.com/a/15166348
+// Posted by Mike Christensen, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-05-23, License - CC BY-SA 3.0
+
+string[][] Array = new string[100][];
+for(int i = 0; i < 100; i++) // Set some values to test
+   Array[i] = new string[2] { "Value 1", "Value 2" };
+
+dataGridView.DataSource = (from arr in Array select new { Col1 = arr[0], Col2 = arr[1] });
+Page.DataBind();
+
+             */
             double[] gastos = { 45.46, 31.43, 21.23, 46.8, 24.33, 36.71 };
             var series = new Series("Gastos");
             series.ChartType = SeriesChartType.Line;
-            series.Points.DataBindXY(new[] { 1, 2, 3, 4, 5, 6 }, new[] { gastos[0], gastos[1], gastos[2], gastos[3], gastos[4], gastos[5] });
+            series.Points.DataBindXY(new[] { 1, 2, 3, 4, 5, 6 }, new[] { Convert.ToDouble(gastos[0]), Convert.ToDouble(gastos[1]), Convert.ToDouble(gastos[2]), Convert.ToDouble(gastos[3]), Convert.ToDouble(gastos[4]), Convert.ToDouble(gastos[5]) });
             chaGanancias.Series.Add(series);
             chaGastos.Series.Add(series);
         }
@@ -80,7 +101,7 @@ namespace prueba
             double[] ingresos = { 46.45, 41.33, 12.32, 48.6, 43.32, 61.37 };
             var series = new Series("Ganancias");
             series.ChartType = SeriesChartType.Line;
-            series.Points.DataBindXY(new[] { 1, 2, 3, 4, 5, 6 }, new[] { ingresos[0], ingresos[1], ingresos[2], ingresos[3], ingresos[4], ingresos[5] });
+            series.Points.DataBindXY(new[] { 1, 2, 3, 4, 5, 6 }, new[] { Convert.ToDouble(ingresos[0]), Convert.ToDouble(ingresos[1]), Convert.ToDouble(ingresos[2]), Convert.ToDouble(ingresos[3]), Convert.ToDouble(ingresos[4]), Convert.ToDouble(ingresos[5]) });
             chaGanancias.Series.Add(series);
         }
         private void GrafIngresos()
@@ -89,7 +110,7 @@ namespace prueba
             double[] gastos = { 45.46, 31.43, 21.23, 46.8, 24.33, 36.71 };
             var series = new Series("Ingresos");
             series.ChartType = SeriesChartType.Line;
-            series.Points.DataBindXY(new[] { 1, 2, 3, 4, 5, 6 }, new[] { (ingresos[0] - gastos[0]), (ingresos[1] - gastos[1]), (ingresos[2] - gastos[2]), (ingresos[3] - gastos[3]), (ingresos[4] - gastos[4]), (ingresos[5] - gastos[5]) });
+            series.Points.DataBindXY(new[] { 1, 2, 3, 4, 5, 6 }, new[] { Convert.ToDouble(ingresos[0] - gastos[0]), Convert.ToDouble(ingresos[1] - gastos[1]), Convert.ToDouble(ingresos[2] - gastos[2]), Convert.ToDouble(ingresos[3] - gastos[3]), Convert.ToDouble(ingresos[4] - gastos[4]), Convert.ToDouble(ingresos[5] - gastos[5]) });
             chaIngresos.Series.Add(series);
         }
         private void btnSalir_Click(object sender, EventArgs e)
@@ -99,13 +120,6 @@ namespace prueba
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
-        }
-
-        private void Expediente_Load(object sender, EventArgs e)
-        {
-            // TODO: esta línea de código carga datos en la tabla 'safeWealthFinanceDBDataSet.ExpedienteSemestral' Puede moverla o quitarla según sea necesario.
-            this.expedienteSemestralTableAdapter.Fill(this.safeWealthFinanceDBDataSet.ExpedienteSemestral);
 
         }
     }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenu));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ahorroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ingresosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,7 +41,10 @@
             this.cerrarSesiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timerClass = new System.Windows.Forms.Timer(this.components);
             this.lblBienvenida = new System.Windows.Forms.Label();
+            this.lblHoy = new System.Windows.Forms.Label();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -84,7 +88,7 @@
             // expedienteToolStripMenuItem
             // 
             this.expedienteToolStripMenuItem.Name = "expedienteToolStripMenuItem";
-            this.expedienteToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
+            this.expedienteToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.expedienteToolStripMenuItem.Text = "Expediente";
             // 
             // gastosToolStripMenuItem
@@ -117,25 +121,50 @@
             // 
             // timerClass
             // 
-            this.timerClass.Interval = 300;
+            this.timerClass.Interval = 50;
             // 
             // lblBienvenida
             // 
             this.lblBienvenida.AutoSize = true;
             this.lblBienvenida.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBienvenida.Location = new System.Drawing.Point(36, 52);
+            this.lblBienvenida.Location = new System.Drawing.Point(39, 58);
             this.lblBienvenida.Name = "lblBienvenida";
             this.lblBienvenida.Size = new System.Drawing.Size(117, 23);
             this.lblBienvenida.TabIndex = 1;
             this.lblBienvenida.Text = "Bienvenido:";
+            // 
+            // lblHoy
+            // 
+            this.lblHoy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblHoy.AutoSize = true;
+            this.lblHoy.Font = new System.Drawing.Font("Corbel", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHoy.Location = new System.Drawing.Point(463, 370);
+            this.lblHoy.Name = "lblHoy";
+            this.lblHoy.Size = new System.Drawing.Size(25, 42);
+            this.lblHoy.TabIndex = 2;
+            this.lblHoy.Text = " ";
+            // 
+            // pbLogo
+            // 
+            this.pbLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pbLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbLogo.BackgroundImage")));
+            this.pbLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbLogo.Location = new System.Drawing.Point(43, 212);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(200, 200);
+            this.pbLogo.TabIndex = 3;
+            this.pbLogo.TabStop = false;
             // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pbLogo);
+            this.Controls.Add(this.lblHoy);
             this.Controls.Add(this.lblBienvenida);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -143,6 +172,7 @@
             this.Load += new System.EventHandler(this.frmMenu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,5 +191,7 @@
         private System.Windows.Forms.ToolStripMenuItem expedienteToolStripMenuItem;
         private System.Windows.Forms.Timer timerClass;
         private System.Windows.Forms.Label lblBienvenida;
+        private System.Windows.Forms.Label lblHoy;
+        private System.Windows.Forms.PictureBox pbLogo;
     }
 }
