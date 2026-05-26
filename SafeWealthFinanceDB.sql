@@ -25,7 +25,7 @@ TipoGasto Varchar(50)
 );
 Go
 Create table Presupuesto_Detalle(
-Id_Detalle Int Primary key,
+Id_Detalle Int Primary key identity,
 Id_Presupuesto Int Foreign key references Presupuesto_Mensual(Id_Presupuesto),
 NombreTransaccion Varchar(100),
 Id_TipoGasto Int Foreign key references Tipo_Gasto(Id_TipoGasto),
@@ -73,7 +73,7 @@ Go
 Use SafeWealthFinanceDB;
 Go
 Create table Ingreso(
-Id_Ingreso Int primary key,
+Id_Ingreso Int primary key identity,
 Id_Usuario int foreign key references Usuario(Id_Usuario),
 NombreIngreso Varchar(50),
 MontoIngreso Decimal(10,2),
@@ -81,7 +81,7 @@ FechaIngreso Date
 );
 GO
 Create table Distribucion(
-Id_Distribucion Int primary key,
+Id_Distribucion Int primary key identity,
 Id_Usuario int foreign key references Usuario(Id_Usuario),
 MontoIngreso Decimal(10,2),
 PorAhorro Decimal(10,2),
