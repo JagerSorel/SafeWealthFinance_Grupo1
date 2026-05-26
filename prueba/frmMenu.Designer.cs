@@ -114,6 +114,7 @@
             // 
             // cerrarSesiónToolStripMenuItem
             // 
+            this.cerrarSesiónToolStripMenuItem.ForeColor = System.Drawing.Color.Firebrick;
             this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
             this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.cerrarSesiónToolStripMenuItem.Text = "Cerrar sesión";
@@ -121,15 +122,17 @@
             // 
             // timerClass
             // 
-            this.timerClass.Interval = 50;
+            this.timerClass.Enabled = true;
+            this.timerClass.Interval = 5000000;
             // 
             // lblBienvenida
             // 
             this.lblBienvenida.AutoSize = true;
-            this.lblBienvenida.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBienvenida.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.lblBienvenida.Font = new System.Drawing.Font("Constantia", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBienvenida.Location = new System.Drawing.Point(39, 58);
             this.lblBienvenida.Name = "lblBienvenida";
-            this.lblBienvenida.Size = new System.Drawing.Size(117, 23);
+            this.lblBienvenida.Size = new System.Drawing.Size(130, 26);
             this.lblBienvenida.TabIndex = 1;
             this.lblBienvenida.Text = "Bienvenido:";
             // 
@@ -137,16 +140,18 @@
             // 
             this.lblHoy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblHoy.AutoSize = true;
-            this.lblHoy.Font = new System.Drawing.Font("Corbel", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHoy.Location = new System.Drawing.Point(463, 370);
+            this.lblHoy.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.lblHoy.Font = new System.Drawing.Font("Constantia", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHoy.Location = new System.Drawing.Point(446, 383);
             this.lblHoy.Name = "lblHoy";
-            this.lblHoy.Size = new System.Drawing.Size(25, 42);
+            this.lblHoy.Size = new System.Drawing.Size(19, 29);
             this.lblHoy.TabIndex = 2;
             this.lblHoy.Text = " ";
             // 
             // pbLogo
             // 
             this.pbLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pbLogo.BackColor = System.Drawing.Color.Transparent;
             this.pbLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbLogo.BackgroundImage")));
             this.pbLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbLogo.Location = new System.Drawing.Point(43, 212);
@@ -159,6 +164,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.pbLogo);
             this.Controls.Add(this.lblHoy);

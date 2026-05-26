@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInicio));
             this.gbIniciarSesion = new System.Windows.Forms.GroupBox();
             this.btnCrearCuenta = new System.Windows.Forms.Button();
@@ -49,6 +50,8 @@
             this.btnCrearC = new System.Windows.Forms.Button();
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.btnProv = new System.Windows.Forms.Button();
+            this.timerMenu = new System.Windows.Forms.Timer(this.components);
             this.gbIniciarSesion.SuspendLayout();
             this.gbCrearCuenta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
@@ -62,6 +65,7 @@
             this.gbIniciarSesion.Controls.Add(this.txtUsuario);
             this.gbIniciarSesion.Controls.Add(this.lblContra);
             this.gbIniciarSesion.Controls.Add(this.lblUsuario);
+            this.gbIniciarSesion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbIniciarSesion.Location = new System.Drawing.Point(31, 226);
             this.gbIniciarSesion.Name = "gbIniciarSesion";
             this.gbIniciarSesion.Size = new System.Drawing.Size(369, 140);
@@ -95,7 +99,7 @@
             this.txtContra.Location = new System.Drawing.Point(126, 63);
             this.txtContra.Name = "txtContra";
             this.txtContra.PasswordChar = '*';
-            this.txtContra.Size = new System.Drawing.Size(217, 20);
+            this.txtContra.Size = new System.Drawing.Size(217, 23);
             this.txtContra.TabIndex = 3;
             this.txtContra.UseSystemPasswordChar = true;
             // 
@@ -103,7 +107,7 @@
             // 
             this.txtUsuario.Location = new System.Drawing.Point(126, 35);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(217, 20);
+            this.txtUsuario.Size = new System.Drawing.Size(217, 23);
             this.txtUsuario.TabIndex = 2;
             // 
             // lblContra
@@ -111,7 +115,7 @@
             this.lblContra.AutoSize = true;
             this.lblContra.Location = new System.Drawing.Point(28, 70);
             this.lblContra.Name = "lblContra";
-            this.lblContra.Size = new System.Drawing.Size(61, 13);
+            this.lblContra.Size = new System.Drawing.Size(67, 15);
             this.lblContra.TabIndex = 1;
             this.lblContra.Text = "Contraseña";
             // 
@@ -120,7 +124,7 @@
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Location = new System.Drawing.Point(28, 38);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(43, 13);
+            this.lblUsuario.Size = new System.Drawing.Size(47, 15);
             this.lblUsuario.TabIndex = 0;
             this.lblUsuario.Text = "Usuario";
             // 
@@ -136,6 +140,7 @@
             this.gbCrearCuenta.Controls.Add(this.lblContraC);
             this.gbCrearCuenta.Controls.Add(this.lblUsuarioC);
             this.gbCrearCuenta.Controls.Add(this.btnCrearC);
+            this.gbCrearCuenta.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbCrearCuenta.Location = new System.Drawing.Point(31, 202);
             this.gbCrearCuenta.Name = "gbCrearCuenta";
             this.gbCrearCuenta.Size = new System.Drawing.Size(369, 196);
@@ -146,7 +151,7 @@
             // 
             // btnRegresar
             // 
-            this.btnRegresar.Location = new System.Drawing.Point(31, 156);
+            this.btnRegresar.Location = new System.Drawing.Point(31, 158);
             this.btnRegresar.Name = "btnRegresar";
             this.btnRegresar.Size = new System.Drawing.Size(75, 23);
             this.btnRegresar.TabIndex = 9;
@@ -158,28 +163,30 @@
             // 
             this.txtEmail.Location = new System.Drawing.Point(126, 122);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(217, 20);
+            this.txtEmail.Size = new System.Drawing.Size(217, 23);
             this.txtEmail.TabIndex = 8;
             // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(126, 91);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(217, 20);
+            this.txtNombre.Size = new System.Drawing.Size(217, 23);
             this.txtNombre.TabIndex = 7;
             // 
             // txtContraC
             // 
             this.txtContraC.Location = new System.Drawing.Point(126, 56);
             this.txtContraC.Name = "txtContraC";
-            this.txtContraC.Size = new System.Drawing.Size(217, 20);
+            this.txtContraC.PasswordChar = '*';
+            this.txtContraC.Size = new System.Drawing.Size(217, 23);
             this.txtContraC.TabIndex = 6;
+            this.txtContraC.UseSystemPasswordChar = true;
             // 
             // txtUsuarioC
             // 
             this.txtUsuarioC.Location = new System.Drawing.Point(126, 22);
             this.txtUsuarioC.Name = "txtUsuarioC";
-            this.txtUsuarioC.Size = new System.Drawing.Size(217, 20);
+            this.txtUsuarioC.Size = new System.Drawing.Size(217, 23);
             this.txtUsuarioC.TabIndex = 5;
             // 
             // lblEmail
@@ -187,7 +194,7 @@
             this.lblEmail.AutoSize = true;
             this.lblEmail.Location = new System.Drawing.Point(28, 129);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(32, 13);
+            this.lblEmail.Size = new System.Drawing.Size(36, 15);
             this.lblEmail.TabIndex = 4;
             this.lblEmail.Text = "Email";
             // 
@@ -196,7 +203,7 @@
             this.lblNombre.AutoSize = true;
             this.lblNombre.Location = new System.Drawing.Point(28, 98);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(44, 13);
+            this.lblNombre.Size = new System.Drawing.Size(51, 15);
             this.lblNombre.TabIndex = 3;
             this.lblNombre.Text = "Nombre";
             // 
@@ -205,7 +212,7 @@
             this.lblContraC.AutoSize = true;
             this.lblContraC.Location = new System.Drawing.Point(28, 63);
             this.lblContraC.Name = "lblContraC";
-            this.lblContraC.Size = new System.Drawing.Size(61, 13);
+            this.lblContraC.Size = new System.Drawing.Size(67, 15);
             this.lblContraC.TabIndex = 2;
             this.lblContraC.Text = "Contraseña";
             // 
@@ -214,14 +221,14 @@
             this.lblUsuarioC.AutoSize = true;
             this.lblUsuarioC.Location = new System.Drawing.Point(28, 29);
             this.lblUsuarioC.Name = "lblUsuarioC";
-            this.lblUsuarioC.Size = new System.Drawing.Size(43, 13);
+            this.lblUsuarioC.Size = new System.Drawing.Size(47, 15);
             this.lblUsuarioC.TabIndex = 1;
             this.lblUsuarioC.Text = "Usuario";
             // 
             // btnCrearC
             // 
             this.btnCrearC.BackColor = System.Drawing.Color.PaleGreen;
-            this.btnCrearC.Location = new System.Drawing.Point(242, 156);
+            this.btnCrearC.Location = new System.Drawing.Point(242, 158);
             this.btnCrearC.Name = "btnCrearC";
             this.btnCrearC.Size = new System.Drawing.Size(101, 23);
             this.btnCrearC.TabIndex = 0;
@@ -244,6 +251,7 @@
             // btnSalir
             // 
             this.btnSalir.BackColor = System.Drawing.Color.Bisque;
+            this.btnSalir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.Location = new System.Drawing.Point(180, 406);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
@@ -252,12 +260,28 @@
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // btnProv
+            // 
+            this.btnProv.Location = new System.Drawing.Point(273, 406);
+            this.btnProv.Name = "btnProv";
+            this.btnProv.Size = new System.Drawing.Size(127, 23);
+            this.btnProv.TabIndex = 5;
+            this.btnProv.Text = "Inic. sin cuenta (dev)";
+            this.btnProv.UseVisualStyleBackColor = true;
+            this.btnProv.Click += new System.EventHandler(this.btnProv_Click);
+            // 
+            // timerMenu
+            // 
+            this.timerMenu.Enabled = true;
+            this.timerMenu.Interval = 5000000;
+            // 
             // frmInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(429, 441);
             this.ControlBox = false;
+            this.Controls.Add(this.btnProv);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.pbLogo);
             this.Controls.Add(this.gbCrearCuenta);
@@ -298,6 +322,8 @@
         private System.Windows.Forms.Button btnCrearCuenta;
         private System.Windows.Forms.PictureBox pbLogo;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button btnProv;
+        private System.Windows.Forms.Timer timerMenu;
     }
 }
 

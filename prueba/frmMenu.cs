@@ -16,12 +16,13 @@ namespace prueba
         public frmMenu()
         {
             InitializeComponent();
+            lblHoy.Text = DateTime.Now.ToString("D");
+            timerClass.Start();
         }
 
         private void frmMenu_Load(object sender, EventArgs e)
         { 
             lblBienvenida.Text = "Bienvenid@, " + usuario;
-            lblHoy.Text = Convert.ToString(DateTime.Today);
         }
         private void expedienteToolStripMenuItem_Click(object sender, EventArgs e)
         {

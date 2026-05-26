@@ -32,7 +32,6 @@ namespace prueba
             }
         }
 
-
         public void CargarDatos(DataGridView panel, string query, int usuario)
         {
             using (SqlConnection conn = new SqlConnection(_connectionString))

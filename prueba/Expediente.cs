@@ -17,7 +17,7 @@ namespace prueba
         public Expediente()
         {
             InitializeComponent();
-            lblFecha.Text = Convert.ToString(DateTime.Today);
+            lblFecha.Text = DateTime.Now.ToString("D");
             OrgDatosTabla();
             GrafGastos();
             GrafGanancias();
@@ -77,16 +77,12 @@ namespace prueba
         private void GrafGastos()
         {
             /*
-             // Source - https://stackoverflow.com/a/15166348
-// Posted by Mike Christensen, modified by community. See post 'Timeline' for change history
-// Retrieved 2026-05-23, License - CC BY-SA 3.0
+             * string[][] Array = new string[100][];
+            for(int i = 0; i < 100; i++) // Set some values to test
+               Array[i] = new string[2] { "Value 1", "Value 2" };
 
-string[][] Array = new string[100][];
-for(int i = 0; i < 100; i++) // Set some values to test
-   Array[i] = new string[2] { "Value 1", "Value 2" };
-
-dataGridView.DataSource = (from arr in Array select new { Col1 = arr[0], Col2 = arr[1] });
-Page.DataBind();
+            dataGridView.DataSource = (from arr in Array select new { Col1 = arr[0], Col2 = arr[1] });
+            Page.DataBind();
 
              */
             double[] gastos = { 45.46, 31.43, 21.23, 46.8, 24.33, 36.71 };
