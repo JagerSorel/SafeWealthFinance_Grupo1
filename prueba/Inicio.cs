@@ -52,7 +52,7 @@ namespace prueba
             {
                 frmMenu menu = new frmMenu();
                 menu.usuario = dr["Nombre"].ToString();
-                IdUsuario = Convert.ToInt32(dr["IdUsuario"]);
+                IdUsuario = Convert.ToInt32(dr["Id_Usuario"]);
                 menu.Show();
                 timerMenu.Start();
                 this.Hide();
@@ -66,29 +66,34 @@ namespace prueba
 
         private void btnCrearC_Click(object sender, EventArgs e)
         {
-            bool mailat = txtEmail.Text.Contains('@');
-            bool maildot = txtEmail.Text.Contains('.');
-            if (mailat == true || maildot == true)
+            try
             {
-                cym.InsertarDatos(
-                "INSERT INTO Usuario (Id_Usuario, Usuario, Contrasena, Nombre, Email) VALUES (@IdUsuario, @usuario, @contrasena, @nombre, @Email)",
-                new SqlParameter[]
+                bool mailat = txtEmail.Text.Contains('@');
+                bool maildot = txtEmail.Text.Contains('.');
+                if (mailat == true || maildot == true)
                 {
-                    new SqlParameter("@IdUsuario", IdUsuario),
+                    cym.InsertarDatos(
+                    "INSERT INTO Usuario (Usuario, Contrasena, Nombre, Email) VALUES (@usuario, @contrasena, @nombre, @Email)",
+                    new SqlParameter[]
+                    {
                     new SqlParameter("@usuario", txtUsuarioC.Text),
                     new SqlParameter("@contrasena", txtContraC.Text),
                     new SqlParameter("@nombre", txtNombre.Text),
                     new SqlParameter("@Email", txtEmail.Text)
-                });
-            MessageBox.Show("Cuenta creada exitosamente\nProceda a iniciar sesión");
-            gbIniciarSesion.Show();
-            gbCrearCuenta.Hide(); 
+                    });
+                    //MessageBox.Show("Cuenta creada exitosamente\nProceda a iniciar sesión");
+                    gbIniciarSesion.Show();
+                    gbCrearCuenta.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Correo no válido");
+                }
             }
-            else 
+            catch (Exception ex)
             {
-                MessageBox.Show("Correo no válido");
+                MessageBox.Show("Error al crear cuenta: " + ex.Message);
             }
-            
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
