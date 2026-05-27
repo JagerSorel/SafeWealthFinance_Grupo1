@@ -1,0 +1,265 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace prueba
+{
+    public partial class frmPresupuestoMensual : Form
+    {
+        public frmPresupuestoMensual()
+        {
+            InitializeComponent();
+            this.Load += frmPresupuestoMensual_Load;
+
+        }
+
+        private void frmPresupuestoMensual_Load(object sender, EventArgs e)
+        {
+            dgvDetalle.Columns.Clear();
+
+            dgvDetalle.Columns.Add("NombreTransaccion", "Nombre transacción");
+            dgvDetalle.Columns.Add("TipoGasto", "Tipo gasto");
+            dgvDetalle.Columns.Add("Monto", "Monto");
+
+            dgvDetalle.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvDetalle.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvDetalle.AllowUserToAddRows = false;
+            dgvDetalle.RowHeadersVisible = false;
+            dgvDetalle.ScrollBars = ScrollBars.Both;
+
+            CargarTiposGasto();
+            CargarPeriodos();
+
+        }
+        private void CargarTiposGasto()
+        {
+            cbTipoGasto.Items.Add("Mensualidad");
+            cbTipoGasto.Items.Add("Compra");
+            cbTipoGasto.Items.Add("Alimentos");
+            cbTipoGasto.Items.Add("Entretenimiento");
+        }
+        private void cbMes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void CargarPeriodos()
+        {
+            cbPeriodo.Items.Clear();
+
+            for (int mes = 1; mes <= 12; mes++)
+            {
+                cbPeriodo.Items.Add(mes.ToString("00") + "/2026");
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void volverAlMenuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Validar campos obligatorios primero
+            if (cbPeriodo.Text.Trim() == "" ||
+                txtIngreso.Text.Trim() == "" ||
+                txtNombreTransaccion.Text.Trim() == "" ||
+                cbTipoGasto.Text.Trim() == "" ||
+                txtMonto.Text.Trim() == "")
+            {
+                MessageBox.Show("Debe completar todos los campos.",
+                                "Campos obligatorios",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+
+            dgvDetalle.Rows.Add(
+                txtNombreTransaccion.Text,
+                cbTipoGasto.Text,
+                txtMonto.Text
+            );
+
+            txtNombreTransaccion.Clear();
+            txtMonto.Clear();
+            cbTipoGasto.SelectedIndex = -1;
+
+        }
+
+        private void cbPeriodo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+      
+   
+        }
+
+        private void lblTotalEspeculado_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void agregarToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+
+            agregarToolStripMenuItem_Click(sender, e);
+
+
+        }
+
+        private void volverAlMenúToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void calcuarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            decimal total = 0;
+
+            foreach (DataGridViewRow fila in dgvDetalle.Rows)
+            {
+                if (fila.Cells["Monto"].Value != null)
+                {
+                    total += Convert.ToDecimal(fila.Cells["Monto"].Value);
+                }
+            }
+
+            lblTotalEspeculado.Text = "$" + total.ToString("0.00");
+        }
+
+        private void volverAlMenúToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void calcularToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            decimal total = 0;
+
+            foreach (DataGridViewRow fila in dgvDetalle.Rows)
+            {
+                if (fila.Cells["Monto"].Value != null)
+                {
+                    total += Convert.ToDecimal(fila.Cells["Monto"].Value);
+                }
+            }
+
+            lblTotalEspeculado.Text = "$" + total.ToString("0.00");
+        }
+
+        private void dgvDetalle_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvDetalle.CurrentRow != null)
+            {
+                dgvDetalle.CurrentRow.Cells["NombreTransaccion"].Value = txtNombreTransaccion.Text;
+                dgvDetalle.CurrentRow.Cells["TipoGasto"].Value = cbTipoGasto.Text;
+                dgvDetalle.CurrentRow.Cells["Monto"].Value = txtMonto.Text;
+
+                MessageBox.Show("Registro modificado correctamente.");
+            }
+        }
+
+        private void txtMonto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permitir números, control y punto decimal
+            if (!char.IsControl(e.KeyChar) &&
+                !char.IsDigit(e.KeyChar) &&
+                e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+
+            // Solo permitir un punto decimal
+            if (e.KeyChar == '.' &&
+                (sender as TextBox).Text.Contains("."))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvDetalle.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione una fila para eliminar.",
+                                "Eliminar",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+
+            dgvDetalle.Rows.Remove(dgvDetalle.CurrentRow);
+
+            MessageBox.Show("Registro eliminado correctamente.",
+                            "Eliminar",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+        }
+
+        private void agregarToolStripMenuItem_Click_2(object sender, EventArgs e)
+        {
+            // Validar campos obligatorios
+            if (cbPeriodo.Text.Trim() == "" ||
+                txtIngreso.Text.Trim() == "" ||
+                txtNombreTransaccion.Text.Trim() == "" ||
+                cbTipoGasto.Text.Trim() == "" ||
+                txtMonto.Text.Trim() == "")
+            {
+                MessageBox.Show("Debe completar todos los campos.",
+                                "Campos obligatorios",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Agregar fila al DataGridView
+            dgvDetalle.Rows.Add(
+                txtNombreTransaccion.Text,
+                cbTipoGasto.Text,
+                txtMonto.Text
+            );
+
+            // Limpiar campos
+            txtNombreTransaccion.Clear();
+            txtMonto.Clear();
+            cbTipoGasto.SelectedIndex = -1;
+
+            // Calcular total automáticamente
+            decimal total = 0;
+
+            foreach (DataGridViewRow fila in dgvDetalle.Rows)
+            {
+                if (fila.Cells["Monto"].Value != null)
+                {
+                    total += Convert.ToDecimal(fila.Cells["Monto"].Value);
+                }
+            }
+
+            lblTotalEspeculado.Text = "$" + total.ToString("0.00");
+
+        }
+    }
+}
+            

@@ -66,6 +66,12 @@
     <Compile Include="Expediente.Designer.cs">
       <DependentUpon>Expediente.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPresupuestoMensual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPresupuestoMensual.Designer.cs">
+      <DependentUpon>frmPresupuestoMensual.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Expediente.resx">
       <DependentUpon>Expediente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPresupuestoMensual.resx">
+      <DependentUpon>frmPresupuestoMensual.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
