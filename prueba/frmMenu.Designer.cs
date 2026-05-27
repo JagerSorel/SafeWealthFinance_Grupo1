@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenu));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ahorroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,7 +38,6 @@
             this.presupuestoMensualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteFinancieroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.timerClass = new System.Windows.Forms.Timer(this.components);
             this.lblBienvenida = new System.Windows.Forms.Label();
             this.lblHoy = new System.Windows.Forms.Label();
             this.pbLogo = new System.Windows.Forms.PictureBox();
@@ -120,11 +118,6 @@
             this.cerrarSesiónToolStripMenuItem.Text = "Cerrar sesión";
             this.cerrarSesiónToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesiónToolStripMenuItem_Click);
             // 
-            // timerClass
-            // 
-            this.timerClass.Enabled = true;
-            this.timerClass.Interval = 5000000;
-            // 
             // lblBienvenida
             // 
             this.lblBienvenida.AutoSize = true;
@@ -142,7 +135,7 @@
             this.lblHoy.AutoSize = true;
             this.lblHoy.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.lblHoy.Font = new System.Drawing.Font("Constantia", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHoy.Location = new System.Drawing.Point(446, 383);
+            this.lblHoy.Location = new System.Drawing.Point(427, 383);
             this.lblHoy.Name = "lblHoy";
             this.lblHoy.Size = new System.Drawing.Size(19, 29);
             this.lblHoy.TabIndex = 2;
@@ -196,7 +189,6 @@
         private System.Windows.Forms.ToolStripMenuItem cerrarSesiónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem distribuicionDeIngresosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem expedienteToolStripMenuItem;
-        private System.Windows.Forms.Timer timerClass;
         private System.Windows.Forms.Label lblBienvenida;
         private System.Windows.Forms.Label lblHoy;
         private System.Windows.Forms.PictureBox pbLogo;

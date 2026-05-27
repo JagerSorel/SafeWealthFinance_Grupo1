@@ -14,6 +14,7 @@ namespace prueba
 {
     public partial class Expediente : Form
     {
+        ConexionYMetodos cym = new ConexionYMetodos();
         public Expediente()
         {
             InitializeComponent();
@@ -26,65 +27,52 @@ namespace prueba
         }
         private void Expediente_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'safeWealthFinanceDBDataSet.ExpedienteSemestral' Puede moverla o quitarla según sea necesario.
-            this.expedienteSemestralTableAdapter.Fill(this.safeWealthFinanceDBDataSet.ExpedienteSemestral);
-
+            
         }
         public void OrgDatosTabla()
         {
-
-            //YA FUNCIONARÁ COMO DEBE, PROXIMAMENTE
-            //OPCION 1
-            /*
-            ConexionYMetodos cym = new Conexion();
-            SqlCommand cmd = new SqlCommand(
-             "SELECT * FROM Usuario WHERE Usuario=@user AND Clave=@pass",
-             conexion.AbrirConexion());
-            */
-            //OPCION 2
-            /*
-             * using (SqlConnection connection = new SqlConnection("your_connection_string"))
+            cym.AbrirConexion();
+            decimal[] gastoMensual = new decimal[6];
+            {
+                try
                 {
-                    string query = "SELECT Name, Age FROM Users WHERE IsActive = 1";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    string query = "SELECT FechaGasto, MontoGasto FROM Gastos";
+                    SqlCommand command = new SqlCommand(query);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
                     {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
+                        DateTime fechaGasto = DateTime.Parse(reader["FechaGasto"].ToString());
+                        int mes = fechaGasto.Month - 1;
+
+                        if (mes >= 0 && mes < 6)
                         {
-                            while (reader.Read())
-                            {
-                                // Access columns by index or name
-                                string name = reader["Name"].ToString();
-                                int age = reader.GetInt32(reader.GetOrdinal("Age"));
-                
-                                // Store in variables or objects
-                                Console.WriteLine($"Name: {name}, Age: {age}");
-                            }
+                            decimal monto = decimal.Parse(reader["MontoGasto"].ToString());
+                            gastoMensual[mes] += monto;
                         }
                     }
+
+                    reader.Close();
+                    for (int i = 0; i < gastoMensual.Length; i++)
+                    {
+                        Console.WriteLine($"Mes {i + 1}: {gastoMensual[i]}");
+                    }
                 }
-             */
-            //Estos son los resultados que deberían ser obtenidos tras agrupar gastos por mes
-            double[] ingresos = { 46.45, 41.33, 12.32, 48.6, 43.32, 61.37 };
-            double[] gastos = { 45.46, 31.43, 21.23, 46.8, 24.33, 36.71 };
-            
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            /*
+            Luego de agrupar la información arreglo se representará en la tabla DGV
             DataTable dt = new DataTable();
             for (int i = 0; i <= ingresos.Length; i++)
             {
                 dt.Rows.Add("Enero", Convert.ToString(ingresos[i]), Convert.ToString(gastos[i]), Convert.ToString(ingresos[i] - gastos[i]));
             }
+            */
         }
         private void GrafGastos()
         {
-            /*
-             * string[][] Array = new string[100][];
-            for(int i = 0; i < 100; i++) // Set some values to test
-               Array[i] = new string[2] { "Value 1", "Value 2" };
-
-            dataGridView.DataSource = (from arr in Array select new { Col1 = arr[0], Col2 = arr[1] });
-            Page.DataBind();
-
-             */
             double[] gastos = { 45.46, 31.43, 21.23, 46.8, 24.33, 36.71 };
             var series = new Series("Gastos");
             series.ChartType = SeriesChartType.Line;

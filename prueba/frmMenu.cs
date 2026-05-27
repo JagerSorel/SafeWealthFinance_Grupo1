@@ -17,7 +17,6 @@ namespace prueba
         {
             InitializeComponent();
             lblHoy.Text = DateTime.Now.ToString("D");
-            timerClass.Start();
         }
 
         private void frmMenu_Load(object sender, EventArgs e)
@@ -28,45 +27,30 @@ namespace prueba
         {
             Expediente ex = new Expediente();
             ex.Show();
-            this.Hide();
-        }
-        //la idea del timer es que compruebe de fondo si se cerró el form para volver al menú principal
-        private void timerClass_Tick(object sender, EventArgs e)
-        {
-            if (Expediente.ActiveForm == null || frmAhorro.ActiveForm == null || frmIngresos.ActiveForm == null ||
-                frmDistribucion.ActiveForm == null || frmGastos.ActiveForm == null || Reporte.ActiveForm == null)
-                //Falta añadir presupuesto mensual cuando esté listo
-            {
-                this.Show();
-            }
         }
 
         private void ahorroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAhorro frmAhorro = new frmAhorro();
             frmAhorro.Show();
-            this.Hide();
         }
 
         private void ingresosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmIngresos frmIngresos = new frmIngresos();
             frmIngresos.Show();
-            this.Hide();
         }
 
         private void distribuicionDeIngresosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmDistribucion frmDistribucion = new frmDistribucion();
             frmDistribucion.Show();
-            this.Hide();
         }
 
         private void gastosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmGastos frmGastos = new frmGastos();
             frmGastos.Show();
-            this.Hide();
         }
 
         private void presupuestoMensualToolStripMenuItem_Click(object sender, EventArgs e)
@@ -81,15 +65,12 @@ namespace prueba
         {
             Reporte reporte = new Reporte();
             reporte.Show();
-            this.Hide();
         }
 
         private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmInicio frmInicio = new frmInicio();
-            frmInicio.Show();
-            this.Close();
             frmInicio.IdUsuario = 0;
+            this.Close();
         }
     }
 }

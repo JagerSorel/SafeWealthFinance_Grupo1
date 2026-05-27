@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInicio));
             this.gbIniciarSesion = new System.Windows.Forms.GroupBox();
             this.btnCrearCuenta = new System.Windows.Forms.Button();
@@ -51,7 +50,6 @@
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnProv = new System.Windows.Forms.Button();
-            this.timerMenu = new System.Windows.Forms.Timer(this.components);
             this.gbIniciarSesion.SuspendLayout();
             this.gbCrearCuenta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
@@ -270,11 +268,6 @@
             this.btnProv.UseVisualStyleBackColor = true;
             this.btnProv.Click += new System.EventHandler(this.btnProv_Click);
             // 
-            // timerMenu
-            // 
-            this.timerMenu.Enabled = true;
-            this.timerMenu.Interval = 5000000;
-            // 
             // frmInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -323,7 +316,6 @@
         private System.Windows.Forms.PictureBox pbLogo;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnProv;
-        private System.Windows.Forms.Timer timerMenu;
     }
 }
 
