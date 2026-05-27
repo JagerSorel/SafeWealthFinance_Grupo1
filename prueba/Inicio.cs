@@ -53,12 +53,13 @@ namespace prueba
                 frmMenu menu = new frmMenu();
                 menu.usuario = dr["Nombre"].ToString();
                 IdUsuario = Convert.ToInt32(dr["Id_Usuario"]);
-                menu.Show();
-                timerMenu.Start();
                 this.Hide();
+                LimpiarIniSes();
+                menu.ShowDialog();
+                this.Show();
             }
-            else 
-            { 
+            else
+            {
                 MessageBox.Show("Usuario o contraseña incorrecta");
             }
             cym.CerrarConexion();
@@ -84,6 +85,7 @@ namespace prueba
                     MessageBox.Show("Cuenta creada exitosamente\nProceda a iniciar sesión");
                     gbIniciarSesion.Show();
                     gbCrearCuenta.Hide();
+                    LimpiarCrearCuenta();
                 }
                 else
                 {
@@ -103,18 +105,24 @@ namespace prueba
 
         private void btnProv_Click(object sender, EventArgs e)
         {
-            //ESTE BOTÓN DEBE BORRARSE CUANDO EL LOGIN FUNCIONE
-            frmMenu lowmenu = new frmMenu();
-            lowmenu.Show();
-            timerMenu.Start();
+            //BOTÓN PRESENTE POR CONVENIENCIA, DEBE BORRARSE AL TERMINAR EL TRABAJO
+            frmMenu menu = new frmMenu();
             this.Hide();
+            LimpiarIniSes();
+            menu.ShowDialog();
+            this.Show();
         }
-        private void timerMenu_Tick(object sender, EventArgs e)
+        private void LimpiarCrearCuenta()
         {
-            if (frmMenu.ActiveForm == null)
-            {
-                this.Show();
-            }
+            txtUsuarioC.Text = "";
+            txtContraC.Text = "";
+            txtNombre.Text = "";
+            txtEmail.Text = "";
+        }
+        private void LimpiarIniSes()
+        {
+            txtUsuario.Text = "";
+            txtContra.Text = "";
         }
     }
 }
