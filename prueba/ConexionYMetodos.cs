@@ -26,6 +26,7 @@ namespace prueba
                     cmd.Parameters.AddRange(parameters);
                     conn.Open();
                     cmd.ExecuteNonQuery();
+                    MessageBox.Show("Registro insertado correctamente.");
                 }
             }
             catch (Exception ex)
@@ -34,13 +35,15 @@ namespace prueba
             }
         }
 
-        public void CargarDatos(DataGridView panel, string query, int usuario)
+        public void CargarDatos(DataGridView panel, string query, int Idusuario)
         {
             using (SqlConnection conn = new SqlConnection(_connectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
 
-                cmd.Parameters.AddWithValue("@usuario", usuario);
+                cmd.Parameters.AddWithValue("@Id_Usuario", Idusuario);
+
+                conn.Open();
 
                 using (var da = new SqlDataAdapter(cmd))
                 {
@@ -58,6 +61,8 @@ namespace prueba
             {
                 cmd.Parameters.AddRange(parameters);
                 conn.Open();
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Registro actualizado correctamente.");
             }
         }
 
@@ -68,6 +73,8 @@ namespace prueba
             {
                 cmd.Parameters.AddRange(parameters);
                 conn.Open();
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Registro eliminado correctamente.");
             }
         }
 

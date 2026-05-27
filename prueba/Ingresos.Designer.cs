@@ -127,7 +127,6 @@
             // 
             this.gbAgregar.Controls.Add(this.btnLimpiar1);
             this.gbAgregar.Controls.Add(this.lblFecha);
-            this.gbAgregar.Controls.Add(this.gbMod);
             this.gbAgregar.Controls.Add(this.lblMonto);
             this.gbAgregar.Controls.Add(this.btnAgregar);
             this.gbAgregar.Controls.Add(this.txtMonto);
@@ -173,7 +172,7 @@
             this.gbMod.Controls.Add(this.lblNomM);
             this.gbMod.Controls.Add(this.comboBox1);
             this.gbMod.Controls.Add(this.lblId);
-            this.gbMod.Location = new System.Drawing.Point(0, 0);
+            this.gbMod.Location = new System.Drawing.Point(12, 245);
             this.gbMod.Name = "gbMod";
             this.gbMod.Size = new System.Drawing.Size(604, 160);
             this.gbMod.TabIndex = 10;
@@ -268,6 +267,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(300, 21);
             this.comboBox1.TabIndex = 1;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // lblId
             // 
@@ -348,6 +348,7 @@
             this.ClientSize = new System.Drawing.Size(628, 426);
             this.Controls.Add(this.lblMes);
             this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.gbMod);
             this.Controls.Add(this.gbAgregar);
             this.Controls.Add(this.lblIngresos);
             this.Controls.Add(this.dgvIngresos);

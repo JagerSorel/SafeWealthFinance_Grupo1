@@ -81,7 +81,7 @@ namespace prueba
                     new SqlParameter("@nombre", txtNombre.Text),
                     new SqlParameter("@Email", txtEmail.Text)
                     });
-                    //MessageBox.Show("Cuenta creada exitosamente\nProceda a iniciar sesión");
+                    MessageBox.Show("Cuenta creada exitosamente\nProceda a iniciar sesión");
                     gbIniciarSesion.Show();
                     gbCrearCuenta.Hide();
                 }
