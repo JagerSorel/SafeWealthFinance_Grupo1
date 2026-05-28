@@ -13,8 +13,8 @@ namespace prueba
     internal class ConexionYMetodos
     {
 
-        public readonly string _connectionString = "Server=PC-ELite\\SQLEXPRESS;Database=SafeWealthFinanceDB;Trusted_Connection=True;";
-        //public readonly string _connectionString = "Data Source=DESKTOP-NFDMETJ\\SQLEXPRESS;Initial Catalog=SafeWealthFinanceDB;Integrated Security=True;";
+        //public readonly string _connectionString = "Server=PC-ELite\\SQLEXPRESS;Database=SafeWealthFinanceDB;Trusted_Connection=True;";
+        public readonly string _connectionString = "Data Source=DESKTOP-NFDMETJ\\SQLEXPRESS;Initial Catalog=SafeWealthFinanceDB;Integrated Security=True;";
 
         public void InsertarDatos(string query, SqlParameter[] parameters)
         {

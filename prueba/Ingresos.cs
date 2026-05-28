@@ -80,9 +80,7 @@ namespace prueba
 
         private void volverAlMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmMenu frmMenu = new frmMenu();
-            frmMenu.Show();
-            this.Hide();
+            this.Close();
         }
 
         public void LimpiarCampos()

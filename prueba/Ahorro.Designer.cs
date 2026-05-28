@@ -38,15 +38,18 @@
             this.dgvMetasAhorro = new System.Windows.Forms.DataGridView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.gbAgregar = new System.Windows.Forms.GroupBox();
-            this.lblNombre = new System.Windows.Forms.Label();
-            this.lblMonto = new System.Windows.Forms.Label();
-            this.lblFechaO = new System.Windows.Forms.Label();
-            this.txtNom = new System.Windows.Forms.TextBox();
-            this.txtMontoMeta = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.txtMontoMeta = new System.Windows.Forms.TextBox();
+            this.txtNom = new System.Windows.Forms.TextBox();
+            this.lblFechaO = new System.Windows.Forms.Label();
+            this.lblMonto = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.lblId = new System.Windows.Forms.Label();
             this.btnMod = new System.Windows.Forms.Button();
             this.btnLimpiar1 = new System.Windows.Forms.Button();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
@@ -55,16 +58,13 @@
             this.lblFechaM = new System.Windows.Forms.Label();
             this.lblMontoMetaM = new System.Windows.Forms.Label();
             this.lblNomM = new System.Windows.Forms.Label();
-            this.lblId = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.btnEliminar = new System.Windows.Forms.Button();
             this.gbAbono = new System.Windows.Forms.GroupBox();
-            this.lblIdAbono = new System.Windows.Forms.Label();
-            this.lblMontoAbonar = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.txtMontoAbono = new System.Windows.Forms.TextBox();
-            this.btnLimpiar2 = new System.Windows.Forms.Button();
             this.btnAbono = new System.Windows.Forms.Button();
+            this.btnLimpiar2 = new System.Windows.Forms.Button();
+            this.txtMontoAbono = new System.Windows.Forms.TextBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.lblMontoAbonar = new System.Windows.Forms.Label();
+            this.lblIdAbono = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMetasAhorro)).BeginInit();
             this.gbAgregar.SuspendLayout();
@@ -90,24 +90,28 @@
             this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
             this.agregarToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.agregarToolStripMenuItem.Text = "Agregar";
+            this.agregarToolStripMenuItem.Click += new System.EventHandler(this.agregarToolStripMenuItem_Click);
             // 
             // modificarOEliminarToolStripMenuItem
             // 
             this.modificarOEliminarToolStripMenuItem.Name = "modificarOEliminarToolStripMenuItem";
             this.modificarOEliminarToolStripMenuItem.Size = new System.Drawing.Size(126, 20);
             this.modificarOEliminarToolStripMenuItem.Text = "Modificar o eliminar";
+            this.modificarOEliminarToolStripMenuItem.Click += new System.EventHandler(this.modificarOEliminarToolStripMenuItem_Click);
             // 
             // abonarAMetaToolStripMenuItem
             // 
             this.abonarAMetaToolStripMenuItem.Name = "abonarAMetaToolStripMenuItem";
             this.abonarAMetaToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
             this.abonarAMetaToolStripMenuItem.Text = "Abonar a meta";
+            this.abonarAMetaToolStripMenuItem.Click += new System.EventHandler(this.abonarAMetaToolStripMenuItem_Click);
             // 
             // volverAlToolStripMenuItem
             // 
             this.volverAlToolStripMenuItem.Name = "volverAlToolStripMenuItem";
             this.volverAlToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
             this.volverAlToolStripMenuItem.Text = "Volver al menú";
+            this.volverAlToolStripMenuItem.Click += new System.EventHandler(this.volverAlToolStripMenuItem_Click);
             // 
             // lblFiltro
             // 
@@ -143,10 +147,10 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 17;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // gbAgregar
             // 
-            this.gbAgregar.Controls.Add(this.groupBox1);
             this.gbAgregar.Controls.Add(this.btnAgregar);
             this.gbAgregar.Controls.Add(this.btnLimpiar);
             this.gbAgregar.Controls.Add(this.dateTimePicker1);
@@ -162,23 +166,48 @@
             this.gbAgregar.TabStop = false;
             this.gbAgregar.Text = "Agregar registro";
             // 
-            // lblNombre
+            // btnAgregar
             // 
-            this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(21, 46);
-            this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(44, 13);
-            this.lblNombre.TabIndex = 0;
-            this.lblNombre.Text = "Nombre";
+            this.btnAgregar.Location = new System.Drawing.Point(508, 95);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.TabIndex = 7;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // lblMonto
+            // btnLimpiar
             // 
-            this.lblMonto.AutoSize = true;
-            this.lblMonto.Location = new System.Drawing.Point(21, 84);
-            this.lblMonto.Name = "lblMonto";
-            this.lblMonto.Size = new System.Drawing.Size(63, 13);
-            this.lblMonto.TabIndex = 1;
-            this.lblMonto.Text = "Monto meta";
+            this.btnLimpiar.Location = new System.Drawing.Point(508, 57);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiar.TabIndex = 6;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(129, 113);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(346, 20);
+            this.dateTimePicker1.TabIndex = 5;
+            this.dateTimePicker1.Value = new System.DateTime(2026, 5, 26, 20, 36, 19, 0);
+            // 
+            // txtMontoMeta
+            // 
+            this.txtMontoMeta.Location = new System.Drawing.Point(129, 77);
+            this.txtMontoMeta.Name = "txtMontoMeta";
+            this.txtMontoMeta.Size = new System.Drawing.Size(346, 20);
+            this.txtMontoMeta.TabIndex = 4;
+            // 
+            // txtNom
+            // 
+            this.txtNom.Location = new System.Drawing.Point(129, 39);
+            this.txtNom.Name = "txtNom";
+            this.txtNom.Size = new System.Drawing.Size(346, 20);
+            this.txtNom.TabIndex = 3;
             // 
             // lblFechaO
             // 
@@ -189,45 +218,23 @@
             this.lblFechaO.TabIndex = 2;
             this.lblFechaO.Text = "Fecha objetivo";
             // 
-            // txtNom
+            // lblMonto
             // 
-            this.txtNom.Location = new System.Drawing.Point(129, 39);
-            this.txtNom.Name = "txtNom";
-            this.txtNom.Size = new System.Drawing.Size(346, 20);
-            this.txtNom.TabIndex = 3;
+            this.lblMonto.AutoSize = true;
+            this.lblMonto.Location = new System.Drawing.Point(21, 84);
+            this.lblMonto.Name = "lblMonto";
+            this.lblMonto.Size = new System.Drawing.Size(63, 13);
+            this.lblMonto.TabIndex = 1;
+            this.lblMonto.Text = "Monto meta";
             // 
-            // txtMontoMeta
+            // lblNombre
             // 
-            this.txtMontoMeta.Location = new System.Drawing.Point(129, 77);
-            this.txtMontoMeta.Name = "txtMontoMeta";
-            this.txtMontoMeta.Size = new System.Drawing.Size(346, 20);
-            this.txtMontoMeta.TabIndex = 4;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(129, 113);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(346, 20);
-            this.dateTimePicker1.TabIndex = 5;
-            // 
-            // btnLimpiar
-            // 
-            this.btnLimpiar.Location = new System.Drawing.Point(508, 57);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpiar.TabIndex = 6;
-            this.btnLimpiar.Text = "Limpiar";
-            this.btnLimpiar.UseVisualStyleBackColor = true;
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.Location = new System.Drawing.Point(508, 95);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 7;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Location = new System.Drawing.Point(21, 46);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(44, 13);
+            this.lblNombre.TabIndex = 0;
+            this.lblNombre.Text = "Nombre";
             // 
             // groupBox1
             // 
@@ -242,12 +249,40 @@
             this.groupBox1.Controls.Add(this.lblFechaM);
             this.groupBox1.Controls.Add(this.lblMontoMetaM);
             this.groupBox1.Controls.Add(this.lblNomM);
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Location = new System.Drawing.Point(11, 254);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(604, 165);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Modificar o eliminar registro";
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(508, 113);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.TabIndex = 18;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(129, 19);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(346, 21);
+            this.comboBox2.TabIndex = 17;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.Location = new System.Drawing.Point(21, 27);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(18, 13);
+            this.lblId.TabIndex = 16;
+            this.lblId.Text = "ID";
             // 
             // btnMod
             // 
@@ -257,6 +292,7 @@
             this.btnMod.TabIndex = 15;
             this.btnMod.Text = "Modificar";
             this.btnMod.UseVisualStyleBackColor = true;
+            this.btnMod.Click += new System.EventHandler(this.btnMod_Click);
             // 
             // btnLimpiar1
             // 
@@ -266,6 +302,7 @@
             this.btnLimpiar1.TabIndex = 14;
             this.btnLimpiar1.Text = "Limpiar";
             this.btnLimpiar1.UseVisualStyleBackColor = true;
+            this.btnLimpiar1.Click += new System.EventHandler(this.btnLimpiar1_Click);
             // 
             // dateTimePicker2
             // 
@@ -274,6 +311,7 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(346, 20);
             this.dateTimePicker2.TabIndex = 13;
+            this.dateTimePicker2.Value = new System.DateTime(2026, 5, 26, 20, 36, 40, 0);
             // 
             // txtMontoMetaM
             // 
@@ -316,32 +354,6 @@
             this.lblNomM.TabIndex = 8;
             this.lblNomM.Text = "Nombre";
             // 
-            // lblId
-            // 
-            this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(21, 27);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(18, 13);
-            this.lblId.TabIndex = 16;
-            this.lblId.Text = "ID";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(129, 19);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(346, 21);
-            this.comboBox2.TabIndex = 17;
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Location = new System.Drawing.Point(508, 113);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminar.TabIndex = 18;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            // 
             // gbAbono
             // 
             this.gbAbono.Controls.Add(this.btnAbono);
@@ -350,21 +362,47 @@
             this.gbAbono.Controls.Add(this.comboBox3);
             this.gbAbono.Controls.Add(this.lblMontoAbonar);
             this.gbAbono.Controls.Add(this.lblIdAbono);
-            this.gbAbono.Location = new System.Drawing.Point(12, 254);
+            this.gbAbono.Location = new System.Drawing.Point(17, 254);
             this.gbAbono.Name = "gbAbono";
             this.gbAbono.Size = new System.Drawing.Size(604, 165);
             this.gbAbono.TabIndex = 19;
             this.gbAbono.TabStop = false;
             this.gbAbono.Text = "Abonar meta";
             // 
-            // lblIdAbono
+            // btnAbono
             // 
-            this.lblIdAbono.AutoSize = true;
-            this.lblIdAbono.Location = new System.Drawing.Point(34, 46);
-            this.lblIdAbono.Name = "lblIdAbono";
-            this.lblIdAbono.Size = new System.Drawing.Size(18, 13);
-            this.lblIdAbono.TabIndex = 0;
-            this.lblIdAbono.Text = "ID";
+            this.btnAbono.Location = new System.Drawing.Point(508, 87);
+            this.btnAbono.Name = "btnAbono";
+            this.btnAbono.Size = new System.Drawing.Size(75, 23);
+            this.btnAbono.TabIndex = 5;
+            this.btnAbono.Text = "Abono";
+            this.btnAbono.UseVisualStyleBackColor = true;
+            this.btnAbono.Click += new System.EventHandler(this.btnAbono_Click);
+            // 
+            // btnLimpiar2
+            // 
+            this.btnLimpiar2.Location = new System.Drawing.Point(508, 41);
+            this.btnLimpiar2.Name = "btnLimpiar2";
+            this.btnLimpiar2.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiar2.TabIndex = 4;
+            this.btnLimpiar2.Text = "Limpiar";
+            this.btnLimpiar2.UseVisualStyleBackColor = true;
+            this.btnLimpiar2.Click += new System.EventHandler(this.btnLimpiar2_Click);
+            // 
+            // txtMontoAbono
+            // 
+            this.txtMontoAbono.Location = new System.Drawing.Point(156, 89);
+            this.txtMontoAbono.Name = "txtMontoAbono";
+            this.txtMontoAbono.Size = new System.Drawing.Size(326, 20);
+            this.txtMontoAbono.TabIndex = 3;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(156, 43);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(326, 21);
+            this.comboBox3.TabIndex = 2;
             // 
             // lblMontoAbonar
             // 
@@ -375,44 +413,21 @@
             this.lblMontoAbonar.TabIndex = 1;
             this.lblMontoAbonar.Text = "Monto del abono";
             // 
-            // comboBox3
+            // lblIdAbono
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(156, 43);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(326, 21);
-            this.comboBox3.TabIndex = 2;
-            // 
-            // txtMontoAbono
-            // 
-            this.txtMontoAbono.Location = new System.Drawing.Point(156, 89);
-            this.txtMontoAbono.Name = "txtMontoAbono";
-            this.txtMontoAbono.Size = new System.Drawing.Size(326, 20);
-            this.txtMontoAbono.TabIndex = 3;
-            // 
-            // btnLimpiar2
-            // 
-            this.btnLimpiar2.Location = new System.Drawing.Point(508, 41);
-            this.btnLimpiar2.Name = "btnLimpiar2";
-            this.btnLimpiar2.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpiar2.TabIndex = 4;
-            this.btnLimpiar2.Text = "Limpiar";
-            this.btnLimpiar2.UseVisualStyleBackColor = true;
-            // 
-            // btnAbono
-            // 
-            this.btnAbono.Location = new System.Drawing.Point(508, 87);
-            this.btnAbono.Name = "btnAbono";
-            this.btnAbono.Size = new System.Drawing.Size(75, 23);
-            this.btnAbono.TabIndex = 5;
-            this.btnAbono.Text = "Abono";
-            this.btnAbono.UseVisualStyleBackColor = true;
+            this.lblIdAbono.AutoSize = true;
+            this.lblIdAbono.Location = new System.Drawing.Point(34, 46);
+            this.lblIdAbono.Name = "lblIdAbono";
+            this.lblIdAbono.Size = new System.Drawing.Size(18, 13);
+            this.lblIdAbono.TabIndex = 0;
+            this.lblIdAbono.Text = "ID";
             // 
             // frmAhorro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(628, 426);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbAbono);
             this.Controls.Add(this.gbAgregar);
             this.Controls.Add(this.comboBox1);
@@ -424,6 +439,7 @@
             this.Name = "frmAhorro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ahorro";
+            this.Load += new System.EventHandler(this.frmAhorro_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMetasAhorro)).EndInit();
