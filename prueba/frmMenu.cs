@@ -23,12 +23,6 @@ namespace prueba
         { 
             lblBienvenida.Text = "Bienvenid@, " + usuario;
         }
-        private void expedienteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Expediente ex = new Expediente();
-            ex.Show();
-        }
-
         private void ahorroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAhorro frmAhorro = new frmAhorro();
@@ -71,6 +65,11 @@ namespace prueba
         {
             frmInicio.IdUsuario = 0;
             this.Close();
+        }
+        private void expedienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmExpediente exp = new frmExpediente();
+            exp.Show();
         }
     }
 }

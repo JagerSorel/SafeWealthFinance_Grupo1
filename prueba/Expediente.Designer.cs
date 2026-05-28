@@ -1,6 +1,6 @@
 ﻿namespace prueba
 {
-    partial class Expediente
+    partial class frmExpediente
     {
         /// <summary>
         /// Required designer variable.
@@ -38,43 +38,33 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Expediente));
-            this.dgvExpediente = new System.Windows.Forms.DataGridView();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmExpediente));
             this.expedienteSemestralBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.safeWealthFinanceDBDataSet = new prueba.SafeWealthFinanceDBDataSet();
             this.chaIngresos = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chaGastos = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chaGanancias = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.btnSalir = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.lblTextFecha = new System.Windows.Forms.Label();
+            this.lblFecha = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.safeWealthFinanceDBDataSet1 = new prueba.SafeWealthFinanceDBDataSet1();
             this.expedienteSemestralTableAdapter = new prueba.SafeWealthFinanceDBDataSetTableAdapters.ExpedienteSemestralTableAdapter();
-            this.lblFecha = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvExpediente)).BeginInit();
+            this.dgvSemestre = new System.Windows.Forms.DataGridView();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.actualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.volverAlMenúToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.expedienteSemestralBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.safeWealthFinanceDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chaIngresos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chaGastos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chaGanancias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.safeWealthFinanceDBDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSemestre)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // dgvExpediente
-            // 
-            this.dgvExpediente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvExpediente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvExpediente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvExpediente.Location = new System.Drawing.Point(52, 138);
-            this.dgvExpediente.Name = "dgvExpediente";
-            this.dgvExpediente.Size = new System.Drawing.Size(912, 182);
-            this.dgvExpediente.TabIndex = 0;
-            this.dgvExpediente.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // expedienteSemestralBindingSource
             // 
@@ -92,7 +82,7 @@
             this.chaIngresos.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chaIngresos.Legends.Add(legend1);
-            this.chaIngresos.Location = new System.Drawing.Point(52, 374);
+            this.chaIngresos.Location = new System.Drawing.Point(47, 392);
             this.chaIngresos.Name = "chaIngresos";
             this.chaIngresos.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
             series1.ChartArea = "ChartArea1";
@@ -109,7 +99,7 @@
             this.chaGastos.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chaGastos.Legends.Add(legend2);
-            this.chaGastos.Location = new System.Drawing.Point(358, 374);
+            this.chaGastos.Location = new System.Drawing.Point(353, 392);
             this.chaGastos.Name = "chaGastos";
             this.chaGastos.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series2.ChartArea = "ChartArea1";
@@ -126,7 +116,7 @@
             this.chaGanancias.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
             this.chaGanancias.Legends.Add(legend3);
-            this.chaGanancias.Location = new System.Drawing.Point(664, 374);
+            this.chaGanancias.Location = new System.Drawing.Point(659, 392);
             this.chaGanancias.Name = "chaGanancias";
             series3.ChartArea = "ChartArea1";
             series3.Legend = "Legend1";
@@ -136,20 +126,11 @@
             this.chaGanancias.TabIndex = 3;
             this.chaGanancias.Text = "chart3";
             // 
-            // btnSalir
-            // 
-            this.btnSalir.Location = new System.Drawing.Point(889, 694);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(75, 23);
-            this.btnSalir.TabIndex = 4;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(147, 352);
+            this.label1.Location = new System.Drawing.Point(142, 370);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(119, 19);
             this.label1.TabIndex = 5;
@@ -159,7 +140,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(445, 355);
+            this.label2.Location = new System.Drawing.Point(440, 373);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(128, 19);
             this.label2.TabIndex = 6;
@@ -169,7 +150,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(721, 352);
+            this.label3.Location = new System.Drawing.Point(716, 370);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(196, 19);
             this.label3.TabIndex = 7;
@@ -179,27 +160,27 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(429, 24);
+            this.label4.Location = new System.Drawing.Point(424, 42);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(159, 22);
             this.label4.TabIndex = 8;
             this.label4.Text = "Control de Gastos";
             // 
-            // lblTextFecha
+            // lblFecha
             // 
-            this.lblTextFecha.AutoSize = true;
-            this.lblTextFecha.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTextFecha.Location = new System.Drawing.Point(291, 64);
-            this.lblTextFecha.Name = "lblTextFecha";
-            this.lblTextFecha.Size = new System.Drawing.Size(282, 21);
-            this.lblTextFecha.TabIndex = 9;
-            this.lblTextFecha.Text = "Semestre correspondiente a la fecha:";
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFecha.Location = new System.Drawing.Point(286, 80);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(287, 21);
+            this.lblFecha.TabIndex = 9;
+            this.lblFecha.Text = "Semestre correspondiente a la fecha: ";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(334, 97);
+            this.label6.Location = new System.Drawing.Point(329, 115);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(361, 21);
             this.label6.TabIndex = 10;
@@ -214,65 +195,93 @@
             // 
             this.expedienteSemestralTableAdapter.ClearBeforeFill = true;
             // 
-            // lblFecha
+            // dgvSemestre
             // 
-            this.lblFecha.AutoSize = true;
-            this.lblFecha.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFecha.Location = new System.Drawing.Point(573, 64);
-            this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(0, 21);
-            this.lblFecha.TabIndex = 11;
+            this.dgvSemestre.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvSemestre.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvSemestre.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSemestre.Location = new System.Drawing.Point(47, 157);
+            this.dgvSemestre.Name = "dgvSemestre";
+            this.dgvSemestre.Size = new System.Drawing.Size(912, 192);
+            this.dgvSemestre.TabIndex = 12;
             // 
-            // Expediente
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.actualizarToolStripMenuItem,
+            this.volverAlMenúToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1008, 24);
+            this.menuStrip1.TabIndex = 13;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // actualizarToolStripMenuItem
+            // 
+            this.actualizarToolStripMenuItem.Name = "actualizarToolStripMenuItem";
+            this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.actualizarToolStripMenuItem.Text = "Actualizar";
+            this.actualizarToolStripMenuItem.Click += new System.EventHandler(this.actualizarToolStripMenuItem_Click);
+            // 
+            // volverAlMenúToolStripMenuItem
+            // 
+            this.volverAlMenúToolStripMenuItem.Name = "volverAlMenúToolStripMenuItem";
+            this.volverAlMenúToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
+            this.volverAlMenúToolStripMenuItem.Text = "Volver al menú";
+            this.volverAlMenúToolStripMenuItem.Click += new System.EventHandler(this.volverAlMenúToolStripMenuItem_Click);
+            // 
+            // frmExpediente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
-            this.Controls.Add(this.lblFecha);
+            this.Controls.Add(this.dgvSemestre);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.lblTextFecha);
+            this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.chaGanancias);
             this.Controls.Add(this.chaGastos);
             this.Controls.Add(this.chaIngresos);
-            this.Controls.Add(this.dgvExpediente);
+            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Expediente";
+            this.MainMenuStrip = this.menuStrip1;
+            this.Name = "frmExpediente";
             this.Text = "Expediente";
             this.Load += new System.EventHandler(this.Expediente_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvExpediente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.expedienteSemestralBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.safeWealthFinanceDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chaIngresos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chaGastos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chaGanancias)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.safeWealthFinanceDBDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSemestre)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvExpediente;
         private System.Windows.Forms.DataVisualization.Charting.Chart chaIngresos;
         private System.Windows.Forms.DataVisualization.Charting.Chart chaGastos;
         private System.Windows.Forms.DataVisualization.Charting.Chart chaGanancias;
-        private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lblTextFecha;
+        private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Label label6;
         private SafeWealthFinanceDBDataSet safeWealthFinanceDBDataSet;
         private SafeWealthFinanceDBDataSet1 safeWealthFinanceDBDataSet1;
         private System.Windows.Forms.BindingSource expedienteSemestralBindingSource;
         private SafeWealthFinanceDBDataSetTableAdapters.ExpedienteSemestralTableAdapter expedienteSemestralTableAdapter;
-        private System.Windows.Forms.Label lblFecha;
+        private System.Windows.Forms.DataGridView dgvSemestre;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem actualizarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem volverAlMenúToolStripMenuItem;
     }
 }
