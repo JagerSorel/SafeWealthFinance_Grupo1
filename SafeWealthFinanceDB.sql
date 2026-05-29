@@ -69,9 +69,6 @@ Gastos Decimal(10,2),
 Ganancias Decimal(10,2),
 );
 Go
-
-Use SafeWealthFinanceDB;
-Go
 Create table Ingreso(
 Id_Ingreso Int primary key identity,
 Id_Usuario int foreign key references Usuario(Id_Usuario),

@@ -40,11 +40,7 @@
             this.lblMes = new System.Windows.Forms.Label();
             this.gbAgregar = new System.Windows.Forms.GroupBox();
             this.gbMod = new System.Windows.Forms.GroupBox();
-            this.gbFiltrar = new System.Windows.Forms.GroupBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.lblDato = new System.Windows.Forms.Label();
-            this.lblCategorias = new System.Windows.Forms.Label();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.lblId = new System.Windows.Forms.Label();
             this.btnMod = new System.Windows.Forms.Button();
@@ -67,7 +63,13 @@
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblMonto = new System.Windows.Forms.Label();
             this.lblNom = new System.Windows.Forms.Label();
+            this.gbFiltrar = new System.Windows.Forms.GroupBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.lblDato = new System.Windows.Forms.Label();
+            this.lblCategorias = new System.Windows.Forms.Label();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGastos)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.gbAgregar.SuspendLayout();
@@ -92,10 +94,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker1.CustomFormat = "MM / yyyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(533, 36);
+            this.dateTimePicker1.Location = new System.Drawing.Point(521, 36);
             this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.ShowUpDown = true;
             this.dateTimePicker1.Size = new System.Drawing.Size(95, 20);
             this.dateTimePicker1.TabIndex = 1;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // menuStrip1
             // 
@@ -129,6 +133,7 @@
             this.filtrarToolStripMenuItem.Name = "filtrarToolStripMenuItem";
             this.filtrarToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.filtrarToolStripMenuItem.Text = "Filtrar";
+            this.filtrarToolStripMenuItem.Click += new System.EventHandler(this.filtrarToolStripMenuItem_Click);
             // 
             // volverAlMenúToolStripMenuItem
             // 
@@ -154,7 +159,7 @@
             this.lblMes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMes.AutoSize = true;
-            this.lblMes.Location = new System.Drawing.Point(434, 42);
+            this.lblMes.Location = new System.Drawing.Point(413, 42);
             this.lblMes.Name = "lblMes";
             this.lblMes.Size = new System.Drawing.Size(93, 13);
             this.lblMes.TabIndex = 4;
@@ -164,7 +169,6 @@
             // 
             this.gbAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbAgregar.Controls.Add(this.gbMod);
             this.gbAgregar.Controls.Add(this.btnAgregar);
             this.gbAgregar.Controls.Add(this.btnLimpiar);
             this.gbAgregar.Controls.Add(this.txtMonto);
@@ -184,7 +188,7 @@
             // 
             // gbMod
             // 
-            this.gbMod.Controls.Add(this.gbFiltrar);
+            this.gbMod.Controls.Add(this.comboBox4);
             this.gbMod.Controls.Add(this.btnEliminar);
             this.gbMod.Controls.Add(this.lblId);
             this.gbMod.Controls.Add(this.btnMod);
@@ -197,7 +201,7 @@
             this.gbMod.Controls.Add(this.lblFechaM);
             this.gbMod.Controls.Add(this.lblMontoM);
             this.gbMod.Controls.Add(this.lblNomM);
-            this.gbMod.Location = new System.Drawing.Point(0, 0);
+            this.gbMod.Location = new System.Drawing.Point(12, 262);
             this.gbMod.Name = "gbMod";
             this.gbMod.Size = new System.Drawing.Size(604, 160);
             this.gbMod.TabIndex = 10;
@@ -205,53 +209,14 @@
             this.gbMod.Text = "Modificar o eliminar registro";
             this.gbMod.Visible = false;
             // 
-            // gbFiltrar
+            // comboBox4
             // 
-            this.gbFiltrar.Controls.Add(this.comboBox3);
-            this.gbFiltrar.Controls.Add(this.lblDato);
-            this.gbFiltrar.Controls.Add(this.lblCategorias);
-            this.gbFiltrar.Controls.Add(this.checkedListBox1);
-            this.gbFiltrar.Location = new System.Drawing.Point(0, 0);
-            this.gbFiltrar.Name = "gbFiltrar";
-            this.gbFiltrar.Size = new System.Drawing.Size(604, 161);
-            this.gbFiltrar.TabIndex = 23;
-            this.gbFiltrar.TabStop = false;
-            this.gbFiltrar.Text = "Filtrar datos";
-            this.gbFiltrar.Visible = false;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(328, 19);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(270, 21);
-            this.comboBox3.TabIndex = 25;
-            // 
-            // lblDato
-            // 
-            this.lblDato.AutoSize = true;
-            this.lblDato.Location = new System.Drawing.Point(391, 72);
-            this.lblDato.Name = "lblDato";
-            this.lblDato.Size = new System.Drawing.Size(124, 26);
-            this.lblDato.TabIndex = 2;
-            this.lblDato.Text = "Usted ha gastado: $0.00\r\nEn la/s categoria/s:\r\n";
-            // 
-            // lblCategorias
-            // 
-            this.lblCategorias.AutoSize = true;
-            this.lblCategorias.Location = new System.Drawing.Point(19, 23);
-            this.lblCategorias.Name = "lblCategorias";
-            this.lblCategorias.Size = new System.Drawing.Size(57, 13);
-            this.lblCategorias.TabIndex = 1;
-            this.lblCategorias.Text = "Categorias";
-            // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(127, 19);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(195, 124);
-            this.checkedListBox1.TabIndex = 0;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(151, 26);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(330, 21);
+            this.comboBox4.TabIndex = 23;
+            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
             // 
             // btnEliminar
             // 
@@ -261,6 +226,7 @@
             this.btnEliminar.TabIndex = 22;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // lblId
             // 
@@ -279,6 +245,7 @@
             this.btnMod.TabIndex = 19;
             this.btnMod.Text = "Modificar";
             this.btnMod.UseVisualStyleBackColor = true;
+            this.btnMod.Click += new System.EventHandler(this.btnMod_Click);
             // 
             // btnLimpiar1
             // 
@@ -288,6 +255,7 @@
             this.btnLimpiar1.TabIndex = 18;
             this.btnLimpiar1.Text = "Limpiar";
             this.btnLimpiar1.UseVisualStyleBackColor = true;
+            this.btnLimpiar1.Click += new System.EventHandler(this.btnLimpiar1_Click);
             // 
             // txtMontoM
             // 
@@ -363,6 +331,7 @@
             this.btnAgregar.TabIndex = 9;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnLimpiar
             // 
@@ -372,6 +341,7 @@
             this.btnLimpiar.TabIndex = 8;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // txtMonto
             // 
@@ -439,16 +409,83 @@
             this.lblNom.TabIndex = 0;
             this.lblNom.Text = "Nombre del gasto";
             // 
+            // gbFiltrar
+            // 
+            this.gbFiltrar.Controls.Add(this.label2);
+            this.gbFiltrar.Controls.Add(this.comboBox3);
+            this.gbFiltrar.Controls.Add(this.lblDato);
+            this.gbFiltrar.Controls.Add(this.lblCategorias);
+            this.gbFiltrar.Controls.Add(this.checkedListBox1);
+            this.gbFiltrar.Location = new System.Drawing.Point(12, 261);
+            this.gbFiltrar.Name = "gbFiltrar";
+            this.gbFiltrar.Size = new System.Drawing.Size(604, 161);
+            this.gbFiltrar.TabIndex = 23;
+            this.gbFiltrar.TabStop = false;
+            this.gbFiltrar.Text = "Filtrar datos";
+            this.gbFiltrar.Visible = false;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(127, 120);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(258, 21);
+            this.comboBox3.TabIndex = 25;
+            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            // 
+            // lblDato
+            // 
+            this.lblDato.AutoSize = true;
+            this.lblDato.Location = new System.Drawing.Point(391, 72);
+            this.lblDato.Name = "lblDato";
+            this.lblDato.Size = new System.Drawing.Size(124, 26);
+            this.lblDato.TabIndex = 2;
+            this.lblDato.Text = "Usted ha gastado: $0.00\r\nEn la categoria:\r\n";
+            // 
+            // lblCategorias
+            // 
+            this.lblCategorias.AutoSize = true;
+            this.lblCategorias.Location = new System.Drawing.Point(19, 23);
+            this.lblCategorias.Name = "lblCategorias";
+            this.lblCategorias.Size = new System.Drawing.Size(57, 13);
+            this.lblCategorias.TabIndex = 1;
+            this.lblCategorias.Text = "Categorias";
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Items.AddRange(new object[] {
+            "Gastos hormiga (menos de $5.00)",
+            "Gastos fijos (parte del presupuesto)",
+            "Gastos variables ",
+            "Gastos discrecionales (no indispensables)"});
+            this.checkedListBox1.Location = new System.Drawing.Point(127, 19);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(258, 64);
+            this.checkedListBox1.TabIndex = 0;
+            this.checkedListBox1.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBox1_ItemCheck);
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(250, 100);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(13, 13);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "ó";
             // 
             // frmGastos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(628, 426);
+            this.Controls.Add(this.gbMod);
+            this.Controls.Add(this.gbFiltrar);
             this.Controls.Add(this.gbAgregar);
             this.Controls.Add(this.lblMes);
             this.Controls.Add(this.lblGastos);
@@ -514,5 +551,8 @@
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
