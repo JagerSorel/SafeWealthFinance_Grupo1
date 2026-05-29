@@ -39,10 +39,18 @@ namespace prueba
         }
         private void CargarTiposGasto()
         {
+            cbTipoGasto.Items.Clear();
+
             cbTipoGasto.Items.Add("Mensualidad");
             cbTipoGasto.Items.Add("Compra");
             cbTipoGasto.Items.Add("Alimentos");
             cbTipoGasto.Items.Add("Entretenimiento");
+            cbTipoGasto.Items.Add("Transporte");
+            cbTipoGasto.Items.Add("Salud");
+            cbTipoGasto.Items.Add("Educación");
+            cbTipoGasto.Items.Add("Servicios");
+            cbTipoGasto.Items.Add("Ahorro");
+            cbTipoGasto.Items.Add("Otros");
         }
         private void cbMes_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -158,6 +166,9 @@ namespace prueba
             }
 
             lblTotalEspeculado.Text = "$" + total.ToString("0.00");
+
+            CalcularTotales();
+
         }
 
         private void dgvDetalle_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -220,7 +231,6 @@ namespace prueba
 
         private void agregarToolStripMenuItem_Click_2(object sender, EventArgs e)
         {
-            // Validar campos obligatorios
             if (cbPeriodo.Text.Trim() == "" ||
                 txtIngreso.Text.Trim() == "" ||
                 txtNombreTransaccion.Text.Trim() == "" ||
@@ -234,30 +244,56 @@ namespace prueba
                 return;
             }
 
-            // Agregar fila al DataGridView
             dgvDetalle.Rows.Add(
                 txtNombreTransaccion.Text,
                 cbTipoGasto.Text,
                 txtMonto.Text
             );
 
-            // Limpiar campos
             txtNombreTransaccion.Clear();
             txtMonto.Clear();
             cbTipoGasto.SelectedIndex = -1;
 
-            // Calcular total automáticamente
-            decimal total = 0;
+            CalcularTotales();
+
+        }
+        private void CalcularTotales()
+        {
+            decimal totalEspeculado = 0;
+            decimal ingreso = 0;
+
+            decimal.TryParse(txtIngreso.Text, out ingreso);
 
             foreach (DataGridViewRow fila in dgvDetalle.Rows)
             {
                 if (fila.Cells["Monto"].Value != null)
                 {
-                    total += Convert.ToDecimal(fila.Cells["Monto"].Value);
+                    decimal monto = 0;
+                    decimal.TryParse(fila.Cells["Monto"].Value.ToString(), out monto);
+                    totalEspeculado += monto;
                 }
             }
 
-            lblTotalEspeculado.Text = "$" + total.ToString("0.00");
+            decimal totalReal = ingreso - totalEspeculado;
+            decimal porcentaje = 0;
+
+            if (ingreso > 0)
+            {
+                porcentaje = (totalEspeculado / ingreso) * 100;
+            }
+
+            lblTotalEspeculado.Text = "$" + totalEspeculado.ToString("0.00");
+            lblTotalReal.Text = "$" + totalReal.ToString("0.00");
+            lblPorcentaje.Text = porcentaje.ToString("0.00") + "%";
+        }
+
+        private void calcularToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbTipoGasto_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }
