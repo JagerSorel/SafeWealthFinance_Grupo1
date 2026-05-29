@@ -38,6 +38,11 @@
             this.gbAgregar = new System.Windows.Forms.GroupBox();
             this.btnLimpiar1 = new System.Windows.Forms.Button();
             this.lblFecha = new System.Windows.Forms.Label();
+            this.lblMonto = new System.Windows.Forms.Label();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.txtMonto = new System.Windows.Forms.TextBox();
+            this.txtNom = new System.Windows.Forms.TextBox();
+            this.lblNom = new System.Windows.Forms.Label();
             this.gbMod = new System.Windows.Forms.GroupBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -50,11 +55,6 @@
             this.lblNomM = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.lblId = new System.Windows.Forms.Label();
-            this.lblMonto = new System.Windows.Forms.Label();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.txtMonto = new System.Windows.Forms.TextBox();
-            this.txtNom = new System.Windows.Forms.TextBox();
-            this.lblNom = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.lblMes = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIngresos)).BeginInit();
@@ -65,6 +65,9 @@
             // 
             // dgvIngresos
             // 
+            this.dgvIngresos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvIngresos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvIngresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvIngresos.Location = new System.Drawing.Point(12, 60);
             this.dgvIngresos.Name = "dgvIngresos";
@@ -73,6 +76,8 @@
             // 
             // lblIngresos
             // 
+            this.lblIngresos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblIngresos.AutoSize = true;
             this.lblIngresos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIngresos.Location = new System.Drawing.Point(265, 33);
@@ -111,7 +116,7 @@
             // 
             this.volverAlMenuToolStripMenuItem.Name = "volverAlMenuToolStripMenuItem";
             this.volverAlMenuToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
-            this.volverAlMenuToolStripMenuItem.Text = "Volver al menu";
+            this.volverAlMenuToolStripMenuItem.Text = "Volver al menú";
             this.volverAlMenuToolStripMenuItem.Click += new System.EventHandler(this.volverAlMenuToolStripMenuItem_Click);
             // 
             // dtpFecha
@@ -125,6 +130,8 @@
             // 
             // gbAgregar
             // 
+            this.gbAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbAgregar.Controls.Add(this.btnLimpiar1);
             this.gbAgregar.Controls.Add(this.lblFecha);
             this.gbAgregar.Controls.Add(this.lblMonto);
@@ -159,8 +166,52 @@
             this.lblFecha.TabIndex = 9;
             this.lblFecha.Text = "Fecha";
             // 
+            // lblMonto
+            // 
+            this.lblMonto.AutoSize = true;
+            this.lblMonto.Location = new System.Drawing.Point(24, 81);
+            this.lblMonto.Name = "lblMonto";
+            this.lblMonto.Size = new System.Drawing.Size(37, 13);
+            this.lblMonto.TabIndex = 8;
+            this.lblMonto.Text = "Monto";
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Location = new System.Drawing.Point(506, 96);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.TabIndex = 7;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // txtMonto
+            // 
+            this.txtMonto.Location = new System.Drawing.Point(156, 74);
+            this.txtMonto.Name = "txtMonto";
+            this.txtMonto.Size = new System.Drawing.Size(300, 20);
+            this.txtMonto.TabIndex = 6;
+            // 
+            // txtNom
+            // 
+            this.txtNom.Location = new System.Drawing.Point(156, 33);
+            this.txtNom.Name = "txtNom";
+            this.txtNom.Size = new System.Drawing.Size(300, 20);
+            this.txtNom.TabIndex = 5;
+            // 
+            // lblNom
+            // 
+            this.lblNom.AutoSize = true;
+            this.lblNom.Location = new System.Drawing.Point(24, 40);
+            this.lblNom.Name = "lblNom";
+            this.lblNom.Size = new System.Drawing.Size(98, 13);
+            this.lblNom.TabIndex = 4;
+            this.lblNom.Text = "Nombre del ingreso";
+            // 
             // gbMod
             // 
+            this.gbMod.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbMod.Controls.Add(this.btnLimpiar);
             this.gbMod.Controls.Add(this.btnEliminar);
             this.gbMod.Controls.Add(this.btnModificar);
@@ -278,50 +329,10 @@
             this.lblId.TabIndex = 0;
             this.lblId.Text = "Id";
             // 
-            // lblMonto
-            // 
-            this.lblMonto.AutoSize = true;
-            this.lblMonto.Location = new System.Drawing.Point(24, 81);
-            this.lblMonto.Name = "lblMonto";
-            this.lblMonto.Size = new System.Drawing.Size(37, 13);
-            this.lblMonto.TabIndex = 8;
-            this.lblMonto.Text = "Monto";
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.Location = new System.Drawing.Point(506, 96);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 7;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // txtMonto
-            // 
-            this.txtMonto.Location = new System.Drawing.Point(156, 74);
-            this.txtMonto.Name = "txtMonto";
-            this.txtMonto.Size = new System.Drawing.Size(300, 20);
-            this.txtMonto.TabIndex = 6;
-            // 
-            // txtNom
-            // 
-            this.txtNom.Location = new System.Drawing.Point(156, 33);
-            this.txtNom.Name = "txtNom";
-            this.txtNom.Size = new System.Drawing.Size(300, 20);
-            this.txtNom.TabIndex = 5;
-            // 
-            // lblNom
-            // 
-            this.lblNom.AutoSize = true;
-            this.lblNom.Location = new System.Drawing.Point(24, 40);
-            this.lblNom.Name = "lblNom";
-            this.lblNom.Size = new System.Drawing.Size(98, 13);
-            this.lblNom.TabIndex = 4;
-            this.lblNom.Text = "Nombre del ingreso";
-            // 
             // dateTimePicker2
             // 
+            this.dateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker2.CustomFormat = "MM / yyyy";
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker2.Location = new System.Drawing.Point(522, 35);
@@ -334,6 +345,8 @@
             // 
             // lblMes
             // 
+            this.lblMes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMes.AutoSize = true;
             this.lblMes.Location = new System.Drawing.Point(423, 41);
             this.lblMes.Name = "lblMes";

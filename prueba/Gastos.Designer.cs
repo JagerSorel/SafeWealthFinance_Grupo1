@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dgGastos = new System.Windows.Forms.DataGridView();
+            this.dgvGastos = new System.Windows.Forms.DataGridView();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.agregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,23 +68,28 @@
             this.lblMonto = new System.Windows.Forms.Label();
             this.lblNom = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.dgGastos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGastos)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.gbAgregar.SuspendLayout();
             this.gbMod.SuspendLayout();
             this.gbFiltrar.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dgGastos
+            // dgvGastos
             // 
-            this.dgGastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgGastos.Location = new System.Drawing.Point(12, 65);
-            this.dgGastos.Name = "dgGastos";
-            this.dgGastos.Size = new System.Drawing.Size(604, 179);
-            this.dgGastos.TabIndex = 0;
+            this.dgvGastos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvGastos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvGastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvGastos.Location = new System.Drawing.Point(12, 65);
+            this.dgvGastos.Name = "dgvGastos";
+            this.dgvGastos.Size = new System.Drawing.Size(604, 179);
+            this.dgvGastos.TabIndex = 0;
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker1.CustomFormat = "MM / yyyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(533, 36);
@@ -110,12 +115,14 @@
             this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
             this.agregarToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.agregarToolStripMenuItem.Text = "Agregar ";
+            this.agregarToolStripMenuItem.Click += new System.EventHandler(this.agregarToolStripMenuItem_Click);
             // 
             // modificarOEliminarToolStripMenuItem
             // 
             this.modificarOEliminarToolStripMenuItem.Name = "modificarOEliminarToolStripMenuItem";
             this.modificarOEliminarToolStripMenuItem.Size = new System.Drawing.Size(126, 20);
             this.modificarOEliminarToolStripMenuItem.Text = "Modificar o eliminar";
+            this.modificarOEliminarToolStripMenuItem.Click += new System.EventHandler(this.modificarOEliminarToolStripMenuItem_Click);
             // 
             // filtrarToolStripMenuItem
             // 
@@ -128,9 +135,12 @@
             this.volverAlMenúToolStripMenuItem.Name = "volverAlMenúToolStripMenuItem";
             this.volverAlMenúToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
             this.volverAlMenúToolStripMenuItem.Text = "Volver al menú";
+            this.volverAlMenúToolStripMenuItem.Click += new System.EventHandler(this.volverAlMenúToolStripMenuItem_Click);
             // 
             // lblGastos
             // 
+            this.lblGastos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblGastos.AutoSize = true;
             this.lblGastos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGastos.Location = new System.Drawing.Point(261, 34);
@@ -141,6 +151,8 @@
             // 
             // lblMes
             // 
+            this.lblMes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMes.AutoSize = true;
             this.lblMes.Location = new System.Drawing.Point(434, 42);
             this.lblMes.Name = "lblMes";
@@ -150,6 +162,8 @@
             // 
             // gbAgregar
             // 
+            this.gbAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbAgregar.Controls.Add(this.gbMod);
             this.gbAgregar.Controls.Add(this.btnAgregar);
             this.gbAgregar.Controls.Add(this.btnLimpiar);
@@ -439,13 +453,13 @@
             this.Controls.Add(this.lblMes);
             this.Controls.Add(this.lblGastos);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.dgGastos);
+            this.Controls.Add(this.dgvGastos);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmGastos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gastos";
-            ((System.ComponentModel.ISupportInitialize)(this.dgGastos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGastos)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.gbAgregar.ResumeLayout(false);
@@ -461,7 +475,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgGastos;
+        private System.Windows.Forms.DataGridView dgvGastos;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem agregarToolStripMenuItem;

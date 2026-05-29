@@ -50,9 +50,7 @@ namespace prueba
         private void presupuestoMensualToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmPresupuestoMensual frm = new frmPresupuestoMensual();
-            frm.FormClosed += (s, args) => this.Show();
             frm.Show();
-            this.Hide();
         }
 
         private void reporteFinancieroToolStripMenuItem_Click(object sender, EventArgs e)

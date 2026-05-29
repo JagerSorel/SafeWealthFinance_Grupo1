@@ -22,12 +22,9 @@ namespace prueba
         }
         private void Expediente_Load(object sender, EventArgs e)
         {
-            OrgDatosTabla();
-            GrafGastos();
-            GrafIngresos();
-            GrafGanancias();
+            OrgDatos();
         }
-        private void OrgDatosTabla()
+        private void OrgDatos()
         {
             lblFecha.Text = lblFecha.Text + DateTime.Now.ToString("D");
             string[] nommes = { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio" };
@@ -91,48 +88,35 @@ namespace prueba
                     Console.WriteLine("Error: " + ex.Message);
                 }
             }
-            decimal[] gananciaMensual = new decimal[5];
+            decimal[] gananciaMensual = new decimal[6];
             for (int h = 0; h <= 5; h++)
             {
                 gananciaMensual[h] = (ingresoMensual[h] - gastoMensual[h]);
             }
-            //Luego de agrupar la información en arreglos se representará en la tabla DGV
+            //Luego de agrupar la información en arreglos se representarán en la tabla DGV
             DataTable dt = new DataTable();
             dt.Columns.Add("Mes");
-            dt.Columns.Add("Gastos");
-            dt.Columns.Add("Ingresos");
-            dt.Columns.Add("Ganancias");
+            dt.Columns.Add("Gastos", typeof(decimal));
+            dt.Columns.Add("Ingresos", typeof(decimal));
+            dt.Columns.Add("Ganancias", typeof(decimal));
             for (int i = 0; i <= 5; i++)
             {
-                dt.Rows.Add(nommes[i], Convert.ToString(gastoMensual[i]), Convert.ToString(ingresoMensual[i]), Convert.ToString(gananciaMensual[i]));
+                dt.Rows.Add(nommes[i], gastoMensual[i], ingresoMensual[i], gananciaMensual[i]);
             }
             dgvSemestre.DataSource = dt;
-        }
-        //Y de la tabla DGV o arreglos a las gráficas
-        private void GrafGastos()
-        {
-            double[] gastos = { 45.46, 31.43, 21.23, 46.8, 24.33, 36.71 };
-            var series = new Series("Gastos");
-            series.ChartType = SeriesChartType.Line;
-            series.Points.DataBindXY(new[] { 1, 2, 3, 4, 5, 6 }, new[] { Convert.ToDouble(gastos[0]), Convert.ToDouble(gastos[1]), Convert.ToDouble(gastos[2]), Convert.ToDouble(gastos[3]), Convert.ToDouble(gastos[4]), Convert.ToDouble(gastos[5]) });
-            chaGastos.Series.Add(series);
-        }
-        private void GrafIngresos()
-        {
-            double[] ingresos = { 46.45, 41.33, 12.32, 48.6, 43.32, 61.37 };
-            var series = new Series("Ingresos");
-            series.ChartType = SeriesChartType.Line;
-            series.Points.DataBindXY(new[] { 1, 2, 3, 4, 5, 6 }, new[] { Convert.ToDouble(ingresos[0]), Convert.ToDouble(ingresos[1]), Convert.ToDouble(ingresos[2]), Convert.ToDouble(ingresos[3]), Convert.ToDouble(ingresos[4]), Convert.ToDouble(ingresos[5]) });
-            chaIngresos.Series.Add(series);
-        }
-        private void GrafGanancias()
-        {
-            double[] ingresos = { 46.45, 41.33, 12.32, 48.6, 43.32, 61.37 };
-            double[] gastos = { 45.46, 31.43, 21.23, 46.8, 24.33, 36.71 };
-            var series = new Series("Ganancias");
-            series.ChartType = SeriesChartType.Line;
-            series.Points.DataBindXY(new[] { 1, 2, 3, 4, 5, 6 }, new[] { Convert.ToDouble(ingresos[0] - gastos[0]), Convert.ToDouble(ingresos[1] - gastos[1]), Convert.ToDouble(ingresos[2] - gastos[2]), Convert.ToDouble(ingresos[3] - gastos[3]), Convert.ToDouble(ingresos[4] - gastos[4]), Convert.ToDouble(ingresos[5] - gastos[5]) });
-            chaGanancias.Series.Add(series);
+            //Y finalmente en las gráficas
+            var serieGastos = new Series("Gastos");
+            serieGastos.ChartType = SeriesChartType.Line;
+            serieGastos.Points.DataBindXY(new[] { 1, 2, 3, 4, 5, 6 }, new[] { Convert.ToDouble(gastoMensual[0]), Convert.ToDouble(gastoMensual[1]), Convert.ToDouble(gastoMensual[2]), Convert.ToDouble(gastoMensual[3]), Convert.ToDouble(gastoMensual[4]), Convert.ToDouble(gastoMensual[5]) });
+            chaGastos.Series.Add(serieGastos);
+            var serieIngresos = new Series("Ingresos");
+            serieIngresos.ChartType = SeriesChartType.Line;
+            serieIngresos.Points.DataBindXY(new[] { 1, 2, 3, 4, 5, 6 }, new[] { Convert.ToDouble(ingresoMensual[0]), Convert.ToDouble(ingresoMensual[1]), Convert.ToDouble(ingresoMensual[2]), Convert.ToDouble(ingresoMensual[3]), Convert.ToDouble(ingresoMensual[4]), Convert.ToDouble(ingresoMensual[5]) });
+            chaIngresos.Series.Add(serieIngresos);
+            var serieGanancias = new Series("Ganancias");
+            serieGanancias.ChartType = SeriesChartType.Line;
+            serieGanancias.Points.DataBindXY(new[] { 1, 2, 3, 4, 5, 6 }, new[] { Convert.ToDouble(ingresoMensual[0] - gastoMensual[0]), Convert.ToDouble(ingresoMensual[1] - gastoMensual[1]), Convert.ToDouble(ingresoMensual[2] - gastoMensual[2]), Convert.ToDouble(ingresoMensual[3] - gastoMensual[3]), Convert.ToDouble(ingresoMensual[4] - gastoMensual[4]), Convert.ToDouble(ingresoMensual[5] - gastoMensual[5]) });
+            chaGanancias.Series.Add(serieGanancias);
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

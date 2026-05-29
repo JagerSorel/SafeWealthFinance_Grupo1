@@ -16,5 +16,10 @@ namespace prueba
         {
             InitializeComponent();
         }
+
+        private void volverAlMeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

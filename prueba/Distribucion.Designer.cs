@@ -42,6 +42,8 @@
             // 
             // lblFiltro
             // 
+            this.lblFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFiltro.AutoSize = true;
             this.lblFiltro.Location = new System.Drawing.Point(472, 37);
             this.lblFiltro.Name = "lblFiltro";
@@ -51,6 +53,8 @@
             // 
             // lblDistribucion
             // 
+            this.lblDistribucion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDistribucion.AutoSize = true;
             this.lblDistribucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDistribucion.Location = new System.Drawing.Point(200, 29);
@@ -61,6 +65,9 @@
             // 
             // dgvMetasAhorro
             // 
+            this.dgvMetasAhorro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvMetasAhorro.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMetasAhorro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMetasAhorro.Location = new System.Drawing.Point(12, 61);
             this.dgvMetasAhorro.Name = "dgvMetasAhorro";
@@ -82,9 +89,12 @@
             this.volverAlMenúToolStripMenuItem.Name = "volverAlMenúToolStripMenuItem";
             this.volverAlMenúToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
             this.volverAlMenúToolStripMenuItem.Text = "Volver al menú";
+            this.volverAlMenúToolStripMenuItem.Click += new System.EventHandler(this.volverAlMenúToolStripMenuItem_Click);
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker1.CustomFormat = "MM/yyyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(505, 31);
@@ -94,6 +104,8 @@
             // 
             // lblIndicacion
             // 
+            this.lblIndicacion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblIndicacion.AutoSize = true;
             this.lblIndicacion.Location = new System.Drawing.Point(12, 262);
             this.lblIndicacion.Name = "lblIndicacion";
@@ -103,6 +115,8 @@
             // 
             // checkedListBox1
             // 
+            this.checkedListBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.checkedListBox1.FormattingEnabled = true;
             this.checkedListBox1.Location = new System.Drawing.Point(15, 278);
             this.checkedListBox1.Name = "checkedListBox1";

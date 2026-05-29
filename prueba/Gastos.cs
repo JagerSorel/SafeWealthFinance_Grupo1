@@ -14,7 +14,8 @@ namespace prueba
 {
     public partial class frmGastos : Form
     {
-        private string connectionString = "Server=ELite-PC;Database=SafeWealthFinanceDB;Integrated Security=True;";
+        ConexionYMetodos cym = new ConexionYMetodos();
+        //private string connectionString = "Server=ELite-PC;Database=SafeWealthFinanceDB;Integrated Security=True;";
 
         public frmGastos()
         {
@@ -24,20 +25,20 @@ namespace prueba
 
         private void CargarGastos()
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(cym._connectionString))
             {
                 conn.Open();
                 string query = "SELECT Id_Gasto, NombreTransaccion, MontoGasto, FechaGasto, Id_TipoGasto FROM Gastos";
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                dgGastos.DataSource = dt;
+                dgvGastos.DataSource = dt;
             }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(cym._connectionString))
             {
                 conn.Open();
                 string query = "INSERT INTO Gastos (Id_Usuario, NombreTransaccion, MontoGasto, FechaGasto, Id_TipoGasto) " +
@@ -58,7 +59,7 @@ namespace prueba
 
         private void btnMod_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(cym._connectionString))
             {
                 conn.Open();
                 string query = "UPDATE Gastos SET NombreTransaccion=@Nombre, MontoGasto=@Monto, FechaGasto=@Fecha, Id_TipoGasto=@Tipo " + "WHERE Id_Gasto=@Id";
@@ -78,7 +79,7 @@ namespace prueba
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(cym._connectionString))
             {
                 conn.Open();
                 string query = "DELETE FROM Gastos WHERE Id_Gasto=@Id";
@@ -90,6 +91,32 @@ namespace prueba
 
             MessageBox.Show("Gasto eliminado correctamente");
             CargarGastos();
+        }
+
+        private void volverAlMenúToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void modificarOEliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gbAgregar.Hide();
+            gbFiltrar.Hide();
+            gbMod.Show();
+        }
+
+        private void filtrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gbAgregar.Hide();
+            gbMod.Hide();
+            gbFiltrar.Show();
+        }
+
+        private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gbFiltrar.Hide();
+            gbMod.Hide();
+            gbAgregar.Show();
         }
     }
 }
