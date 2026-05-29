@@ -85,10 +85,16 @@ GO
 Create table Distribucion(
 Id_Distribucion Int primary key identity,
 Id_Usuario int foreign key references Usuario(Id_Usuario),
+--Columnas agregadas empiezan aqui
+Mes int,
+Anio int
+--Columnas agregadas empiezan aqui
 MontoIngreso Decimal(10,2),
 PorAhorro Decimal(10,2),
 PorPresupuesto Decimal(10,2)
 );
+--Si ya habias declarado la base, unicamente coloca el siguiente comando
+--Alter table Distribucion add Mes int, Anio int;
 Go
 Select * From Ingreso
 Go
