@@ -97,13 +97,6 @@
             this.presupuestoMensualToolStripMenuItem.Text = "Presupuesto mensual";
             this.presupuestoMensualToolStripMenuItem.Click += new System.EventHandler(this.presupuestoMensualToolStripMenuItem_Click);
             // 
-            // reporteFinancieroToolStripMenuItem
-            // 
-            this.reporteFinancieroToolStripMenuItem.Name = "reporteFinancieroToolStripMenuItem";
-            this.reporteFinancieroToolStripMenuItem.Size = new System.Drawing.Size(116, 20);
-            this.reporteFinancieroToolStripMenuItem.Text = "Reporte financiero";
-            this.reporteFinancieroToolStripMenuItem.Click += new System.EventHandler(this.reporteFinancieroToolStripMenuItem_Click);
-            // 
             // cerrarSesiónToolStripMenuItem
             // 
             this.cerrarSesiónToolStripMenuItem.ForeColor = System.Drawing.Color.Firebrick;

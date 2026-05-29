@@ -53,11 +53,6 @@ namespace prueba
             frm.Show();
         }
 
-        private void reporteFinancieroToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Reporte reporte = new Reporte();
-            reporte.Show();
-        }
 
         private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
