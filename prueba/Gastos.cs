@@ -197,6 +197,16 @@ namespace prueba
 
         private void checkedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
         {
+            if (e.NewValue == CheckState.Checked)
+            {
+                for (int i = 0; i < checkedListBox1.Items.Count; i++)
+                {
+                    if (i != e.Index)
+                    {
+                        checkedListBox1.SetItemChecked(i, false);
+                    }
+                }
+            }
             string seleccion = checkedListBox1.Items[e.Index].ToString();
             if (e.NewValue == CheckState.Checked)
             {

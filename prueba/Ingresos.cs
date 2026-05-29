@@ -114,9 +114,10 @@ namespace prueba
                     new SqlParameter("@IdUsuario", frmInicio.IdUsuario)
                 });
             cargaActual();
-            cym.ProcesarMovimientosMensuales(dateTimePicker2.Value, frmInicio.IdUsuario,
+            cym.ProcesarMovimientosMensuales(dtpFecha.Value, frmInicio.IdUsuario,
                 "SELECT i.MontoIngreso AS Monto FROM Ingreso i WHERE Id_Usuario = @Id_Usuario AND " +
                 "FechaIngreso >= @FechaInicio AND FechaIngreso < @FechaFin", "Ingresos");
+            cym.LlenarDistribucion(dtpFecha.Value, frmInicio.IdUsuario);
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -131,9 +132,10 @@ namespace prueba
                     //new SqlParameter("@IdUsuario", frmInicio.IdUsuario)
                 });
             cargaActual();
-            cym.ProcesarMovimientosMensuales(dateTimePicker2.Value, frmInicio.IdUsuario,
+            cym.ProcesarMovimientosMensuales(dateTimePicker1.Value, frmInicio.IdUsuario,
                 "SELECT i.MontoIngreso AS Monto FROM Ingreso i WHERE Id_Usuario = @Id_Usuario AND " +
                 "FechaIngreso >= @FechaInicio AND FechaIngreso < @FechaFin", "Ingresos");
+            cym.LlenarDistribucion(dateTimePicker1.Value, frmInicio.IdUsuario);
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -145,9 +147,10 @@ namespace prueba
                     new SqlParameter("@IdUsuario", frmInicio.IdUsuario)
                 });
             cargaActual();
-            cym.ProcesarMovimientosMensuales(dateTimePicker2.Value, frmInicio.IdUsuario,
+            cym.ProcesarMovimientosMensuales(dateTimePicker1.Value, frmInicio.IdUsuario,
                 "SELECT i.MontoIngreso AS Monto FROM Ingreso i WHERE Id_Usuario = @Id_Usuario AND " +
                 "FechaIngreso >= @FechaInicio AND FechaIngreso < @FechaFin", "Ingresos");
+            cym.LlenarDistribucion(dateTimePicker1.Value, frmInicio.IdUsuario);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

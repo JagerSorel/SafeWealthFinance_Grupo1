@@ -119,7 +119,6 @@ namespace prueba
 
             decimal total = dt.AsEnumerable().Sum(row => row.Field<decimal>("Monto"));
 
-            // Verificar si ya existe registro para ese mes/año
             using (SqlCommand cmd = new SqlCommand(
                 "SELECT COUNT(*) FROM GastosMensuales WHERE Id_Usuario = @IdUsuario AND Mes = @Mes AND Anio = @Anio",
                 AbrirConexion()))
@@ -157,6 +156,82 @@ namespace prueba
             }
         }
 
+        public void LlenarDistribucion(DateTime fecha, int idUsuario)
+        {
+            int mes = fecha.Month;
+            int anio = fecha.Year;
+            SqlDataAdapter da = new SqlDataAdapter(
+                "SELECT MontoIngreso FROM Ingreso WHERE " +
+                $"(FechaIngreso >= '{anio}-{mes}-01') AND (FechaIngreso < '{anio}-{mes + 1}-01')" +
+                $" AND (Id_Usuario = {idUsuario})", _connectionString);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            decimal totalIngresos = dt.AsEnumerable().Sum(row => row.Field<decimal>("MontoIngreso"));
+            using (SqlCommand cmd = new SqlCommand(
+                "SELECT COUNT(*) FROM Distribucion WHERE Id_Usuario = @IdUsuario AND Mes = @Mes AND Anio = @Anio",
+                AbrirConexion()))
+            {
+                cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
+                cmd.Parameters.AddWithValue("@Mes", mes);
+                cmd.Parameters.AddWithValue("@Anio", anio);
+                int existeRegistro = (int)cmd.ExecuteScalar();
+                if (existeRegistro > 0)
+                {
+                    ActualizarDatos(
+                        "UPDATE Distribucion SET MontoIngreso = @Total WHERE Id_Usuario = @IdUsuario AND Mes = @Mes AND Anio = @Anio",
+                        new SqlParameter[]
+                        {
+                    new SqlParameter("@IdUsuario", idUsuario),
+                    new SqlParameter("@Mes", mes),
+                    new SqlParameter("@Anio", anio),
+                    new SqlParameter("@Total", totalIngresos)
+                        });
+                }
+                else
+                {
+                    InsertarDatos(
+                        "INSERT INTO Distribucion (Id_Usuario, Mes, Anio, MontoIngreso) VALUES (@IdUsuario, @Mes, @Anio, @Total)",
+                        new SqlParameter[]
+                        {
+                    new SqlParameter("@IdUsuario", idUsuario),
+                    new SqlParameter("@Mes", mes),
+                    new SqlParameter("@Anio", anio),
+                    new SqlParameter("@Total", totalIngresos)
+                        });
+                }
+            }
+        }
+
+        public void AsignarPorcentajes(DateTime Fecha, int porcentajePresupuesto, int porcentajeAhorro)
+        {
+            SqlCommand da = new SqlCommand(
+                "SELECT MontoIngreso FROM Distribucion WHERE Id_Usuario = @IdUsuario AND Mes = @Mes AND Anio = @Anio",
+                AbrirConexion());
+            da.Parameters.AddWithValue("@IdUsuario", frmInicio.IdUsuario);
+            da.Parameters.AddWithValue("@Mes", Fecha.Month);
+            da.Parameters.AddWithValue("@Anio", Fecha.Year);
+
+            SqlDataReader reader = da.ExecuteReader();
+            if (reader.Read())
+            {
+                decimal montoIngreso = reader.GetDecimal(0);
+                decimal montoPresupuesto = montoIngreso * porcentajePresupuesto / 100;
+                decimal montoAhorro = montoIngreso * porcentajeAhorro / 100;
+                reader.Close();
+                ActualizarDatos(
+                   "UPDATE Distribucion SET PorPresupuesto = @MontoPresupuesto, PorAhorro = @MontoAhorro WHERE Id_Usuario = @IdUsuario AND Mes = @Mes AND Anio = @Anio",
+                   new SqlParameter[]
+                   {
+                    new SqlParameter("@MontoPresupuesto", montoPresupuesto),
+                    new SqlParameter("@MontoAhorro", montoAhorro),
+                    new SqlParameter("@IdUsuario", frmInicio.IdUsuario),
+                    new SqlParameter("@Mes", Fecha.Month),
+                    new SqlParameter("@Anio", Fecha.Year)
+                   });
+            }
+
+
+        }
     }
 }
 
