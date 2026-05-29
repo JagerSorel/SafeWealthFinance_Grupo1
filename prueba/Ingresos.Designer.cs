@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmIngresos));
             this.dgvIngresos = new System.Windows.Forms.DataGridView();
             this.lblIngresos = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -366,6 +367,7 @@
             this.Controls.Add(this.lblIngresos);
             this.Controls.Add(this.dgvIngresos);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmIngresos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

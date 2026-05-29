@@ -33,6 +33,7 @@
             this.ahorroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ingresosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.distribuicionDeIngresosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.expedienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gastosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.presupuestoMensualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteFinancieroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,7 +41,6 @@
             this.lblBienvenida = new System.Windows.Forms.Label();
             this.lblHoy = new System.Windows.Forms.Label();
             this.pbLogo = new System.Windows.Forms.PictureBox();
-            this.expedienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.barraMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
@@ -82,6 +82,13 @@
             this.distribuicionDeIngresosToolStripMenuItem.Size = new System.Drawing.Size(146, 20);
             this.distribuicionDeIngresosToolStripMenuItem.Text = "Distribución de ingresos";
             this.distribuicionDeIngresosToolStripMenuItem.Click += new System.EventHandler(this.distribuicionDeIngresosToolStripMenuItem_Click);
+            // 
+            // expedienteToolStripMenuItem
+            // 
+            this.expedienteToolStripMenuItem.Name = "expedienteToolStripMenuItem";
+            this.expedienteToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.expedienteToolStripMenuItem.Text = "Expediente";
+            this.expedienteToolStripMenuItem.Click += new System.EventHandler(this.expedienteToolStripMenuItem_Click);
             // 
             // gastosToolStripMenuItem
             // 
@@ -140,13 +147,6 @@
             this.pbLogo.TabIndex = 3;
             this.pbLogo.TabStop = false;
             // 
-            // expedienteToolStripMenuItem
-            // 
-            this.expedienteToolStripMenuItem.Name = "expedienteToolStripMenuItem";
-            this.expedienteToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
-            this.expedienteToolStripMenuItem.Text = "Expediente";
-            this.expedienteToolStripMenuItem.Click += new System.EventHandler(this.expedienteToolStripMenuItem_Click);
-            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -154,6 +154,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ControlBox = false;
             this.Controls.Add(this.pbLogo);
             this.Controls.Add(this.lblHoy);
             this.Controls.Add(this.lblBienvenida);
