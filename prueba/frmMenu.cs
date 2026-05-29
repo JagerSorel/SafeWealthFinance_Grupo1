@@ -63,6 +63,8 @@ namespace prueba
         {
             frmInicio.IdUsuario = 0;
             this.Close();
+            frmInicio ini = new frmInicio();
+            ini.Show();
         }
         private void expedienteToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -55,14 +55,14 @@ namespace prueba
                 IdUsuario = Convert.ToInt32(dr["Id_Usuario"]);
                 this.Hide();
                 LimpiarIniSes();
-                menu.ShowDialog();
-                this.Show();
+                menu.Show();
             }
             else
             {
                 MessageBox.Show("Usuario o contraseña incorrecta");
             }
             cym.CerrarConexion();
+
         }
 
         private void btnCrearC_Click(object sender, EventArgs e)
