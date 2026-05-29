@@ -66,26 +66,6 @@ namespace prueba
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            /*using (SqlConnection conn = new SqlConnection(connectionString))
-=======
-            using (SqlConnection conn = new SqlConnection(cym._connectionString))
->>>>>>> e1d3be61d6882c844691393c67ad34b1e917bb8f
-            {
-                conn.Open();
-                string query = "INSERT INTO Gastos (Id_Usuario, NombreTransaccion, MontoGasto, FechaGasto, Id_TipoGasto) " +
-                               "VALUES (@IdUsuario, @Nombre, @Monto, @Fecha, @Tipo)";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@IdUsuario", 1);
-                cmd.Parameters.AddWithValue("@Nombre", txtNom.Text);
-                cmd.Parameters.AddWithValue("@Monto", decimal.Parse(txtMonto.Text));
-                cmd.Parameters.AddWithValue("@Fecha", dateTimePicker2.Value);
-                cmd.Parameters.AddWithValue("@Tipo", comboBox1.SelectedValue);
-
-                cmd.ExecuteNonQuery();
-            }
-
-            MessageBox.Show("Gasto agregado correctamente");
-            CargarGastos();*/
             conexion.InsertarDatos("INSERT INTO Gastos (Id_Usuario, NombreTransaccion, MontoGasto, FechaGasto, TipoGasto) VALUES (@IdUsuario, @Nombre, @Monto, @Fecha, @Tipo)",
                 new SqlParameter[]
                 {
@@ -96,29 +76,13 @@ namespace prueba
                     new SqlParameter("@Tipo", Convert.ToInt32(comboBox1.SelectedValue))
                 });
             CargarGastos();
+            conexion.ProcesarMovimientosMensuales(dateTimePicker2.Value, frmInicio.IdUsuario,
+                "SELECT i.MontoGasto AS Monto FROM Gastos i WHERE Id_Usuario = @Id_Usuario AND " +
+                "FechaGasto >= @FechaInicio AND FechaGasto < @FechaFin", "Gastos");
         }
 
         private void btnMod_Click(object sender, EventArgs e)
         {
-            /*using (SqlConnection conn = new SqlConnection(connectionString))
-=======
-            using (SqlConnection conn = new SqlConnection(cym._connectionString))
->>>>>>> e1d3be61d6882c844691393c67ad34b1e917bb8f
-            {
-                conn.Open();
-                string query = "UPDATE Gastos SET NombreTransaccion=@Nombre, MontoGasto=@Monto, FechaGasto=@Fecha, Id_TipoGasto=@Tipo " + "WHERE Id_Gasto=@Id";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@Id", int.Parse(lblId.Text));
-                cmd.Parameters.AddWithValue("@Nombre", txtNomM.Text);
-                cmd.Parameters.AddWithValue("@Monto", decimal.Parse(txtMontoM.Text));
-                cmd.Parameters.AddWithValue("@Fecha", dateTimePicker3.Value);
-                cmd.Parameters.AddWithValue("@Tipo", comboBox2.SelectedValue);
-
-                cmd.ExecuteNonQuery();
-            }
-
-            MessageBox.Show("Gasto modificado correctamente");
-            */
             conexion.ActualizarDatos("UPDATE Gastos SET NombreTransaccion=@Nombre, MontoGasto=@Monto, FechaGasto=@Fecha, TipoGasto=@Tipo WHERE Id_Gasto=@Id",
                 new SqlParameter[]
                 {
@@ -129,30 +93,22 @@ namespace prueba
                     new SqlParameter("@Tipo", Convert.ToInt32(comboBox2.SelectedValue))
                 });
             CargarGastos();
+            conexion.ProcesarMovimientosMensuales(dateTimePicker3.Value, frmInicio.IdUsuario,
+                "SELECT i.MontoGasto AS Monto FROM Gastos i WHERE Id_Usuario = @Id_Usuario AND " +
+                "FechaGasto >= @FechaInicio AND FechaGasto < @FechaFin", "Gastos");
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            /*using (SqlConnection conn = new SqlConnection(connectionString))
-=======
-            using (SqlConnection conn = new SqlConnection(cym._connectionString))
->>>>>>> e1d3be61d6882c844691393c67ad34b1e917bb8f
-            {
-                conn.Open();
-                string query = "DELETE FROM Gastos WHERE Id_Gasto=@Id";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@Id", int.Parse(lblId.Text));
-
-                cmd.ExecuteNonQuery();
-            }
-
-            MessageBox.Show("Gasto eliminado correctamente");*/
             conexion.BorrarDatos("DELETE FROM Gastos WHERE Id_Gasto=@Id",
                 new SqlParameter[]
                 {
                     new SqlParameter("@Id", Convert.ToInt32(comboBox4.SelectedValue))
                 });
             CargarGastos();
+            conexion.ProcesarMovimientosMensuales(dateTimePicker3.Value, frmInicio.IdUsuario,
+                "SELECT i.MontoGasto AS Monto FROM Gastos i WHERE Id_Usuario = @Id_Usuario AND " +
+                "FechaGasto >= @FechaInicio AND FechaGasto < @FechaFin", "Gastos");
         }
 
         private void limpiarCampos()
@@ -276,7 +232,12 @@ namespace prueba
                 SqlDataAdapter da = new SqlDataAdapter("SELECT g.Id_Gasto 'Id Gasto', g.NombreTransaccion 'Nombre', g.MontoGasto 'Monto', g.FechaGasto 'Fecha', tp.TipoGasto 'Tipo de gasto'" +
                     " FROM Gastos g INNER " +
                     " JOIN Tipo_Gasto tp ON g.TipoGasto = tp.Id_TipoGasto " +
-                    $" WHERE g.TipoGasto = {tipoGastoSeleccionado} AND Id_Usuario = {frmInicio.IdUsuario} ORDER BY FechaGasto ASC;", conexion._connectionString);
+                    $" WHERE g.TipoGasto = {tipoGastoSeleccionado} AND Id_Usuario = {frmInicio.IdUsuario} AND g.FechaGasto >= @FechaInicio AND g.FechaGasto < @FechaFin ORDER BY FechaGasto ASC;", conexion._connectionString);
+                int mes = DateTime.Now.Month;
+                DateTime fechaInicio = new DateTime(DateTime.Now.Year, mes, 1);
+                DateTime fechaFin = fechaInicio.AddMonths(1);
+                da.SelectCommand.Parameters.AddWithValue("@FechaInicio", fechaInicio);
+                da.SelectCommand.Parameters.AddWithValue("@FechaFin", fechaFin);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 dgvGastos.DataSource = dt;

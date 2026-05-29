@@ -96,6 +96,67 @@ namespace prueba
             }
             return cn;
         }
+
+        public void ProcesarMovimientosMensuales(
+        DateTime fecha,
+        int idUsuario,
+        string query,
+        string columnaDestino)
+        {
+            int mes = fecha.Month;
+            int anio = fecha.Year;
+
+            DateTime fechaInicio = new DateTime(anio, mes, 1);
+            DateTime fechaFin = fechaInicio.AddMonths(1);
+
+            SqlDataAdapter da = new SqlDataAdapter(query, _connectionString);
+            da.SelectCommand.Parameters.AddWithValue("@FechaInicio", fechaInicio);
+            da.SelectCommand.Parameters.AddWithValue("@FechaFin", fechaFin);
+            da.SelectCommand.Parameters.AddWithValue("@Id_Usuario", frmInicio.IdUsuario);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            decimal total = dt.AsEnumerable().Sum(row => row.Field<decimal>("Monto"));
+
+            // Verificar si ya existe registro para ese mes/año
+            using (SqlCommand cmd = new SqlCommand(
+                "SELECT COUNT(*) FROM GastosMensuales WHERE Id_Usuario = @IdUsuario AND Mes = @Mes AND Anio = @Anio",
+                AbrirConexion()))
+            {
+                cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
+                cmd.Parameters.AddWithValue("@Mes", mes);
+                cmd.Parameters.AddWithValue("@Anio", anio);
+
+                int existeRegistro = (int)cmd.ExecuteScalar();
+
+                if (existeRegistro > 0)
+                {
+                    ActualizarDatos(
+                        $"UPDATE GastosMensuales SET {columnaDestino} = @Total WHERE Id_Usuario = @IdUsuario AND Mes = @Mes AND Anio = @Anio",
+                        new SqlParameter[]
+                        {
+                    new SqlParameter("@IdUsuario", idUsuario),
+                    new SqlParameter("@Mes", mes),
+                    new SqlParameter("@Anio", anio),
+                    new SqlParameter("@Total", total)
+                        });
+                }
+                else
+                {
+                    InsertarDatos(
+                        $"INSERT INTO GastosMensuales (Id_Usuario, Mes, Anio, {columnaDestino}) VALUES (@IdUsuario, @Mes, @Anio, @Total)",
+                        new SqlParameter[]
+                        {
+                    new SqlParameter("@IdUsuario", idUsuario),
+                    new SqlParameter("@Mes", mes),
+                    new SqlParameter("@Anio", anio),
+                    new SqlParameter("@Total", total)
+                        });
+                }
+            }
+        }
+
     }
 }
 
