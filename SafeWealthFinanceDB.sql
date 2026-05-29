@@ -62,12 +62,17 @@ Values('Mensualidad'),
 SELECT * FROM Tipo_Gasto
 
 Create table GastosMensuales(
-Id Int Primary key Identity,
-Mes Varchar,
+Id_GastoMensual int identity,
+Id_Usuario int foreign key references Usuario(Id_Usuario),
+Mes int,
+anio int,
 Ingresos Decimal(10,2),
 Gastos Decimal(10,2),
 Ganancias Decimal(10,2),
 );
+--Si ya habias declarado la base, no la borres, utiliza el siguiente comando
+--drop table GastosMensuales
+--Una vez que lo hayas hecho, ejecuta unicamente el cretare Gastos mensuales con sus propiedades
 Go
 Create table Ingreso(
 Id_Ingreso Int primary key identity,
