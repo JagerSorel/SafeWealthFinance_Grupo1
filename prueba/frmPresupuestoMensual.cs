@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ namespace prueba
 {
     public partial class frmPresupuestoMensual : Form
     {
+        private string connectionString = "Server=.;Database=SafeWealthFinanceDB;Integrated Security=True;";
+
         public frmPresupuestoMensual()
         {
             InitializeComponent();
@@ -295,6 +298,115 @@ namespace prueba
         private void cbTipoGasto_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (cbPeriodo.Text.Trim() == "" || txtIngreso.Text.Trim() == "" || dgvDetalle.Rows.Count == 0)
+            {
+                MessageBox.Show("Debe seleccionar el mes, ingresar el ingreso mensual y agregar al menos un detalle.",
+                                "Guardar presupuesto",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+
+            CalcularTotales();
+
+            decimal totalEspeculado = 0;
+            decimal totalReal = 0;
+            decimal porcentaje = 0;
+
+            decimal.TryParse(lblTotalEspeculado.Text.Replace("$", ""), out totalEspeculado);
+            decimal.TryParse(lblTotalReal.Text.Replace("$", ""), out totalReal);
+            decimal.TryParse(lblPorcentaje.Text.Replace("%", ""), out porcentaje);
+
+            DateTime fecha = DateTime.Parse("01/" + cbPeriodo.Text);
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                SqlTransaction transaccion = conn.BeginTransaction();
+
+                try
+                {
+                    string queryPresupuesto = @"
+                INSERT INTO Presupuesto_Mensual
+                (Id_Usuario, Fecha, TotalEspeculado, TotalReal, PorcentajeFinal)
+                VALUES
+                (@Id_Usuario, @Fecha, @TotalEspeculado, @TotalReal, @PorcentajeFinal);
+                SELECT SCOPE_IDENTITY();";
+
+                    SqlCommand cmdPresupuesto = new SqlCommand(queryPresupuesto, conn, transaccion);
+
+                    cmdPresupuesto.Parameters.AddWithValue("@Id_Usuario", 1);
+                    cmdPresupuesto.Parameters.AddWithValue("@Fecha", fecha);
+                    cmdPresupuesto.Parameters.AddWithValue("@TotalEspeculado", totalEspeculado);
+                    cmdPresupuesto.Parameters.AddWithValue("@TotalReal", totalReal);
+                    cmdPresupuesto.Parameters.AddWithValue("@PorcentajeFinal", porcentaje);
+
+                    int idPresupuesto = Convert.ToInt32(cmdPresupuesto.ExecuteScalar());
+
+                    foreach (DataGridViewRow fila in dgvDetalle.Rows)
+                    {
+                        if (fila.IsNewRow) continue;
+
+                        string nombre = fila.Cells["NombreTransaccion"].Value.ToString();
+                        string tipoGasto = fila.Cells["TipoGasto"].Value.ToString();
+                        decimal monto = Convert.ToDecimal(fila.Cells["Monto"].Value);
+
+                        int idTipoGasto = ObtenerIdTipoGasto(tipoGasto, conn, transaccion);
+
+                        string queryDetalle = @"
+                    INSERT INTO Presupuesto_Detalle
+                    (Id_Detalle, Id_Presupuesto, NombreTransaccion, Id_TipoGasto, MontoEspeculado)
+                    VALUES
+                    (@Id_Detalle, @Id_Presupuesto, @NombreTransaccion, @Id_TipoGasto, @MontoEspeculado);";
+
+                        SqlCommand cmdDetalle = new SqlCommand(queryDetalle, conn, transaccion);
+
+                        cmdDetalle.Parameters.AddWithValue("@Id_Detalle", ObtenerSiguienteIdDetalle(conn, transaccion));
+                        cmdDetalle.Parameters.AddWithValue("@Id_Presupuesto", idPresupuesto);
+                        cmdDetalle.Parameters.AddWithValue("@NombreTransaccion", nombre);
+                        cmdDetalle.Parameters.AddWithValue("@Id_TipoGasto", idTipoGasto);
+                        cmdDetalle.Parameters.AddWithValue("@MontoEspeculado", monto);
+
+                        cmdDetalle.ExecuteNonQuery();
+                    }
+
+                    transaccion.Commit();
+
+                    MessageBox.Show("Presupuesto guardado correctamente.",
+                                    "Guardar",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    transaccion.Rollback();
+                    MessageBox.Show("Error al guardar: " + ex.Message);
+                }
+            }
+
+        }
+
+        private int ObtenerIdTipoGasto(string tipoGasto, SqlConnection conn, SqlTransaction transaccion)
+        {
+            string query = "SELECT Id_TipoGasto FROM Tipo_Gasto WHERE TipoGasto = @TipoGasto";
+
+            SqlCommand cmd = new SqlCommand(query, conn, transaccion);
+            cmd.Parameters.AddWithValue("@TipoGasto", tipoGasto);
+
+            return Convert.ToInt32(cmd.ExecuteScalar());
+        }
+        private int ObtenerSiguienteIdDetalle(SqlConnection conn, SqlTransaction transaccion)
+        {
+            string query = "SELECT ISNULL(MAX(Id_Detalle), 0) + 1 FROM Presupuesto_Detalle";
+
+            SqlCommand cmd = new SqlCommand(query, conn, transaccion);
+
+            return Convert.ToInt32(cmd.ExecuteScalar());
         }
     }
 }
