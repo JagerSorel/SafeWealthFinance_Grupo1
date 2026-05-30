@@ -87,7 +87,7 @@ Id_Distribucion Int primary key identity,
 Id_Usuario int foreign key references Usuario(Id_Usuario),
 --Columnas agregadas empiezan aqui
 Mes int,
-Anio int
+Anio int,
 --Columnas agregadas terminan aqui
 MontoIngreso Decimal(10,2),
 PorAhorro Decimal(10,2),
