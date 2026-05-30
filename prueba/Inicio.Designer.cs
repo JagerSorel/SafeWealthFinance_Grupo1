@@ -49,6 +49,7 @@
             this.btnCrearC = new System.Windows.Forms.Button();
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.btnProv = new System.Windows.Forms.Button();
             this.gbIniciarSesion.SuspendLayout();
             this.gbCrearCuenta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
@@ -257,12 +258,23 @@
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // btnProv
+            // 
+            this.btnProv.Location = new System.Drawing.Point(273, 406);
+            this.btnProv.Name = "btnProv";
+            this.btnProv.Size = new System.Drawing.Size(127, 23);
+            this.btnProv.TabIndex = 5;
+            this.btnProv.Text = "Inic. sin cuenta (dev)";
+            this.btnProv.UseVisualStyleBackColor = true;
+            this.btnProv.Click += new System.EventHandler(this.btnProv_Click);
+            // 
             // frmInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(429, 441);
             this.ControlBox = false;
+            this.Controls.Add(this.btnProv);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.pbLogo);
             this.Controls.Add(this.gbCrearCuenta);
@@ -303,6 +315,7 @@
         private System.Windows.Forms.Button btnCrearCuenta;
         private System.Windows.Forms.PictureBox pbLogo;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button btnProv;
     }
 }
 

@@ -36,6 +36,7 @@
             this.expedienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gastosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.presupuestoMensualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteFinancieroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblBienvenida = new System.Windows.Forms.Label();
             this.lblHoy = new System.Windows.Forms.Label();
@@ -53,6 +54,7 @@
             this.expedienteToolStripMenuItem,
             this.gastosToolStripMenuItem,
             this.presupuestoMensualToolStripMenuItem,
+            this.reporteFinancieroToolStripMenuItem,
             this.cerrarSesiónToolStripMenuItem});
             this.barraMenu.Location = new System.Drawing.Point(0, 0);
             this.barraMenu.Name = "barraMenu";
@@ -178,6 +180,7 @@
         private System.Windows.Forms.ToolStripMenuItem gastosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem presupuestoMensualToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ahorroToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteFinancieroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesiónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem distribuicionDeIngresosToolStripMenuItem;
         private System.Windows.Forms.Label lblBienvenida;

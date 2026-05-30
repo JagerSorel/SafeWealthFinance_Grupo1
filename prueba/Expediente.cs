@@ -37,13 +37,14 @@ namespace prueba
             {
                 try
                 {
-                    string query = "SELECT Id_Usuario, FechaGasto, MontoGasto FROM Gastos WHERE @Id_Usuario, @FechaGasto, @MontoGasto";
+                    string query = "SELECT Id_Usuario, FechaGasto, MontoGasto FROM Gastos";
                     SqlCommand command = new SqlCommand(query);
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        DateTime fechaGasto = DateTime.Parse(reader["@FechaGasto"].ToString());
-                        int id = Convert.ToInt32(reader["@Id_Usuario"]);
+                        //Antes de comprobar el mes compruebo el año, y antes del año el ID de usuario actual ¿De donde saco el ID? ¿Y el helado? Biden moment
+                        DateTime fechaGasto = DateTime.Parse(reader["FechaGasto"].ToString());
+                        int id = Convert.ToInt32(reader["Id_Usuario"]);
                         int anio = fechaGasto.Year;
                         int mes = fechaGasto.Month - 1;
                         if (id == frmInicio.IdUsuario)
@@ -52,7 +53,7 @@ namespace prueba
                             {
                                 if (mes >= 0 && mes < 6)
                                 {
-                                    decimal monto = decimal.Parse(reader["@MontoGasto"].ToString());
+                                    decimal monto = decimal.Parse(reader["MontoGasto"].ToString());
                                     gastoMensual[mes] += monto;
                                 }
                             }
@@ -77,13 +78,13 @@ namespace prueba
             {
                 try
                 {
-                    string query = "SELECT Id_Usuario, FechaIngreso, MontoIngreso FROM Ingreso WHERE @Id_Usuario, @FechaIngreso, @MontoIngreso";
+                    string query = "SELECT Id_Usuario, FechaIngreso, MontoIngreso FROM Ingreso";
                     SqlCommand command = new SqlCommand(query);
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        DateTime fechaIngreso = DateTime.Parse(reader["@FechaIngreso"].ToString());
-                        int id = Convert.ToInt32(reader["@Id_Usuario"]);
+                        DateTime fechaIngreso = DateTime.Parse(reader["FechaIngreso"].ToString());
+                        int id = Convert.ToInt32(reader["Id_Usuario"]);
                         int anio = fechaIngreso.Year;
                         int mes = fechaIngreso.Month - 1;
                         if (id == frmInicio.IdUsuario)
@@ -92,7 +93,7 @@ namespace prueba
                             {
                                 if (mes >= 0 && mes < 6)
                                 {
-                                    decimal monto = decimal.Parse(reader["@MontoIngreso"].ToString());
+                                    decimal monto = decimal.Parse(reader["MontoIngreso"].ToString());
                                     ingresoMensual[mes] += monto;
                                 }
                             }
@@ -119,6 +120,7 @@ namespace prueba
                 gananciaMensual[h] = ingresoMensual[h] - gastoMensual[h];
             }
         }
+        //Luego de agrupar la información en arreglos se representarán en la tabla DGV
         private void GenTabla()
         {
              string[] nommes = { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio" };
@@ -133,6 +135,8 @@ namespace prueba
              }
              dgvSemestre.DataSource = dt;
         }
+
+        //Y finalmente en las gráficas
             private void GenGraficas() {
                 var serieGastos = new Series("Gastos");
                 serieGastos.ChartType = SeriesChartType.Line;

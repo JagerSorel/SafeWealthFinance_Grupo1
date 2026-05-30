@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDistribucion));
             this.lblFiltro = new System.Windows.Forms.Label();
             this.lblDistribucion = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -140,7 +139,6 @@
             this.Controls.Add(this.lblFiltro);
             this.Controls.Add(this.lblDistribucion);
             this.Controls.Add(this.menuStrip1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmDistribucion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
