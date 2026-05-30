@@ -41,8 +41,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmExpediente));
             this.expedienteSemestralBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.safeWealthFinanceDBDataSet = new prueba.SafeWealthFinanceDBDataSet();
-            this.chaIngresos = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chaGastos = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chaIngresos = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chaGanancias = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -58,8 +58,8 @@
             this.volverAlMenúToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.expedienteSemestralBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.safeWealthFinanceDBDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chaIngresos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chaGastos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chaIngresos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chaGanancias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.safeWealthFinanceDBDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSemestre)).BeginInit();
@@ -76,41 +76,41 @@
             this.safeWealthFinanceDBDataSet.DataSetName = "SafeWealthFinanceDBDataSet";
             this.safeWealthFinanceDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // chaIngresos
+            // chaGastos
             // 
-            this.chaIngresos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chaGastos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             chartArea1.Name = "ChartArea1";
-            this.chaIngresos.ChartAreas.Add(chartArea1);
+            this.chaGastos.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            this.chaIngresos.Legends.Add(legend1);
-            this.chaIngresos.Location = new System.Drawing.Point(47, 392);
-            this.chaIngresos.Name = "chaIngresos";
-            this.chaIngresos.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
+            this.chaGastos.Legends.Add(legend1);
+            this.chaGastos.Location = new System.Drawing.Point(47, 392);
+            this.chaGastos.Name = "chaGastos";
+            this.chaGastos.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
-            this.chaIngresos.Series.Add(series1);
-            this.chaIngresos.Size = new System.Drawing.Size(300, 300);
-            this.chaIngresos.TabIndex = 1;
-            this.chaIngresos.Text = "chart1";
+            this.chaGastos.Series.Add(series1);
+            this.chaGastos.Size = new System.Drawing.Size(300, 300);
+            this.chaGastos.TabIndex = 1;
+            this.chaGastos.Text = "chart1";
             // 
-            // chaGastos
+            // chaIngresos
             // 
-            this.chaGastos.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.chaIngresos.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             chartArea2.Name = "ChartArea1";
-            this.chaGastos.ChartAreas.Add(chartArea2);
+            this.chaIngresos.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
-            this.chaGastos.Legends.Add(legend2);
-            this.chaGastos.Location = new System.Drawing.Point(353, 392);
-            this.chaGastos.Name = "chaGastos";
-            this.chaGastos.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
+            this.chaIngresos.Legends.Add(legend2);
+            this.chaIngresos.Location = new System.Drawing.Point(353, 392);
+            this.chaIngresos.Name = "chaIngresos";
+            this.chaIngresos.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
             series2.Name = "Series1";
-            this.chaGastos.Series.Add(series2);
-            this.chaGastos.Size = new System.Drawing.Size(300, 300);
-            this.chaGastos.TabIndex = 2;
-            this.chaGastos.Text = "chart2";
+            this.chaIngresos.Series.Add(series2);
+            this.chaIngresos.Size = new System.Drawing.Size(300, 300);
+            this.chaIngresos.TabIndex = 2;
+            this.chaIngresos.Text = "chart2";
             // 
             // chaGanancias
             // 
@@ -257,8 +257,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chaGanancias);
-            this.Controls.Add(this.chaGastos);
             this.Controls.Add(this.chaIngresos);
+            this.Controls.Add(this.chaGastos);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -267,8 +267,8 @@
             this.Load += new System.EventHandler(this.Expediente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.expedienteSemestralBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.safeWealthFinanceDBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chaIngresos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chaGastos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chaIngresos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chaGanancias)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.safeWealthFinanceDBDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSemestre)).EndInit();
@@ -280,8 +280,8 @@
         }
 
         #endregion
-        private System.Windows.Forms.DataVisualization.Charting.Chart chaIngresos;
         private System.Windows.Forms.DataVisualization.Charting.Chart chaGastos;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chaIngresos;
         private System.Windows.Forms.DataVisualization.Charting.Chart chaGanancias;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

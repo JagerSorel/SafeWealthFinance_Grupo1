@@ -33,17 +33,17 @@ namespace prueba
         }
         private void OrgGastos()
         {
-            cym.AbrirConexion();
+            try
             {
-                try
+                string query = "SELECT Id_Usuario, FechaGasto, MontoGasto FROM Gastos";
+                using (SqlConnection cn = new SqlConnection(cym._connectionString))
                 {
-                    string query = "SELECT Id_Usuario, FechaGasto, MontoGasto FROM Gastos";
-                    SqlCommand command = new SqlCommand(query);
+                    cn.Open();
+                    SqlCommand command = new SqlCommand(query, cn);
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        //Antes de comprobar el mes compruebo el año, y antes del año el ID de usuario actual ¿De donde saco el ID? ¿Y el helado? Biden moment
-                        DateTime fechaGasto = DateTime.Parse(reader["FechaGasto"].ToString());
+                        DateTime fechaGasto = reader.GetDateTime(reader.GetOrdinal("FechaGasto"));
                         int id = Convert.ToInt32(reader["Id_Usuario"]);
                         int anio = fechaGasto.Year;
                         int mes = fechaGasto.Month - 1;
@@ -65,25 +65,25 @@ namespace prueba
                         Console.WriteLine($"Mes {i + 1}: {gastoMensual[i]}");
                     }
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error: " + ex.Message);
-                }
             }
-            cym.CerrarConexion();
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
         }
         public void OrgIngresos()
         {
-            cym.AbrirConexion();
+            try
             {
-                try
+                string query = "SELECT Id_Usuario, FechaIngreso, MontoIngreso FROM Ingreso";
+                using (SqlConnection cn = new SqlConnection(cym._connectionString))
                 {
-                    string query = "SELECT Id_Usuario, FechaIngreso, MontoIngreso FROM Ingreso";
-                    SqlCommand command = new SqlCommand(query);
+                    cn.Open();
+                    SqlCommand command = new SqlCommand(query, cn);
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        DateTime fechaIngreso = DateTime.Parse(reader["FechaIngreso"].ToString());
+                        DateTime fechaIngreso = reader.GetDateTime(reader.GetOrdinal("FechaIngreso"));
                         int id = Convert.ToInt32(reader["Id_Usuario"]);
                         int anio = fechaIngreso.Year;
                         int mes = fechaIngreso.Month - 1;
@@ -100,18 +100,16 @@ namespace prueba
                         }
                     }
                     reader.Close();
-
                     for (int i = 0; i < ingresoMensual.Length; i++)
                     {
                         Console.WriteLine($"Mes {i + 1}: {ingresoMensual[i]}");
                     }
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error: " + ex.Message);
-                }
             }
-            cym.CerrarConexion();
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
         }
         private void OrgGanancias()
         {
@@ -120,7 +118,6 @@ namespace prueba
                 gananciaMensual[h] = ingresoMensual[h] - gastoMensual[h];
             }
         }
-        //Luego de agrupar la información en arreglos se representarán en la tabla DGV
         private void GenTabla()
         {
              string[] nommes = { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio" };
@@ -135,8 +132,6 @@ namespace prueba
              }
              dgvSemestre.DataSource = dt;
         }
-
-        //Y finalmente en las gráficas
             private void GenGraficas() {
                 var serieGastos = new Series("Gastos");
                 serieGastos.ChartType = SeriesChartType.Line;

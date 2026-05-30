@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAhorro));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.agregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarOEliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,13 +60,13 @@
             this.lblMontoMetaM = new System.Windows.Forms.Label();
             this.lblNomM = new System.Windows.Forms.Label();
             this.gbAbono = new System.Windows.Forms.GroupBox();
+            this.lblSaldoDisponible = new System.Windows.Forms.Label();
             this.btnAbono = new System.Windows.Forms.Button();
             this.btnLimpiar2 = new System.Windows.Forms.Button();
             this.txtMontoAbono = new System.Windows.Forms.TextBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.lblMontoAbonar = new System.Windows.Forms.Label();
             this.lblIdAbono = new System.Windows.Forms.Label();
-            this.lblSaldoDisponible = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMetasAhorro)).BeginInit();
             this.gbAgregar.SuspendLayout();
@@ -386,6 +387,15 @@
             this.gbAbono.TabStop = false;
             this.gbAbono.Text = "Abonar meta";
             // 
+            // lblSaldoDisponible
+            // 
+            this.lblSaldoDisponible.AutoSize = true;
+            this.lblSaldoDisponible.Location = new System.Drawing.Point(34, 136);
+            this.lblSaldoDisponible.Name = "lblSaldoDisponible";
+            this.lblSaldoDisponible.Size = new System.Drawing.Size(130, 13);
+            this.lblSaldoDisponible.TabIndex = 6;
+            this.lblSaldoDisponible.Text = "Saldo destinado al ahorro:";
+            // 
             // btnAbono
             // 
             this.btnAbono.Location = new System.Drawing.Point(508, 87);
@@ -439,15 +449,6 @@
             this.lblIdAbono.TabIndex = 0;
             this.lblIdAbono.Text = "ID";
             // 
-            // lblSaldoDisponible
-            // 
-            this.lblSaldoDisponible.AutoSize = true;
-            this.lblSaldoDisponible.Location = new System.Drawing.Point(34, 136);
-            this.lblSaldoDisponible.Name = "lblSaldoDisponible";
-            this.lblSaldoDisponible.Size = new System.Drawing.Size(130, 13);
-            this.lblSaldoDisponible.TabIndex = 6;
-            this.lblSaldoDisponible.Text = "Saldo destinado al ahorro:";
-            // 
             // frmAhorro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -461,6 +462,7 @@
             this.Controls.Add(this.lblAhorro);
             this.Controls.Add(this.dgvMetasAhorro);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmAhorro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
