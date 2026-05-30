@@ -13,8 +13,9 @@ namespace prueba
 {
     public partial class frmPresupuestoMensual : Form
     {
-        private string connectionString = "Server=.;Database=SafeWealthFinanceDB;Integrated Security=True;";
-
+        //private string connectionString = "Server=.;Database=SafeWealthFinanceDB;Integrated Security=True;";
+        private string connectionString =
+            "Server=DESKTOP-NFDMETJ\\SQLEXPRESS;Database=SafeWealthFinanceDB;Integrated Security=True;TrustServerCertificate=True;";
         public frmPresupuestoMensual()
         {
             InitializeComponent();
@@ -360,13 +361,12 @@ namespace prueba
 
                         string queryDetalle = @"
                     INSERT INTO Presupuesto_Detalle
-                    (Id_Detalle, Id_Presupuesto, NombreTransaccion, Id_TipoGasto, MontoEspeculado)
+                    (Id_Presupuesto, NombreTransaccion, Id_TipoGasto, MontoEspeculado)
                     VALUES
-                    (@Id_Detalle, @Id_Presupuesto, @NombreTransaccion, @Id_TipoGasto, @MontoEspeculado);";
+                    (@Id_Presupuesto, @NombreTransaccion, @Id_TipoGasto, @MontoEspeculado);";
 
                         SqlCommand cmdDetalle = new SqlCommand(queryDetalle, conn, transaccion);
 
-                        cmdDetalle.Parameters.AddWithValue("@Id_Detalle", ObtenerSiguienteIdDetalle(conn, transaccion));
                         cmdDetalle.Parameters.AddWithValue("@Id_Presupuesto", idPresupuesto);
                         cmdDetalle.Parameters.AddWithValue("@NombreTransaccion", nombre);
                         cmdDetalle.Parameters.AddWithValue("@Id_TipoGasto", idTipoGasto);

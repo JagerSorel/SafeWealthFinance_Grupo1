@@ -14,6 +14,7 @@ namespace prueba
     public partial class frmAhorro : Form
     {
         ConexionYMetodos cym = new ConexionYMetodos();
+        decimal montoAhorro;
         public frmAhorro()
         {
             InitializeComponent();
@@ -34,6 +35,7 @@ namespace prueba
                 new { Texto = "En proceso", Valor = "En proceso" },
                 new { Texto = "Completa", Valor = "Completa" }
             };
+            SaldoDisponible();
         }
 
         private void cargarDatos() 
@@ -129,6 +131,17 @@ namespace prueba
 
         private void btnAbono_Click(object sender, EventArgs e)
         {
+            decimal montoAbono;
+            if (!decimal.TryParse(txtMontoAbono.Text, out montoAbono))
+            {
+                MessageBox.Show("Ingrese un monto válido.");
+                return;
+            }
+            if (Convert.ToDecimal(txtMontoAbono.Text) > montoAhorro)
+            {
+                MessageBox.Show("No tienes suficiente saldo para realizar este abono.");
+                return;
+            }
             cym.ActualizarDatos("UPDATE Metas_Ahorro SET MontoRealizado = MontoRealizado + @MontoAbono WHERE Id_Meta = @Id_Meta",
                 new SqlParameter[]
                 {
@@ -155,6 +168,15 @@ namespace prueba
             reader.Close();
             cargarDatos();
             limpiarCampos();
+            cym.ActualizarDatos("UPDATE DineroAhorro SET MontoAhorro = MontoAhorro - @MontoAbono WHERE mes = @mes AND anio = @anio AND Id_Usuario = @Id_Usuario",
+                new SqlParameter[]
+                {
+                    new SqlParameter("@MontoAbono", montoAbono),
+                    new SqlParameter("@mes", Convert.ToInt32(DateTime.Now.Month)),
+                    new SqlParameter("@anio", Convert.ToInt32(DateTime.Now.Year)),
+                    new SqlParameter("@Id_Usuario", frmInicio.IdUsuario)
+                });
+            SaldoDisponible();
         }
 
         private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -216,5 +238,24 @@ namespace prueba
             da.Fill(dt);
             dgvMetasAhorro.DataSource = dt;
         }
+
+        private void SaldoDisponible()
+        {
+            SqlCommand cmd = new SqlCommand("SELECT MontoAhorro FROM DineroAhorro WHERE mes = @mes AND anio = @anio", cym.AbrirConexion());
+            cmd.Parameters.AddWithValue("@mes", DateTime.Now.Month);
+            cmd.Parameters.AddWithValue("@anio", DateTime.Now.Year);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                montoAhorro = reader.GetDecimal(reader.GetOrdinal("MontoAhorro"));
+                lblSaldoDisponible.Text = $"Saldo disponible: {montoAhorro:C}";
+            }
+            else
+            {
+                montoAhorro = 0;
+                lblSaldoDisponible.Text = "Saldo disponible: $0.00" +
+                    "\nPor favor distribuya sus fondos";
+            }
+        }   
     }
 }

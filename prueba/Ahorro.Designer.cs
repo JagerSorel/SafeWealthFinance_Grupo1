@@ -65,6 +65,7 @@
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.lblMontoAbonar = new System.Windows.Forms.Label();
             this.lblIdAbono = new System.Windows.Forms.Label();
+            this.lblSaldoDisponible = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMetasAhorro)).BeginInit();
             this.gbAgregar.SuspendLayout();
@@ -371,6 +372,7 @@
             // 
             this.gbAbono.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbAbono.Controls.Add(this.lblSaldoDisponible);
             this.gbAbono.Controls.Add(this.btnAbono);
             this.gbAbono.Controls.Add(this.btnLimpiar2);
             this.gbAbono.Controls.Add(this.txtMontoAbono);
@@ -436,6 +438,15 @@
             this.lblIdAbono.Size = new System.Drawing.Size(18, 13);
             this.lblIdAbono.TabIndex = 0;
             this.lblIdAbono.Text = "ID";
+            // 
+            // lblSaldoDisponible
+            // 
+            this.lblSaldoDisponible.AutoSize = true;
+            this.lblSaldoDisponible.Location = new System.Drawing.Point(34, 136);
+            this.lblSaldoDisponible.Name = "lblSaldoDisponible";
+            this.lblSaldoDisponible.Size = new System.Drawing.Size(130, 13);
+            this.lblSaldoDisponible.TabIndex = 6;
+            this.lblSaldoDisponible.Text = "Saldo destinado al ahorro:";
             // 
             // frmAhorro
             // 
@@ -508,5 +519,6 @@
         private System.Windows.Forms.Button btnAbono;
         private System.Windows.Forms.Button btnLimpiar2;
         private System.Windows.Forms.TextBox txtMontoAbono;
+        private System.Windows.Forms.Label lblSaldoDisponible;
     }
 }
