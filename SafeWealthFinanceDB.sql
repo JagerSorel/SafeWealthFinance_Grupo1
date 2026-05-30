@@ -95,6 +95,14 @@ PorPresupuesto Decimal(10,2)
 );
 --Si ya habias declarado la base, unicamente coloca el siguiente comando
 --Alter table Distribucion add Mes int, Anio int;
+GO
+create table DineroAhorro(
+Id_DineroAhorro int primary key identity,
+Id_Usuario int foreign key references Usuario(Id_Usuario),
+mes int,
+anio int,
+MontoAhorro decimal(10,2)
+);
 Go
 Select * From Ingreso
 Go
