@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAhorro));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.agregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarOEliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -461,6 +462,7 @@
             this.Controls.Add(this.lblAhorro);
             this.Controls.Add(this.dgvMetasAhorro);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmAhorro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

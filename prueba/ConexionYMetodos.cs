@@ -13,9 +13,9 @@ namespace prueba
     internal class ConexionYMetodos
     {
 
-        //public readonly string _connectionString = "Server=PC-ELite\\SQLEXPRESS;Database=SafeWealthFinanceDB;Trusted_Connection=True;";
-        public readonly string _connectionString =
-            "Server=DESKTOP-NFDMETJ\\SQLEXPRESS;Database=SafeWealthFinanceDB;Integrated Security=True;TrustServerCertificate=True;";
+        public readonly string _connectionString = "Server=PC-ELite\\SQLEXPRESS;Database=SafeWealthFinanceDB;Trusted_Connection=True;";
+        //public readonly string _connectionString =
+            //"Server=localhost;Database=SafeWealthFinanceDB;Integrated Security=True;TrustServerCertificate=True;";
         public void InsertarDatos(string query, SqlParameter[] parameters)
         {
             try
@@ -228,50 +228,6 @@ namespace prueba
                     new SqlParameter("@Mes", Fecha.Month),
                     new SqlParameter("@Anio", Fecha.Year)
                    });
-                decimal MontoAhorro = montoIngreso * porcentajeAhorro / 100;
-                SqlDataAdapter d1 = new SqlDataAdapter(
-                    "SELECT MontoAhorro FROM DineroAhorro WHERE Id_Usuario = @IdUsuario AND Mes = @Mes AND Anio = @Anio",
-                    _connectionString);
-                d1.SelectCommand.Parameters.AddWithValue("@IdUsuario", frmInicio.IdUsuario);
-                d1.SelectCommand.Parameters.AddWithValue("@Mes", Fecha.Month);
-                d1.SelectCommand.Parameters.AddWithValue("@Anio", Fecha.Year);
-                SqlCommand cmd = new SqlCommand(
-                    "SELECT MontoAhorro FROM DineroAhorro WHERE Id_Usuario = @IdUsuario AND Mes = @Mes AND Anio = @Anio",
-                    AbrirConexion());
-                cmd.Parameters.AddWithValue("@IdUsuario", frmInicio.IdUsuario);
-                cmd.Parameters.AddWithValue("@Mes", (Fecha.Month - 1));
-                cmd.Parameters.AddWithValue("@Anio", Fecha.Year);
-                object result = cmd.ExecuteScalar();
-                if (result != null && result != DBNull.Value)
-                {
-                    MontoAhorro += Convert.ToDecimal(result);
-                }
-                DataTable dt = new DataTable();
-                d1.Fill(dt);
-                if (dt.Rows.Count > 0)
-                {
-                    ActualizarDatos(
-                        "UPDATE DineroAhorro SET MontoAhorro = @MontoAhorro WHERE Id_Usuario = @IdUsuario AND Mes = @Mes AND Anio = @Anio",
-                        new SqlParameter[]
-                        {
-                    new SqlParameter("@MontoAhorro", (MontoAhorro)),
-                    new SqlParameter("@IdUsuario", frmInicio.IdUsuario),
-                    new SqlParameter("@Mes", Fecha.Month),
-                    new SqlParameter("@Anio", Fecha.Year)
-                        });
-                }
-                else
-                {
-                    InsertarDatos(
-                        "INSERT INTO DineroAhorro (Id_Usuario, Mes, Anio, MontoAhorro) VALUES (@IdUsuario, @Mes, @Anio, @MontoAhorro)",
-                        new SqlParameter[]
-                        {
-                    new SqlParameter("@IdUsuario", frmInicio.IdUsuario),
-                    new SqlParameter("@Mes", Fecha.Month),
-                    new SqlParameter("@Anio", Fecha.Year),
-                    new SqlParameter("@MontoAhorro", (MontoAhorro))
-                        });
-                }
             }
 
 

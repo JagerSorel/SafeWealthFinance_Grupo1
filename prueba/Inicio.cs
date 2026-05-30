@@ -103,16 +103,6 @@ namespace prueba
             this.Close();
             Application.Exit();
         }
-
-        private void btnProv_Click(object sender, EventArgs e)
-        {
-            //BOTÓN PRESENTE POR CONVENIENCIA, DEBE BORRARSE AL TERMINAR EL TRABAJO
-            frmMenu menu = new frmMenu();
-            this.Hide();
-            LimpiarIniSes();
-            menu.ShowDialog();
-            this.Show();
-        }
         private void LimpiarCrearCuenta()
         {
             txtUsuarioC.Text = "";
