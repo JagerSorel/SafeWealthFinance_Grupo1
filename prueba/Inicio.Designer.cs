@@ -266,6 +266,7 @@
             this.btnProv.TabIndex = 5;
             this.btnProv.Text = "Inic. sin cuenta (dev)";
             this.btnProv.UseVisualStyleBackColor = true;
+            this.btnProv.Visible = false;
             this.btnProv.Click += new System.EventHandler(this.btnProv_Click);
             // 
             // frmInicio
