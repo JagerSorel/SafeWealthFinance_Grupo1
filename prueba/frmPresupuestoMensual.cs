@@ -13,12 +13,12 @@ namespace prueba
 {
     public partial class frmPresupuestoMensual : Form
     {
-        //private string connectionString = "Server=.;Database=SafeWealthFinanceDB;Integrated Security=True;";
-        ConexionYMetodos conexion = new ConexionYMetodos(); public frmPresupuestoMensual()
+        ConexionYMetodos conexion = new ConexionYMetodos();
+
+        public frmPresupuestoMensual()
         {
             InitializeComponent();
             this.Load += frmPresupuestoMensual_Load;
-
         }
 
         private void frmPresupuestoMensual_Load(object sender, EventArgs e)
@@ -37,8 +37,8 @@ namespace prueba
 
             CargarTiposGasto();
             CargarPeriodos();
-
         }
+
         private void CargarTiposGasto()
         {
             cbTipoGasto.Items.Clear();
@@ -54,10 +54,7 @@ namespace prueba
             cbTipoGasto.Items.Add("Ahorro");
             cbTipoGasto.Items.Add("Otros");
         }
-        private void cbMes_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
         private void CargarPeriodos()
         {
             cbPeriodo.Items.Clear();
@@ -68,170 +65,7 @@ namespace prueba
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void volverAlMenuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // Validar campos obligatorios primero
-            if (cbPeriodo.Text.Trim() == "" ||
-                txtIngreso.Text.Trim() == "" ||
-                txtNombreTransaccion.Text.Trim() == "" ||
-                cbTipoGasto.Text.Trim() == "" ||
-                txtMonto.Text.Trim() == "")
-            {
-                MessageBox.Show("Debe completar todos los campos.",
-                                "Campos obligatorios",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Warning);
-                return;
-            }
-
-            dgvDetalle.Rows.Add(
-                txtNombreTransaccion.Text,
-                cbTipoGasto.Text,
-                txtMonto.Text
-            );
-
-            txtNombreTransaccion.Clear();
-            txtMonto.Clear();
-            cbTipoGasto.SelectedIndex = -1;
-
-        }
-
-        private void cbPeriodo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-      
-   
-        }
-
-        private void lblTotalEspeculado_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void agregarToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-
-            agregarToolStripMenuItem_Click(sender, e);
-
-
-        }
-
-        private void volverAlMenúToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void calcuarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            decimal total = 0;
-
-            foreach (DataGridViewRow fila in dgvDetalle.Rows)
-            {
-                if (fila.Cells["Monto"].Value != null)
-                {
-                    total += Convert.ToDecimal(fila.Cells["Monto"].Value);
-                }
-            }
-
-            lblTotalEspeculado.Text = "$" + total.ToString("0.00");
-        }
-
-        private void volverAlMenúToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void calcularToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            decimal total = 0;
-
-            foreach (DataGridViewRow fila in dgvDetalle.Rows)
-            {
-                if (fila.Cells["Monto"].Value != null)
-                {
-                    total += Convert.ToDecimal(fila.Cells["Monto"].Value);
-                }
-            }
-
-            lblTotalEspeculado.Text = "$" + total.ToString("0.00");
-
-            CalcularTotales();
-
-        }
-
-        private void dgvDetalle_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (dgvDetalle.CurrentRow != null)
-            {
-                dgvDetalle.CurrentRow.Cells["NombreTransaccion"].Value = txtNombreTransaccion.Text;
-                dgvDetalle.CurrentRow.Cells["TipoGasto"].Value = cbTipoGasto.Text;
-                dgvDetalle.CurrentRow.Cells["Monto"].Value = txtMonto.Text;
-
-                MessageBox.Show("Registro modificado correctamente.");
-            }
-        }
-
-        private void txtMonto_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Permitir números, control y punto decimal
-            if (!char.IsControl(e.KeyChar) &&
-                !char.IsDigit(e.KeyChar) &&
-                e.KeyChar != '.')
-            {
-                e.Handled = true;
-            }
-
-            // Solo permitir un punto decimal
-            if (e.KeyChar == '.' &&
-                (sender as TextBox).Text.Contains("."))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (dgvDetalle.CurrentRow == null)
-            {
-                MessageBox.Show("Seleccione una fila para eliminar.",
-                                "Eliminar",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Warning);
-                return;
-            }
-
-            dgvDetalle.Rows.Remove(dgvDetalle.CurrentRow);
-
-            MessageBox.Show("Registro eliminado correctamente.",
-                            "Eliminar",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
-        }
-
-        private void agregarToolStripMenuItem_Click_2(object sender, EventArgs e)
+        private void AgregarDetalle()
         {
             if (cbPeriodo.Text.Trim() == "" ||
                 txtIngreso.Text.Trim() == "" ||
@@ -257,8 +91,8 @@ namespace prueba
             cbTipoGasto.SelectedIndex = -1;
 
             CalcularTotales();
-
         }
+
         private void CalcularTotales()
         {
             decimal totalEspeculado = 0;
@@ -268,6 +102,8 @@ namespace prueba
 
             foreach (DataGridViewRow fila in dgvDetalle.Rows)
             {
+                if (fila.IsNewRow) continue;
+
                 if (fila.Cells["Monto"].Value != null)
                 {
                     decimal monto = 0;
@@ -289,14 +125,21 @@ namespace prueba
             lblPorcentaje.Text = porcentaje.ToString("0.00") + "%";
         }
 
-        private void calcularToolStripMenuItem1_Click(object sender, EventArgs e)
+        private int ObtenerIdTipoGasto(string tipoGasto, SqlConnection conn, SqlTransaction transaccion)
         {
+            string query = "SELECT Id_TipoGasto FROM Tipo_Gasto WHERE TipoGasto = @TipoGasto";
 
-        }
+            SqlCommand cmd = new SqlCommand(query, conn, transaccion);
+            cmd.Parameters.AddWithValue("@TipoGasto", tipoGasto);
 
-        private void cbTipoGasto_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            object resultado = cmd.ExecuteScalar();
 
+            if (resultado == null)
+            {
+                throw new Exception("El tipo de gasto '" + tipoGasto + "' no existe en la tabla Tipo_Gasto.");
+            }
+
+            return Convert.ToInt32(resultado);
         }
 
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -325,21 +168,20 @@ namespace prueba
             using (SqlConnection conn = new SqlConnection(conexion._connectionString))
             {
                 conn.Open();
-
                 SqlTransaction transaccion = conn.BeginTransaction();
 
                 try
                 {
                     string queryPresupuesto = @"
-                INSERT INTO Presupuesto_Mensual
-                (Id_Usuario, Fecha, TotalEspeculado, TotalReal, PorcentajeFinal)
-                VALUES
-                (@Id_Usuario, @Fecha, @TotalEspeculado, @TotalReal, @PorcentajeFinal);
-                SELECT SCOPE_IDENTITY();";
+                    INSERT INTO Presupuesto_Mensual
+                    (Id_Usuario, Fecha, TotalEspeculado, TotalReal, PorcentajeFinal)
+                    VALUES
+                    (@Id_Usuario, @Fecha, @TotalEspeculado, @TotalReal, @PorcentajeFinal);
+                    SELECT SCOPE_IDENTITY();";
 
                     SqlCommand cmdPresupuesto = new SqlCommand(queryPresupuesto, conn, transaccion);
 
-                    cmdPresupuesto.Parameters.AddWithValue("@Id_Usuario", frmInicio.IdUsuario);
+                    cmdPresupuesto.Parameters.AddWithValue("@Id_Usuario", 1);
                     cmdPresupuesto.Parameters.AddWithValue("@Fecha", fecha);
                     cmdPresupuesto.Parameters.AddWithValue("@TotalEspeculado", totalEspeculado);
                     cmdPresupuesto.Parameters.AddWithValue("@TotalReal", totalReal);
@@ -358,16 +200,16 @@ namespace prueba
                         int idTipoGasto = ObtenerIdTipoGasto(tipoGasto, conn, transaccion);
 
                         string queryDetalle = @"
-                    INSERT INTO Presupuesto_Detalle
-                    (Id_Presupuesto, NombreTransaccion, TipoGasto, Monto)
-                    VALUES
-                    (@Id_Presupuesto, @NombreTransaccion, @TipoGasto, @Monto);";
+                        INSERT INTO Presupuesto_Detalle
+                        (Id_Presupuesto, NombreTransaccion, Id_TipoGasto, Monto)
+                        VALUES
+                        (@Id_Presupuesto, @NombreTransaccion, @Id_TipoGasto, @Monto);";
 
                         SqlCommand cmdDetalle = new SqlCommand(queryDetalle, conn, transaccion);
 
                         cmdDetalle.Parameters.AddWithValue("@Id_Presupuesto", idPresupuesto);
                         cmdDetalle.Parameters.AddWithValue("@NombreTransaccion", nombre);
-                        cmdDetalle.Parameters.AddWithValue("@TipoGasto", tipoGasto);
+                        cmdDetalle.Parameters.AddWithValue("@Id_TipoGasto", idTipoGasto);
                         cmdDetalle.Parameters.AddWithValue("@Monto", monto);
 
                         cmdDetalle.ExecuteNonQuery();
@@ -386,26 +228,105 @@ namespace prueba
                     MessageBox.Show("Error al guardar: " + ex.Message);
                 }
             }
-
         }
 
-        private int ObtenerIdTipoGasto(string tipoGasto, SqlConnection conn, SqlTransaction transaccion)
+        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string query = "SELECT Id_TipoGasto FROM Tipo_Gasto WHERE TipoGasto = @TipoGasto";
+            if (dgvDetalle.CurrentRow != null)
+            {
+                dgvDetalle.CurrentRow.Cells["NombreTransaccion"].Value = txtNombreTransaccion.Text;
+                dgvDetalle.CurrentRow.Cells["TipoGasto"].Value = cbTipoGasto.Text;
+                dgvDetalle.CurrentRow.Cells["Monto"].Value = txtMonto.Text;
 
-            SqlCommand cmd = new SqlCommand(query, conn, transaccion);
-            cmd.Parameters.AddWithValue("@TipoGasto", tipoGasto);
+                CalcularTotales();
 
-            return Convert.ToInt32(cmd.ExecuteScalar());
+                MessageBox.Show("Registro modificado correctamente.");
+            }
         }
-        private int ObtenerSiguienteIdDetalle(SqlConnection conn, SqlTransaction transaccion)
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string query = "SELECT ISNULL(MAX(Id_Detalle), 0) + 1 FROM Presupuesto_Detalle";
+            if (dgvDetalle.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione una fila para eliminar.",
+                                "Eliminar",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
 
-            SqlCommand cmd = new SqlCommand(query, conn, transaccion);
+            dgvDetalle.Rows.Remove(dgvDetalle.CurrentRow);
+            CalcularTotales();
 
-            return Convert.ToInt32(cmd.ExecuteScalar());
+            MessageBox.Show("Registro eliminado correctamente.",
+                            "Eliminar",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
         }
+
+        private void txtMonto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) &&
+                !char.IsDigit(e.KeyChar) &&
+                e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+
+            if (e.KeyChar == '.' && (sender as TextBox).Text.Contains("."))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AgregarDetalle();
+        }
+
+        private void agregarToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            AgregarDetalle();
+        }
+
+        private void agregarToolStripMenuItem_Click_2(object sender, EventArgs e)
+        {
+            AgregarDetalle();
+        }
+
+        private void calcularToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CalcularTotales();
+        }
+
+        private void calcuarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CalcularTotales();
+        }
+
+        private void volverAlMenuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void volverAlMenúToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void volverAlMenúToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void cbMes_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void cbPeriodo_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void textBox1_TextChanged(object sender, EventArgs e) { }
+        private void button1_Click(object sender, EventArgs e) { }
+        private void lblTotalEspeculado_Click(object sender, EventArgs e) { }
+        private void dgvDetalle_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e) { }
+        private void calcularToolStripMenuItem1_Click(object sender, EventArgs e) { }
+        private void cbTipoGasto_SelectedIndexChanged(object sender, EventArgs e) { }
     }
 }
-            
