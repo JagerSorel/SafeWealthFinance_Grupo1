@@ -15,8 +15,7 @@ namespace prueba
 
         //public readonly string _connectionString = "Server=PC-ELite\\SQLEXPRESS;Database=SafeWealthFinanceDB;Trusted_Connection=True;";
         public readonly string _connectionString =
-            "Server=DESKTOP-NFDMETJ\\SQLEXPRESS;Database=SafeWealthFinanceDB;Integrated Security=True;TrustServerCertificate=True;";
-        public void InsertarDatos(string query, SqlParameter[] parameters)
+            "Server=localhost;Database=SafeWealthFinanceDB;Integrated Security=True;TrustServerCertificate=True;"; public void InsertarDatos(string query, SqlParameter[] parameters)
         {
             try
             {

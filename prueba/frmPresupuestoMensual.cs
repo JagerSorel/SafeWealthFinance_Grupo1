@@ -14,9 +14,7 @@ namespace prueba
     public partial class frmPresupuestoMensual : Form
     {
         //private string connectionString = "Server=.;Database=SafeWealthFinanceDB;Integrated Security=True;";
-        private string connectionString =
-            "Server=DESKTOP-NFDMETJ\\SQLEXPRESS;Database=SafeWealthFinanceDB;Integrated Security=True;TrustServerCertificate=True;";
-        public frmPresupuestoMensual()
+        ConexionYMetodos conexion = new ConexionYMetodos(); public frmPresupuestoMensual()
         {
             InitializeComponent();
             this.Load += frmPresupuestoMensual_Load;
@@ -324,7 +322,7 @@ namespace prueba
 
             DateTime fecha = DateTime.Parse("01/" + cbPeriodo.Text);
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(conexion._connectionString))
             {
                 conn.Open();
 
@@ -341,7 +339,7 @@ namespace prueba
 
                     SqlCommand cmdPresupuesto = new SqlCommand(queryPresupuesto, conn, transaccion);
 
-                    cmdPresupuesto.Parameters.AddWithValue("@Id_Usuario", 1);
+                    cmdPresupuesto.Parameters.AddWithValue("@Id_Usuario", frmInicio.IdUsuario);
                     cmdPresupuesto.Parameters.AddWithValue("@Fecha", fecha);
                     cmdPresupuesto.Parameters.AddWithValue("@TotalEspeculado", totalEspeculado);
                     cmdPresupuesto.Parameters.AddWithValue("@TotalReal", totalReal);
@@ -361,16 +359,16 @@ namespace prueba
 
                         string queryDetalle = @"
                     INSERT INTO Presupuesto_Detalle
-                    (Id_Presupuesto, NombreTransaccion, Id_TipoGasto, MontoEspeculado)
+                    (Id_Presupuesto, NombreTransaccion, TipoGasto, Monto)
                     VALUES
-                    (@Id_Presupuesto, @NombreTransaccion, @Id_TipoGasto, @MontoEspeculado);";
+                    (@Id_Presupuesto, @NombreTransaccion, @TipoGasto, @Monto);";
 
                         SqlCommand cmdDetalle = new SqlCommand(queryDetalle, conn, transaccion);
 
                         cmdDetalle.Parameters.AddWithValue("@Id_Presupuesto", idPresupuesto);
                         cmdDetalle.Parameters.AddWithValue("@NombreTransaccion", nombre);
-                        cmdDetalle.Parameters.AddWithValue("@Id_TipoGasto", idTipoGasto);
-                        cmdDetalle.Parameters.AddWithValue("@MontoEspeculado", monto);
+                        cmdDetalle.Parameters.AddWithValue("@TipoGasto", tipoGasto);
+                        cmdDetalle.Parameters.AddWithValue("@Monto", monto);
 
                         cmdDetalle.ExecuteNonQuery();
                     }
