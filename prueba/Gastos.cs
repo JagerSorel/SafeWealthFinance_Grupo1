@@ -222,13 +222,6 @@ namespace prueba
                         dgvGastos.DataSource = dt;
                         lblDato.Text = $"Usted ha gastado: ${dt.Compute("SUM(Monto)", string.Empty)} \nen la categoria {seleccion}";
                         break;
-                    case "Gastos fijos (parte del presupuesto)":
-                        break;
-                    case "Gastos variables (gastos que pueden cambiar)":
-
-                        break;
-                    case "Gastos discrecionales (no indispensables)":
-                        break;
                     default:
                         break;
                 }

@@ -288,7 +288,7 @@
             this.gbMod.Controls.Add(this.lblFechaM);
             this.gbMod.Controls.Add(this.lblMontoM);
             this.gbMod.Controls.Add(this.lblNomM);
-            this.gbMod.Location = new System.Drawing.Point(12, 262);
+            this.gbMod.Location = new System.Drawing.Point(12, 253);
             this.gbMod.Name = "gbMod";
             this.gbMod.Size = new System.Drawing.Size(604, 160);
             this.gbMod.TabIndex = 10;
@@ -465,10 +465,7 @@
             // 
             this.checkedListBox1.FormattingEnabled = true;
             this.checkedListBox1.Items.AddRange(new object[] {
-            "Gastos hormiga (menos de $5.00)",
-            "Gastos fijos (parte del presupuesto)",
-            "Gastos variables ",
-            "Gastos discrecionales (no indispensables)"});
+            "Gastos hormiga (menos de $5.00)"});
             this.checkedListBox1.Location = new System.Drawing.Point(127, 19);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(258, 64);
